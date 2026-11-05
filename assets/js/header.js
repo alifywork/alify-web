@@ -133,7 +133,10 @@ class SiteHeader extends HTMLElement {
   }
 
   updateStickyHeader() {
-    const isSticky = window.scrollY > 40;
+    // Hysteresis prevents rapid state changes around the scroll threshold.
+    const isSticky = this.header.classList.contains("is-sticky")
+      ? window.scrollY > 24
+      : window.scrollY > 48;
     this.header.classList.toggle("is-sticky", isSticky);
     this.headerShell.classList.toggle("container", isSticky);
     this.headerShell.classList.toggle("container-fluid", !isSticky);
