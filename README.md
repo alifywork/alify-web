@@ -39,7 +39,7 @@ Inner pages use the reusable `<page-hero>` component with `eyebrow`, `title`, `d
 
 Open `index.html` directly or serve the repository with any static HTTP server.
 
-Add the global components to any page with `<site-header></site-header>` and `<site-footer></site-footer>`, then include their respective CSS and JavaScript files. The header includes responsive navigation, a six-service mega menu with local icons, and an accessible right-side About dialog. On mobile, services use a compact accordion. It overlays the hero with the light logo, then smoothly transitions to a compact centered glass container with the sticky logo after 48px of scrolling. The normal state restores below 24px to prevent threshold jitter.
+Add the global components to any page with `<site-header></site-header>` and `<site-footer></site-footer>`, then include their respective CSS and JavaScript files. The header includes responsive navigation, a six-service mega menu with local icons, and an accessible right-side About dialog. On mobile, the hamburger opens a sliding right-side navigation drawer and services use a compact accordion. It overlays the hero with the light logo, then smoothly transitions to a compact centered glass container with the sticky logo after 48px of scrolling. The normal state restores below 24px to prevent threshold jitter.
 
 Bootstrap is used **only** for its grid classes: `container`, `container-fluid`, `row`, and columns. Components, utilities, and other styling are custom. Project utility classes use the `u-` prefix.
 

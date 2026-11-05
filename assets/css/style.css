@@ -245,3 +245,7 @@ select {
     transition: none;
   }
 }
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}

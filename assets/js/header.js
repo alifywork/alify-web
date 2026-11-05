@@ -76,34 +76,46 @@ class SiteHeader extends HTMLElement {
                   <button class="header__drawer-toggle" type="button" aria-label="Open about Alify" aria-haspopup="dialog" aria-expanded="false" aria-controls="about-drawer">
                     <i class="fa-solid fa-grip-vertical" aria-hidden="true"></i>
                   </button>
-                  <button class="header__menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-navigation">
+                  <button class="header__menu-toggle" type="button" aria-label="Open navigation" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-navigation">
                     <i class="fa-solid fa-bars" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
-
-              <nav class="header__mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" hidden>
-                <ul class="header__mobile-list">
-                  <li><a class="header__nav-link" href="index.html">Home</a></li>
-                  <li class="header__mobile-mega">
-                    <div class="header__mobile-mega-trigger">
-                      <a class="header__nav-link" href="services.html">Services</a>
-                      <button class="header__mobile-mega-toggle" type="button" aria-label="Show services" aria-expanded="false" aria-controls="mobile-services-menu">
-                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                    <div class="header__mobile-services" id="mobile-services-menu" hidden>${mobileServiceLinks}</div>
-                  </li>
-                  <li><a class="header__nav-link" href="projects.html">Work</a></li>
-                  <li><a class="header__nav-link" href="about.html">About</a></li>
-                  <li><a class="header__nav-link" href="contact.html">Contact</a></li>
-                </ul>
-                <a class="header__cta header__mobile-cta" href="start-project.html">Let's talk <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
-              </nav>
             </div>
           </div>
         </div>
       </header>
+
+      <dialog class="navigation-drawer" id="mobile-navigation" aria-labelledby="navigation-drawer-title">
+        <div class="navigation-drawer__inner">
+          <div class="navigation-drawer__top">
+            <img src="assets/images/logo/sticky-logo.png" alt="Alify" width="469" height="125">
+            <button class="navigation-drawer__close" type="button" aria-label="Close navigation">
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="navigation-drawer__label" id="navigation-drawer-title">Navigation</p>
+          <nav aria-label="Mobile navigation">
+            <ul class="header__mobile-list">
+              <li><a class="header__nav-link" href="index.html">Home</a></li>
+              <li class="header__mobile-mega">
+                <div class="header__mobile-mega-trigger">
+                  <a class="header__nav-link" href="services.html">Services</a>
+                  <button class="header__mobile-mega-toggle" type="button" aria-label="Show services" aria-expanded="false" aria-controls="mobile-services-menu">
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="header__mobile-services" id="mobile-services-menu" hidden>${mobileServiceLinks}</div>
+              </li>
+              <li><a class="header__nav-link" href="projects.html">Work</a></li>
+              <li><a class="header__nav-link" href="about.html">About</a></li>
+              <li><a class="header__nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <a class="header__cta header__mobile-cta" href="start-project.html">Let's talk <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+          </nav>
+          <p class="navigation-drawer__footer">Ideas, designed to move people.</p>
+        </div>
+      </dialog>
 
       <dialog class="about-drawer" id="about-drawer" aria-labelledby="about-drawer-title">
         <div class="drawer__inner">
@@ -140,7 +152,7 @@ class SiteHeader extends HTMLElement {
     this.drawer = this.querySelector("#about-drawer");
     this.drawerToggle = this.querySelector(".header__drawer-toggle");
     this.menuToggle = this.querySelector(".header__menu-toggle");
-    this.mobileNavigation = this.querySelector(".header__mobile-nav");
+    this.mobileNavigation = this.querySelector("#mobile-navigation");
     this.megaItem = this.querySelector(".header__mega-item");
     this.megaToggle = this.querySelector(".header__mega-toggle");
     this.megaMenu = this.querySelector(".mega-menu");
@@ -152,6 +164,7 @@ class SiteHeader extends HTMLElement {
     this.querySelector(".drawer__close").addEventListener("click", () => this.drawer.close());
     this.querySelector("[data-drawer-close]").addEventListener("click", () => this.drawer.close());
     this.menuToggle.addEventListener("click", () => this.toggleMobileNavigation());
+    this.querySelector(".navigation-drawer__close").addEventListener("click", () => this.closeMobileNavigation());
     this.megaToggle.addEventListener("click", () => this.toggleMegaMenu());
     this.mobileMegaToggle.addEventListener("click", () => this.toggleMobileServices());
 
@@ -159,11 +172,22 @@ class SiteHeader extends HTMLElement {
       if (event.target === this.drawer) this.drawer.close();
     });
 
+    this.mobileNavigation.addEventListener("click", (event) => {
+      if (event.target === this.mobileNavigation) this.closeMobileNavigation();
+    });
+
+    this.mobileNavigation.addEventListener("close", () => {
+      this.menuToggle.setAttribute("aria-expanded", "false");
+      this.menuToggle.setAttribute("aria-label", "Open navigation");
+      this.menuToggle.querySelector("i").className = "fa-solid fa-bars";
+      this.closeMobileServices();
+    });
+
     this.drawer.addEventListener("close", () => {
       this.drawerToggle.setAttribute("aria-expanded", "false");
     });
 
-    this.querySelectorAll(".header__mobile-nav a").forEach((link) => {
+    this.querySelectorAll(".navigation-drawer a").forEach((link) => {
       link.addEventListener("click", () => this.closeMobileNavigation());
     });
 
@@ -173,11 +197,6 @@ class SiteHeader extends HTMLElement {
       if (this.megaItem.classList.contains("is-open")) {
         this.closeMegaMenu();
         this.megaToggle.focus();
-      }
-
-      if (!this.mobileNavigation.hidden) {
-        this.closeMobileNavigation();
-        this.menuToggle.focus();
       }
     });
 
@@ -270,23 +289,23 @@ class SiteHeader extends HTMLElement {
   }
 
   toggleMobileNavigation() {
-    const willOpen = this.mobileNavigation.hidden;
-    this.mobileNavigation.hidden = !willOpen;
-    this.menuToggle.setAttribute("aria-expanded", String(willOpen));
-    this.menuToggle.setAttribute("aria-label", willOpen ? "Close navigation" : "Open navigation");
-    this.menuToggle.querySelector("i").className = willOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars";
-    if (willOpen) {
-      this.closeMegaMenu();
+    if (this.mobileNavigation.open) {
+      this.closeMobileNavigation();
     } else {
-      this.closeMobileServices();
+      this.openMobileNavigation();
     }
   }
 
+  openMobileNavigation() {
+    this.closeMegaMenu();
+    this.menuToggle.setAttribute("aria-expanded", "true");
+    this.menuToggle.setAttribute("aria-label", "Close navigation");
+    this.menuToggle.querySelector("i").className = "fa-solid fa-xmark";
+    this.mobileNavigation.showModal();
+  }
+
   closeMobileNavigation() {
-    this.mobileNavigation.hidden = true;
-    this.menuToggle.setAttribute("aria-expanded", "false");
-    this.menuToggle.setAttribute("aria-label", "Open navigation");
-    this.menuToggle.querySelector("i").className = "fa-solid fa-bars";
+    if (this.mobileNavigation.open) this.mobileNavigation.close();
     this.closeMobileServices();
   }
 }
