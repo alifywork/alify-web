@@ -27,16 +27,13 @@ class SiteHeader extends HTMLElement {
 
                 <div class="header__actions">
                   <a class="header__cta" href="#contact">
-                    Let's talk <span aria-hidden="true">↗</span>
+                    Let's talk <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
                   </a>
                   <button class="header__drawer-toggle" type="button" aria-label="Open about Alify" aria-haspopup="dialog" aria-expanded="false" aria-controls="about-drawer">
-                    <span class="header__dots" aria-hidden="true">
-                      <span></span><span></span><span></span>
-                      <span></span><span></span><span></span>
-                    </span>
+                    <i class="fa-solid fa-grip-vertical" aria-hidden="true"></i>
                   </button>
                   <button class="header__menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-navigation">
-                    <span class="header__menu-icon" aria-hidden="true"></span>
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -49,7 +46,7 @@ class SiteHeader extends HTMLElement {
                   <li><a class="header__nav-link" href="#about" data-open-drawer>About</a></li>
                   <li><a class="header__nav-link" href="#contact">Contact</a></li>
                 </ul>
-                <a class="header__cta header__mobile-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+                <a class="header__cta header__mobile-cta" href="#contact">Let's talk <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></a>
               </nav>
             </div>
           </div>
@@ -61,7 +58,7 @@ class SiteHeader extends HTMLElement {
           <div class="drawer__top">
             <p class="drawer__label">About Alify</p>
             <button class="drawer__close" type="button" aria-label="Close about Alify">
-              <span aria-hidden="true">×</span>
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
           </div>
 
@@ -80,7 +77,7 @@ class SiteHeader extends HTMLElement {
           </div>
 
           <a class="drawer__cta" href="#contact" data-drawer-close>
-            Start a project <span aria-hidden="true">↗</span>
+            Start a project <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
           </a>
         </div>
       </dialog>
@@ -137,12 +134,14 @@ class SiteHeader extends HTMLElement {
     this.mobileNavigation.hidden = !willOpen;
     this.menuToggle.setAttribute("aria-expanded", String(willOpen));
     this.menuToggle.setAttribute("aria-label", willOpen ? "Close navigation" : "Open navigation");
+    this.menuToggle.querySelector("i").className = willOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars";
   }
 
   closeMobileNavigation() {
     this.mobileNavigation.hidden = true;
     this.menuToggle.setAttribute("aria-expanded", "false");
     this.menuToggle.setAttribute("aria-label", "Open navigation");
+    this.menuToggle.querySelector("i").className = "fa-solid fa-bars";
   }
 }
 

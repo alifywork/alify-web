@@ -123,65 +123,13 @@ site-header {
   border-color: var(--color-charcoal);
 }
 
-.header__dots {
-  display: grid;
-  grid-template-columns: repeat(2, 3px);
-  gap: 4px;
-}
-
-.header__dots > span {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: currentColor;
+.header__drawer-toggle .fa-grip-vertical,
+.header__menu-toggle {
+  font-size: 1rem;
 }
 
 .header__menu-toggle {
   display: none;
-  position: relative;
-}
-
-.header__menu-icon,
-.header__menu-icon::before,
-.header__menu-icon::after {
-  display: block;
-  width: 1.05rem;
-  height: 1px;
-  background: currentColor;
-  transition: transform 180ms ease, opacity 180ms ease;
-}
-
-.header__menu-icon {
-  position: relative;
-}
-
-.header__menu-icon::before,
-.header__menu-icon::after {
-  position: absolute;
-  left: 0;
-  content: "";
-}
-
-.header__menu-icon::before {
-  top: -5px;
-}
-
-.header__menu-icon::after {
-  top: 5px;
-}
-
-.header__menu-toggle[aria-expanded="true"] .header__menu-icon {
-  background: transparent;
-}
-
-.header__menu-toggle[aria-expanded="true"] .header__menu-icon::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-
-.header__menu-toggle[aria-expanded="true"] .header__menu-icon::after {
-  top: 0;
-  transform: rotate(-45deg);
 }
 
 .header__mobile-nav {
@@ -389,10 +337,7 @@ site-header {
   .drawer__cta,
   .header__drawer-toggle,
   .header__menu-toggle,
-  .drawer__close,
-  .header__menu-icon,
-  .header__menu-icon::before,
-  .header__menu-icon::after {
+  .drawer__close {
     transition: none;
   }
 }

@@ -17,7 +17,7 @@ class SiteFooter extends HTMLElement {
                     <h2 class="footer__title">Let's make it <span>real.</span></h2>
                   </div>
                   <a class="footer__contact-link" href="mailto:hello@alify.com" aria-label="Email Alify">
-                    <span aria-hidden="true">↗</span>
+                    <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
                   </a>
                 </div>
 
@@ -36,7 +36,7 @@ class SiteFooter extends HTMLElement {
                   </nav>
 
                   <ul class="footer__social-list" aria-label="Footer utilities">
-                    <li><a class="footer__social-link" href="#home">Back to top <span aria-hidden="true">↑</span></a></li>
+                    <li><a class="footer__social-link" href="#home">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></li>
                   </ul>
 
                   <p class="footer__legal">© <span data-current-year></span> Alify. All rights reserved.</p>
