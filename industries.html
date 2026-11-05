@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="assets/icon/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/page-hero.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/utility.css">
@@ -19,24 +20,14 @@
     <script src="assets/gsap/ScrollTrigger.min.js" defer></script>
     <script src="assets/js/header.js" defer></script>
     <script src="assets/js/footer.js" defer></script>
+    <script src="assets/js/page-hero.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
     <site-header></site-header>
 
-    <main class="site-main page-hero" id="home">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <section class="intro page-hero__content" aria-labelledby="intro-title">
-              <p class="intro__eyebrow">Industries / Archive</p>
-              <h1 class="intro__title" id="intro-title">Digital thinking, adapted to your world.</h1>
-              <p class="intro__text">We bring flexible strategy and fresh perspective to industries where meaningful digital experiences make a difference.</p>
-            </section>
-          </div>
-        </div>
-      </div>
-    </main>
+    <page-hero eyebrow="Industries / Archive" title="Digital thinking, adapted to your world."
+      description="We bring flexible strategy and fresh perspective to industries where meaningful digital experiences make a difference." background="neon-lines-08.webp"></page-hero>
 
     <site-footer></site-footer>
   </body>
