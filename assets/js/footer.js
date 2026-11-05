@@ -23,7 +23,7 @@ class SiteFooter extends HTMLElement {
 
                 <div class="footer__bottom">
                   <a class="footer__logo" href="index.html" aria-label="Alify home">
-                    ALIFY<span class="footer__logo-dot">.</span>
+                    <img src="assets/images/logo/light-logo.png" alt="Alify" width="469" height="125" loading="lazy" decoding="async">
                   </a>
 
                   <nav aria-label="Footer navigation">

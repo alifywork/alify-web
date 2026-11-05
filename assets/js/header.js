@@ -12,7 +12,7 @@ class SiteHeader extends HTMLElement {
             <div class="col-12">
               <div class="header__inner">
                 <a class="header__logo" href="index.html" aria-label="Alify home">
-                  ALIFY<span class="header__logo-dot">.</span>
+                  <img src="assets/images/logo/dark-logo.png" alt="Alify" width="469" height="125">
                 </a>
 
                 <nav class="header__nav" aria-label="Primary navigation">

@@ -23,17 +23,13 @@ site-header {
 .header__logo {
   display: inline-flex;
   width: fit-content;
-  align-items: baseline;
-  color: var(--color-primary);
-  font-size: 1.85rem;
-  font-weight: 800;
-  letter-spacing: -0.075em;
-  line-height: 1;
+  align-items: center;
   text-decoration: none;
 }
 
-.header__logo-dot {
-  color: var(--color-accent);
+.header__logo img {
+  width: 7.5rem;
+  height: auto;
 }
 
 .header__nav-list {
@@ -307,8 +303,8 @@ site-header {
     gap: 1rem;
   }
 
-  .header__logo {
-    font-size: 1.65rem;
+  .header__logo img {
+    width: 6.5rem;
   }
 
   .header__actions {

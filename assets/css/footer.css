@@ -74,17 +74,13 @@ site-footer {
 .footer__logo {
   display: inline-flex;
   width: fit-content;
-  align-items: baseline;
-  color: var(--color-white);
-  font-size: 1.85rem;
-  font-weight: 800;
-  letter-spacing: -0.075em;
-  line-height: 1;
+  align-items: center;
   text-decoration: none;
 }
 
-.footer__logo-dot {
-  color: var(--color-accent);
+.footer__logo img {
+  width: 7.5rem;
+  height: auto;
 }
 
 .footer__nav-list,
