@@ -11,14 +11,20 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="assets/icon/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/utility.css">
 
     <script src="assets/gsap/gsap.min.js" defer></script>
     <script src="assets/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/header.js" defer></script>
+    <script src="assets/js/footer.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
-    <main class="site-main">
+    <site-header></site-header>
+
+    <main class="site-main" id="home">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -36,5 +42,7 @@
         </div>
       </div>
     </main>
+
+    <site-footer></site-footer>
   </body>
 </html>
