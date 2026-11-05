@@ -30,6 +30,24 @@ page-hero {
   transform: translateY(-6%);
 }
 
+/* Alternate art direction for pages beyond the 14 source images. */
+.page-hero--mirror-right .page-hero__media {
+  transform: scaleX(-1);
+}
+
+.page-hero--close-up .page-hero__media img {
+  width: 120%;
+  height: 130%;
+  margin-top: -10%;
+  margin-left: -10%;
+  object-position: 65% center;
+}
+
+.page-hero--soft-focus .page-hero__media {
+  filter: blur(3px) saturate(80%);
+  transform: scale(1.03);
+}
+
 .page-hero::after {
   position: absolute;
   z-index: -1;

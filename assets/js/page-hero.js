@@ -12,9 +12,13 @@ class PageHero extends HTMLElement {
     const background = /^neon-lines-(?:0[1-9]|1[0-4])\.webp$/.test(requestedBackground)
       ? requestedBackground
       : "neon-lines-01.webp";
+    const requestedVariant = this.getAttribute("variant") || "";
+    const allowedVariants = ["mirror-right", "close-up", "soft-focus"];
+    const variant = allowedVariants.includes(requestedVariant) ? requestedVariant : "";
+    const variantClass = variant ? ` page-hero--${variant}` : "";
 
     this.innerHTML = `
-      <main class="page-hero" id="home">
+      <main class="page-hero${variantClass}" id="home">
         <div class="page-hero__media" aria-hidden="true">
           <img src="assets/images/background/${background}" alt="" width="1920" height="1080" fetchpriority="high">
         </div>

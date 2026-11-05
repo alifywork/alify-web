@@ -33,7 +33,7 @@ assets/
 
 The site includes hero-only templates for Home, About, Contact, Start a Project, Services (archive/single), Projects (archive/single), Industries (archive/single), Case Studies (archive/single), FAQs, Testimonials, Pricing, Privacy Policy, Terms & Conditions, and Cookie Policy. All pages use the global header and footer components.
 
-Inner pages use the reusable `<page-hero>` component with `eyebrow`, `title`, `description`, and `background` attributes. Its styles, rendering, GSAP entrance animation, and scroll parallax live in `assets/css/page-hero.css` and `assets/js/page-hero.js`.
+Inner pages use the reusable `<page-hero>` component with `eyebrow`, `title`, `description`, and `background` attributes. Its styles, rendering, GSAP entrance animation, and scroll parallax live in `assets/css/page-hero.css` and `assets/js/page-hero.js`. All 14 local neon images are assigned across the 18 heroes; the optional `variant` attribute (`mirror-right`, `close-up`, or `soft-focus`) gives the remaining four pages distinct art direction without adding external assets.
 
 ## Development
 
