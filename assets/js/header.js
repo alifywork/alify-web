@@ -27,7 +27,7 @@ class SiteHeader extends HTMLElement {
 
                 <div class="header__actions">
                   <a class="header__cta" href="#contact">
-                    Let's talk <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                    Let's talk <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i>
                   </a>
                   <button class="header__drawer-toggle" type="button" aria-label="Open about Alify" aria-haspopup="dialog" aria-expanded="false" aria-controls="about-drawer">
                     <i class="fa-solid fa-grip-vertical" aria-hidden="true"></i>
@@ -46,7 +46,7 @@ class SiteHeader extends HTMLElement {
                   <li><a class="header__nav-link" href="#about" data-open-drawer>About</a></li>
                   <li><a class="header__nav-link" href="#contact">Contact</a></li>
                 </ul>
-                <a class="header__cta header__mobile-cta" href="#contact">Let's talk <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></a>
+                <a class="header__cta header__mobile-cta" href="#contact">Let's talk <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
               </nav>
             </div>
           </div>
@@ -77,7 +77,7 @@ class SiteHeader extends HTMLElement {
           </div>
 
           <a class="drawer__cta" href="#contact" data-drawer-close>
-            Start a project <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+            Start a project <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i>
           </a>
         </div>
       </dialog>

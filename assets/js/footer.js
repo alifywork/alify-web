@@ -17,7 +17,7 @@ class SiteFooter extends HTMLElement {
                     <h2 class="footer__title">Let's make it <span>real.</span></h2>
                   </div>
                   <a class="footer__contact-link" href="mailto:hello@alify.com" aria-label="Email Alify">
-                    <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                    <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i>
                   </a>
                 </div>
 

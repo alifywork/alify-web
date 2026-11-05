@@ -58,6 +58,12 @@ select {
   font: inherit;
 }
 
+/* Font Awesome Free does not include the Pro fa-arrow-up-right icon. */
+.icon-arrow-up-right {
+  display: inline-block;
+  transform: rotate(-45deg);
+}
+
 ::selection {
   color: var(--color-white);
   background-color: var(--color-primary);
