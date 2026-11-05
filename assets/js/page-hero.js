@@ -22,17 +22,19 @@ class PageHero extends HTMLElement {
         <div class="page-hero__media" aria-hidden="true">
           <img src="assets/images/background/${background}" alt="" width="1920" height="1080" fetchpriority="high">
         </div>
-        <div class="container page-hero__container">
-          <div class="row">
-            <div class="col-12">
-              <section class="page-hero__content" aria-labelledby="page-hero-title">
-                <p class="page-hero__eyebrow">${this.escapeHTML(eyebrow)}</p>
-                <h1 class="page-hero__title" id="page-hero-title">${this.escapeHTML(title)}</h1>
-                <p class="page-hero__description">${this.escapeHTML(description)}</p>
-              </section>
+        <section class="page-hero__section" aria-labelledby="page-hero-title">
+          <div class="container page-hero__container">
+            <div class="row">
+              <div class="col-12">
+                <div class="page-hero__content">
+                  <p class="page-hero__eyebrow">${this.escapeHTML(eyebrow)}</p>
+                  <h1 class="page-hero__title" id="page-hero-title">${this.escapeHTML(title)}</h1>
+                  <p class="page-hero__description">${this.escapeHTML(description)}</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     `;
 

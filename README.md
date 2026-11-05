@@ -43,4 +43,6 @@ Add the global components to any page with `<site-header></site-header>` and `<s
 
 Bootstrap is used **only** for its grid classes: `container`, `container-fluid`, `row`, and columns. Components, utilities, and other styling are custom. Project utility classes use the `u-` prefix.
 
+Authored HTML must not contain inline `style` attributes. Semantic sections wrap the grid: `section > container/container-fluid > row > column > content`; never place a `section` inside a Bootstrap column.
+
 Use the shared color and typography variables from `assets/css/variables.css`; do not introduce one-off brand colors in page styles.

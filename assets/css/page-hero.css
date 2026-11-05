@@ -63,6 +63,10 @@ page-hero {
   width: 100%;
 }
 
+.page-hero__section {
+  width: 100%;
+}
+
 .page-hero__content {
   max-width: 1080px;
 }

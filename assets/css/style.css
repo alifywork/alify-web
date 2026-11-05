@@ -151,6 +151,10 @@ select {
   content: "";
 }
 
+.home-hero__section {
+  width: 100%;
+}
+
 .home-hero__content {
   max-width: 1040px;
   margin-inline: 0;
