@@ -29,9 +29,11 @@ class SiteFooter extends HTMLElement {
                   <nav aria-label="Footer navigation">
                     <ul class="footer__nav-list">
                       <li><a class="footer__nav-link" href="index.html">Home</a></li>
-                      <li><a class="footer__nav-link" href="#services">Services</a></li>
-                      <li><a class="footer__nav-link" href="#work">Work</a></li>
-                      <li><a class="footer__nav-link" href="#about" data-open-about>About</a></li>
+                      <li><a class="footer__nav-link" href="services.html">Services</a></li>
+                      <li><a class="footer__nav-link" href="projects.html">Work</a></li>
+                      <li><a class="footer__nav-link" href="about.html">About</a></li>
+                      <li><a class="footer__nav-link" href="case-studies.html">Case Studies</a></li>
+                      <li><a class="footer__nav-link" href="pricing.html">Pricing</a></li>
                     </ul>
                   </nav>
 
@@ -39,7 +41,14 @@ class SiteFooter extends HTMLElement {
                     <li><a class="footer__social-link" href="#home">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></li>
                   </ul>
 
-                  <p class="footer__legal">© <span data-current-year></span> Alify. All rights reserved.</p>
+                  <div class="footer__legal">
+                    <p>© <span data-current-year></span> Alify. All rights reserved.</p>
+                    <nav class="footer__legal-links" aria-label="Legal navigation">
+                      <a href="privacy-policy.html">Privacy Policy</a>
+                      <a href="terms-and-conditions.html">Terms & Conditions</a>
+                      <a href="cookie-policy.html">Cookie Policy</a>
+                    </nav>
+                  </div>
                 </div>
               </div>
             </div>
@@ -49,10 +58,6 @@ class SiteFooter extends HTMLElement {
     `;
 
     this.querySelector("[data-current-year]").textContent = new Date().getFullYear();
-    this.querySelector("[data-open-about]").addEventListener("click", (event) => {
-      event.preventDefault();
-      document.querySelector("site-header")?.openDrawer();
-    });
   }
 }
 

@@ -119,8 +119,92 @@ select {
   font-size: clamp(1rem, 2vw, 1.125rem);
 }
 
+/* Shared hero for all static pages */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero__content {
+  max-width: 1040px;
+  margin-inline: 0;
+  text-align: left;
+}
+
+.page-hero .intro__title {
+  max-width: 1040px;
+  font-size: clamp(3rem, 8vw, 7.5rem);
+}
+
+.page-hero .intro__text {
+  max-width: 650px;
+  margin-inline: 0;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.35rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 100vmax;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.button--primary {
+  color: var(--color-white);
+  background: var(--color-primary);
+}
+
+.button--secondary {
+  color: var(--color-primary);
+  background: transparent;
+}
+
+.button:hover,
+.button:focus-visible {
+  color: var(--color-white);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 575.98px) {
+  .page-hero .intro__title {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
+  }
+
+  .intro__actions,
+  .button {
+    width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .button {
+    transition: none;
   }
 }

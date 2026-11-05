@@ -17,16 +17,16 @@ class SiteHeader extends HTMLElement {
 
                 <nav class="header__nav" aria-label="Primary navigation">
                   <ul class="header__nav-list">
-                    <li><a class="header__nav-link" href="index.html" aria-current="page">Home</a></li>
-                    <li><a class="header__nav-link" href="#services">Services</a></li>
-                    <li><a class="header__nav-link" href="#work">Work</a></li>
-                    <li><a class="header__nav-link" href="#about" data-open-drawer>About</a></li>
-                    <li><a class="header__nav-link" href="#contact">Contact</a></li>
+                    <li><a class="header__nav-link" href="index.html">Home</a></li>
+                    <li><a class="header__nav-link" href="services.html">Services</a></li>
+                    <li><a class="header__nav-link" href="projects.html">Work</a></li>
+                    <li><a class="header__nav-link" href="about.html">About</a></li>
+                    <li><a class="header__nav-link" href="contact.html">Contact</a></li>
                   </ul>
                 </nav>
 
                 <div class="header__actions">
-                  <a class="header__cta" href="#contact">
+                  <a class="header__cta" href="start-project.html">
                     Let's talk <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i>
                   </a>
                   <button class="header__drawer-toggle" type="button" aria-label="Open about Alify" aria-haspopup="dialog" aria-expanded="false" aria-controls="about-drawer">
@@ -40,13 +40,13 @@ class SiteHeader extends HTMLElement {
 
               <nav class="header__mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" hidden>
                 <ul class="header__mobile-list">
-                  <li><a class="header__nav-link" href="index.html" aria-current="page">Home</a></li>
-                  <li><a class="header__nav-link" href="#services">Services</a></li>
-                  <li><a class="header__nav-link" href="#work">Work</a></li>
-                  <li><a class="header__nav-link" href="#about" data-open-drawer>About</a></li>
-                  <li><a class="header__nav-link" href="#contact">Contact</a></li>
+                  <li><a class="header__nav-link" href="index.html">Home</a></li>
+                  <li><a class="header__nav-link" href="services.html">Services</a></li>
+                  <li><a class="header__nav-link" href="projects.html">Work</a></li>
+                  <li><a class="header__nav-link" href="about.html">About</a></li>
+                  <li><a class="header__nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <a class="header__cta header__mobile-cta" href="#contact">Let's talk <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                <a class="header__cta header__mobile-cta" href="start-project.html">Let's talk <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
               </nav>
             </div>
           </div>
@@ -76,7 +76,7 @@ class SiteHeader extends HTMLElement {
             </ul>
           </div>
 
-          <a class="drawer__cta" href="#contact" data-drawer-close>
+          <a class="drawer__cta" href="start-project.html" data-drawer-close>
             Start a project <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i>
           </a>
         </div>
@@ -87,16 +87,11 @@ class SiteHeader extends HTMLElement {
     this.drawerToggle = this.querySelector(".header__drawer-toggle");
     this.menuToggle = this.querySelector(".header__menu-toggle");
     this.mobileNavigation = this.querySelector(".header__mobile-nav");
+    this.setActiveNavigation();
 
     this.drawerToggle.addEventListener("click", () => this.openDrawer());
     this.querySelector(".drawer__close").addEventListener("click", () => this.drawer.close());
     this.querySelector("[data-drawer-close]").addEventListener("click", () => this.drawer.close());
-    this.querySelectorAll("[data-open-drawer]").forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        this.openDrawer();
-      });
-    });
     this.menuToggle.addEventListener("click", () => this.toggleMobileNavigation());
 
     this.drawer.addEventListener("click", (event) => {
@@ -120,6 +115,24 @@ class SiteHeader extends HTMLElement {
 
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1100) this.closeMobileNavigation();
+    });
+  }
+
+  setActiveNavigation() {
+    const pageGroups = {
+      "service-single.html": "services.html",
+      "project-single.html": "projects.html"
+    };
+    const currentFile = window.location.pathname.split("/").pop() || "index.html";
+    const activeFile = pageGroups[currentFile] || currentFile;
+
+    this.querySelectorAll(".header__nav-link").forEach((link) => {
+      const linkFile = new URL(link.href, window.location.href).pathname.split("/").pop() || "index.html";
+      if (linkFile === activeFile) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
   }
 

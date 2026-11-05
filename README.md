@@ -25,6 +25,10 @@ assets/
     └── main.js
 ```
 
+## Pages
+
+The site includes hero-only templates for Home, About, Contact, Start a Project, Services (archive/single), Projects (archive/single), Industries (archive/single), Case Studies (archive/single), FAQs, Testimonials, Pricing, Privacy Policy, Terms & Conditions, and Cookie Policy. All pages use the global header and footer components.
+
 ## Development
 
 Open `index.html` directly or serve the repository with any static HTTP server.
