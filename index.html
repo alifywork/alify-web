@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="assets/icon/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/utility.css">
@@ -20,6 +21,7 @@
     <script src="assets/js/header.js" defer></script>
     <script src="assets/js/footer.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/home.js" defer></script>
   </head>
   <body>
     <site-header></site-header>
@@ -48,6 +50,323 @@
         </div>
       </section>
     </main>
+
+    <section class="home-section home-section--secondary" aria-labelledby="services-showcase-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-heading section-heading--split" data-home-reveal>
+              <div>
+                <p class="section-heading__eyebrow">What we do</p>
+                <h2 class="section-heading__title" id="services-showcase-title">One studio. Every digital capability.</h2>
+              </div>
+              <div>
+                <p class="section-heading__copy">From the first sketch to ongoing growth, choose the expertise you need or bring us the whole ambitious brief.</p>
+                <a class="section-link" href="services.html">Explore all services <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+
+            <div class="services-showcase" data-home-reveal>
+              <div class="services-showcase__tabs" role="tablist" aria-label="Alify services" aria-orientation="vertical" data-service-tabs>
+                <button class="service-tab" id="service-tab-web" type="button" role="tab" aria-selected="true" aria-controls="service-panel-web" tabindex="0">
+                  <span class="service-tab__icon" aria-hidden="true"><i class="fa-solid fa-code"></i></span>
+                  <span><strong>Web Development</strong><small>Fast, scalable experiences</small></span>
+                </button>
+                <button class="service-tab" id="service-tab-seo" type="button" role="tab" aria-selected="false" aria-controls="service-panel-seo" tabindex="-1">
+                  <span class="service-tab__icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
+                  <span><strong>SEO</strong><small>Visibility that compounds</small></span>
+                </button>
+                <button class="service-tab" id="service-tab-marketing" type="button" role="tab" aria-selected="false" aria-controls="service-panel-marketing" tabindex="-1">
+                  <span class="service-tab__icon" aria-hidden="true"><i class="fa-solid fa-bullhorn"></i></span>
+                  <span><strong>Digital Marketing</strong><small>Campaigns with momentum</small></span>
+                </button>
+                <button class="service-tab" id="service-tab-ai" type="button" role="tab" aria-selected="false" aria-controls="service-panel-ai" tabindex="-1">
+                  <span class="service-tab__icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></span>
+                  <span><strong>AI Automation</strong><small>Smarter ways to work</small></span>
+                </button>
+                <button class="service-tab" id="service-tab-uiux" type="button" role="tab" aria-selected="false" aria-controls="service-panel-uiux" tabindex="-1">
+                  <span class="service-tab__icon" aria-hidden="true"><i class="fa-solid fa-pen-ruler"></i></span>
+                  <span><strong>UI UX Design</strong><small>Products people understand</small></span>
+                </button>
+                <button class="service-tab" id="service-tab-logo" type="button" role="tab" aria-selected="false" aria-controls="service-panel-logo" tabindex="-1">
+                  <span class="service-tab__icon" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></span>
+                  <span><strong>Logo Design</strong><small>Marks with meaning</small></span>
+                </button>
+              </div>
+
+              <div class="services-showcase__panels">
+                <div class="service-panel" id="service-panel-web" role="tabpanel" aria-labelledby="service-tab-web" data-service-panel>
+                  <div class="service-panel__inner">
+                    <div class="service-panel__content">
+                      <span class="service-panel__number">01 / WEB DEVELOPMENT</span>
+                      <h3 class="service-panel__title">Built to perform. Designed to grow.</h3>
+                      <p class="service-panel__copy">Responsive, accessible websites with thoughtful interactions, clean code, and a foundation that scales with your business.</p>
+                      <a class="service-panel__link" href="service-single.html#web-development">Explore web development <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="service-panel__visual">
+                      <img src="assets/images/background/neon-lines-06.webp" alt="Abstract connected digital network" width="1920" height="1080" loading="lazy">
+                      <span class="service-panel__metric">Strategy · Design · Clean code</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service-panel" id="service-panel-seo" role="tabpanel" aria-labelledby="service-tab-seo" data-service-panel hidden>
+                  <div class="service-panel__inner">
+                    <div class="service-panel__content">
+                      <span class="service-panel__number">02 / SEO</span>
+                      <h3 class="service-panel__title">Be found for the right reasons.</h3>
+                      <p class="service-panel__copy">Technical foundations, useful content, and search strategies that turn visibility into sustainable organic growth.</p>
+                      <a class="service-panel__link" href="service-single.html#seo">Explore SEO <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="service-panel__visual">
+                      <img src="assets/images/background/neon-lines-03.webp" alt="Abstract search and data connections" width="1920" height="1080" loading="lazy">
+                      <span class="service-panel__metric">Technical · Content · Growth</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service-panel" id="service-panel-marketing" role="tabpanel" aria-labelledby="service-tab-marketing" data-service-panel hidden>
+                  <div class="service-panel__inner">
+                    <div class="service-panel__content">
+                      <span class="service-panel__number">03 / DIGITAL MARKETING</span>
+                      <h3 class="service-panel__title">Creative campaigns, measurable outcomes.</h3>
+                      <p class="service-panel__copy">Channel-aware campaigns that bring brand thinking and performance data together around a clear goal.</p>
+                      <a class="service-panel__link" href="service-single.html#digital-marketing">Explore digital marketing <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="service-panel__visual">
+                      <img src="assets/images/background/neon-lines-09.webp" alt="Abstract campaign network" width="1920" height="1080" loading="lazy">
+                      <span class="service-panel__metric">Strategy · Creative · Performance</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service-panel" id="service-panel-ai" role="tabpanel" aria-labelledby="service-tab-ai" data-service-panel hidden>
+                  <div class="service-panel__inner">
+                    <div class="service-panel__content">
+                      <span class="service-panel__number">04 / AI AUTOMATION</span>
+                      <h3 class="service-panel__title">Less repetition. More meaningful work.</h3>
+                      <p class="service-panel__copy">Practical AI workflows that connect your tools, reduce manual effort, and keep your team focused on higher-value decisions.</p>
+                      <a class="service-panel__link" href="service-single.html#ai-automation">Explore AI automation <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="service-panel__visual">
+                      <img src="assets/images/background/neon-lines-12.webp" alt="Abstract artificial intelligence network" width="1920" height="1080" loading="lazy">
+                      <span class="service-panel__metric">Discover · Connect · Automate</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service-panel" id="service-panel-uiux" role="tabpanel" aria-labelledby="service-tab-uiux" data-service-panel hidden>
+                  <div class="service-panel__inner">
+                    <div class="service-panel__content">
+                      <span class="service-panel__number">05 / UI UX DESIGN</span>
+                      <h3 class="service-panel__title">Simple on the surface. Smart underneath.</h3>
+                      <p class="service-panel__copy">Research-led journeys and polished interfaces that make complex products feel clear, useful, and distinctly yours.</p>
+                      <a class="service-panel__link" href="service-single.html#ui-ux-design">Explore UI UX design <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="service-panel__visual">
+                      <img src="assets/images/background/neon-lines-05.webp" alt="Abstract digital product connections" width="1920" height="1080" loading="lazy">
+                      <span class="service-panel__metric">Research · Prototype · Interface</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service-panel" id="service-panel-logo" role="tabpanel" aria-labelledby="service-tab-logo" data-service-panel hidden>
+                  <div class="service-panel__inner">
+                    <div class="service-panel__content">
+                      <span class="service-panel__number">06 / LOGO DESIGN</span>
+                      <h3 class="service-panel__title">A small mark with a big point of view.</h3>
+                      <p class="service-panel__copy">Memorable identities built from strategy, not trends, with a flexible visual language for every brand touchpoint.</p>
+                      <a class="service-panel__link" href="service-single.html#logo-design">Explore logo design <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="service-panel__visual">
+                      <img src="assets/images/background/neon-lines-14.webp" alt="Abstract geometric identity lines" width="1920" height="1080" loading="lazy">
+                      <span class="service-panel__metric">Strategy · Identity · System</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--white" aria-labelledby="process-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-heading section-heading--center" data-home-reveal>
+              <p class="section-heading__eyebrow">How we work</p>
+              <h2 class="section-heading__title" id="process-title">Big outcomes. One clear process.</h2>
+              <p class="section-heading__copy">No mystery and no unnecessary layers—just four focused stages that keep every decision connected to your goals.</p>
+            </div>
+            <div class="process-grid" data-home-reveal>
+              <article class="process-card">
+                <span class="process-card__number">01 / DISCOVER</span>
+                <span class="process-card__icon" aria-hidden="true"><i class="fa-solid fa-compass"></i></span>
+                <h3>Find the signal</h3>
+                <p>We listen, research, and define the real challenge before jumping into solutions.</p>
+              </article>
+              <article class="process-card">
+                <span class="process-card__number">02 / DEFINE</span>
+                <span class="process-card__icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
+                <h3>Set the direction</h3>
+                <p>We turn insight into a focused roadmap with clear priorities and shared expectations.</p>
+              </article>
+              <article class="process-card">
+                <span class="process-card__number">03 / CREATE</span>
+                <span class="process-card__icon" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                <h3>Make it tangible</h3>
+                <p>We design, prototype, and build in collaborative cycles, so you see progress early.</p>
+              </article>
+              <article class="process-card">
+                <span class="process-card__number">04 / EVOLVE</span>
+                <span class="process-card__icon" aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                <h3>Keep improving</h3>
+                <p>We launch, learn, and refine around real feedback and the opportunities ahead.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--dark" aria-labelledby="selected-work-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-heading section-heading--split" data-home-reveal>
+              <div>
+                <p class="section-heading__eyebrow">Selected work</p>
+                <h2 class="section-heading__title" id="selected-work-title">Ideas made impossible to ignore.</h2>
+              </div>
+              <div>
+                <p class="section-heading__copy">A glimpse at how we bring strategy, expression, and technology together across different digital challenges.</p>
+                <a class="section-link" href="projects.html">View all projects <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <div class="work-grid" data-home-reveal>
+              <article class="work-card">
+                <a class="work-card__link" href="project-single.html">
+                  <div class="work-card__image">
+                    <img src="assets/images/background/neon-lines-07.webp" alt="Abstract connected lines for a financial technology concept" width="1920" height="1080" loading="lazy">
+                    <span class="work-card__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right icon-arrow-up-right"></i></span>
+                  </div>
+                  <div class="work-card__meta"><h3>Fintech, reimagined</h3><p>Product strategy · UI UX · Development</p></div>
+                </a>
+              </article>
+              <article class="work-card">
+                <a class="work-card__link" href="project-single.html">
+                  <div class="work-card__image">
+                    <img src="assets/images/background/neon-lines-10.webp" alt="Abstract digital lines for a commerce concept" width="1920" height="1080" loading="lazy">
+                    <span class="work-card__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right icon-arrow-up-right"></i></span>
+                  </div>
+                  <div class="work-card__meta"><h3>Commerce without friction</h3><p>Brand · E-commerce · Growth</p></div>
+                </a>
+              </article>
+              <article class="work-card">
+                <a class="work-card__link" href="project-single.html">
+                  <div class="work-card__image">
+                    <img src="assets/images/background/neon-lines-12.webp" alt="Abstract network for an automation concept" width="1920" height="1080" loading="lazy">
+                    <span class="work-card__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right icon-arrow-up-right"></i></span>
+                  </div>
+                  <div class="work-card__meta"><h3>Intelligence at work</h3><p>AI strategy · Automation · Product</p></div>
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--secondary" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-heading section-heading--center" data-home-reveal>
+              <p class="section-heading__eyebrow">Client perspectives</p>
+              <h2 class="section-heading__title" id="testimonials-title">Good work starts with great partnerships.</h2>
+            </div>
+            <div class="testimonials" aria-roledescription="carousel" aria-label="Client testimonials" data-testimonials data-home-reveal>
+              <div class="testimonial-slide" data-testimonial-slide>
+                <blockquote class="testimonial-slide__quote">“Alify turned a complicated brief into a clear, confident digital experience. Every decision had a reason, and every conversation moved the work forward.”</blockquote>
+                <p class="testimonial-slide__author"><strong>Founder</strong> · SaaS company</p>
+              </div>
+              <div class="testimonial-slide" data-testimonial-slide hidden>
+                <blockquote class="testimonial-slide__quote">“The team brought structure without slowing us down. The result feels distinctly ours, works beautifully, and gives us room to grow.”</blockquote>
+                <p class="testimonial-slide__author"><strong>Marketing Director</strong> · Consumer brand</p>
+              </div>
+              <div class="testimonial-slide" data-testimonial-slide hidden>
+                <blockquote class="testimonial-slide__quote">“Strategy, design, and technology finally felt like one conversation. That clarity made the entire project better from day one.”</blockquote>
+                <p class="testimonial-slide__author"><strong>Product Lead</strong> · Technology team</p>
+              </div>
+              <div class="testimonials__controls">
+                <button class="testimonials__arrow" type="button" aria-label="Previous testimonial" data-testimonial-prev><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+                <div class="testimonials__dots" aria-label="Choose testimonial">
+                  <button class="testimonials__dot is-active" type="button" aria-label="Show testimonial 1" aria-current="true" data-testimonial-dot></button>
+                  <button class="testimonials__dot" type="button" aria-label="Show testimonial 2" aria-current="false" data-testimonial-dot></button>
+                  <button class="testimonials__dot" type="button" aria-label="Show testimonial 3" aria-current="false" data-testimonial-dot></button>
+                </div>
+                <button class="testimonials__arrow" type="button" aria-label="Next testimonial" data-testimonial-next><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--white" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="faq-layout">
+              <div class="section-heading" data-home-reveal>
+                <p class="section-heading__eyebrow">Common questions</p>
+                <h2 class="section-heading__title" id="faq-title">Before we begin.</h2>
+                <p class="section-heading__copy">A few helpful answers about starting a project and working together.</p>
+                <a class="section-link" href="faqs.html">View all FAQs <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+              <div class="faq-list" data-home-reveal>
+                <div class="faq-list__item is-open">
+                  <button class="faq-list__question" type="button" aria-expanded="true" aria-controls="home-faq-1" data-faq-button>What kind of projects does Alify take on?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+                  <div class="faq-list__answer" id="home-faq-1" aria-hidden="false"><div><p>We work on brand identities, websites, digital products, growth campaigns, and practical AI automation—either as focused engagements or connected end-to-end projects.</p></div></div>
+                </div>
+                <div class="faq-list__item">
+                  <button class="faq-list__question" type="button" aria-expanded="false" aria-controls="home-faq-2" data-faq-button>How early should I involve your team?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+                  <div class="faq-list__answer" id="home-faq-2" aria-hidden="true"><div><p>The earlier the better. A short discovery conversation can clarify the brief, identify risks, and help you choose the right scope before production begins.</p></div></div>
+                </div>
+                <div class="faq-list__item">
+                  <button class="faq-list__question" type="button" aria-expanded="false" aria-controls="home-faq-3" data-faq-button>Can you work with our existing team?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+                  <div class="faq-list__answer" id="home-faq-3" aria-hidden="true"><div><p>Yes. We can lead the full engagement or plug into your internal team with a clear scope, shared rituals, and transparent communication.</p></div></div>
+                </div>
+                <div class="faq-list__item">
+                  <button class="faq-list__question" type="button" aria-expanded="false" aria-controls="home-faq-4" data-faq-button>How long does a typical project take?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+                  <div class="faq-list__answer" id="home-faq-4" aria-hidden="true"><div><p>Timing depends on scope and complexity. After discovery, we provide a realistic roadmap with clear milestones, responsibilities, and feedback windows.</p></div></div>
+                </div>
+                <div class="faq-list__item">
+                  <button class="faq-list__question" type="button" aria-expanded="false" aria-controls="home-faq-5" data-faq-button>Do you provide support after launch?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+                  <div class="faq-list__answer" id="home-faq-5" aria-hidden="true"><div><p>Yes. We can stay involved through ongoing design, development, optimization, and growth support based on what your team needs next.</p></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-cta" aria-labelledby="home-cta-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="home-cta__card" data-home-reveal>
+              <h2 id="home-cta-title">Your next big idea deserves a thoughtful team.</h2>
+              <p>Bring us the challenge, the rough sketch, or the ambitious goal. Let’s shape what comes next together.</p>
+              <a class="home-cta__link" href="start-project.html">Start a project <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <site-footer></site-footer>
   </body>
