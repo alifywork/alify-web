@@ -7,12 +7,13 @@ class SiteHeader extends HTMLElement {
 
     this.innerHTML = `
       <header class="site-header">
-        <div class="container-fluid">
+        <div class="header__shell container-fluid">
           <div class="row">
             <div class="col-12">
               <div class="header__inner">
                 <a class="header__logo" href="index.html" aria-label="Alify home">
-                  <img src="assets/images/logo/dark-logo.png" alt="Alify" width="469" height="125">
+                  <img class="header__logo--light" src="assets/images/logo/light-logo.png" alt="Alify" width="469" height="125">
+                  <img class="header__logo--sticky" src="assets/images/logo/sticky-logo.png" alt="" width="469" height="125">
                 </a>
 
                 <nav class="header__nav" aria-label="Primary navigation">
@@ -83,6 +84,8 @@ class SiteHeader extends HTMLElement {
       </dialog>
     `;
 
+    this.header = this.querySelector(".site-header");
+    this.headerShell = this.querySelector(".header__shell");
     this.drawer = this.querySelector("#about-drawer");
     this.drawerToggle = this.querySelector(".header__drawer-toggle");
     this.menuToggle = this.querySelector(".header__menu-toggle");
@@ -116,6 +119,24 @@ class SiteHeader extends HTMLElement {
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1100) this.closeMobileNavigation();
     });
+
+    let scrollFrame = null;
+    window.addEventListener("scroll", () => {
+      if (scrollFrame !== null) return;
+      scrollFrame = window.requestAnimationFrame(() => {
+        this.updateStickyHeader();
+        scrollFrame = null;
+      });
+    }, { passive: true });
+
+    this.updateStickyHeader();
+  }
+
+  updateStickyHeader() {
+    const isSticky = window.scrollY > 40;
+    this.header.classList.toggle("is-sticky", isSticky);
+    this.headerShell.classList.toggle("container", isSticky);
+    this.headerShell.classList.toggle("container-fluid", !isSticky);
   }
 
   setActiveNavigation() {
