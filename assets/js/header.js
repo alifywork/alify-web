@@ -1,9 +1,35 @@
 "use strict";
 
+const alifyServices = [
+  { title: "Web Development", slug: "web-development", icon: "fa-code", description: "Fast, scalable digital experiences." },
+  { title: "SEO", slug: "seo", icon: "fa-magnifying-glass", description: "Grow visibility and organic reach." },
+  { title: "Digital Marketing", slug: "digital-marketing", icon: "fa-bullhorn", description: "Campaigns that create momentum." },
+  { title: "AI Automation", slug: "ai-automation", icon: "fa-robot", description: "Smarter systems and workflows." },
+  { title: "UI UX Design", slug: "ui-ux-design", icon: "fa-pen-ruler", description: "Intuitive, human-centered products." },
+  { title: "Logo Design", slug: "logo-design", icon: "fa-pen-nib", description: "Distinctive marks for ambitious brands." }
+];
+
 class SiteHeader extends HTMLElement {
   connectedCallback() {
     if (this.dataset.initialized === "true") return;
     this.dataset.initialized = "true";
+
+    const serviceLinks = alifyServices.map((service) => `
+      <a class="mega-menu__link" href="service-single.html#${service.slug}">
+        <span class="mega-menu__icon" aria-hidden="true"><i class="fa-solid ${service.icon}"></i></span>
+        <span class="mega-menu__copy">
+          <strong>${service.title}</strong>
+          <small>${service.description}</small>
+        </span>
+      </a>
+    `).join("");
+
+    const mobileServiceLinks = alifyServices.map((service) => `
+      <a href="service-single.html#${service.slug}">
+        <i class="fa-solid ${service.icon}" aria-hidden="true"></i>
+        <span>${service.title}</span>
+      </a>
+    `).join("");
 
     this.innerHTML = `
       <header class="site-header">
@@ -19,7 +45,24 @@ class SiteHeader extends HTMLElement {
                 <nav class="header__nav" aria-label="Primary navigation">
                   <ul class="header__nav-list">
                     <li><a class="header__nav-link" href="index.html">Home</a></li>
-                    <li><a class="header__nav-link" href="services.html">Services</a></li>
+                    <li class="header__mega-item">
+                      <div class="header__mega-trigger">
+                        <a class="header__nav-link" href="services.html">Services</a>
+                        <button class="header__mega-toggle" type="button" aria-label="Open services menu" aria-expanded="false" aria-controls="services-mega-menu">
+                          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="mega-menu" id="services-mega-menu" aria-label="Services menu" aria-hidden="true" inert>
+                        <div class="mega-menu__header">
+                          <div>
+                            <span class="mega-menu__eyebrow">What we do</span>
+                            <h2>Capabilities built around your goals.</h2>
+                          </div>
+                          <a href="services.html">View all services <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="mega-menu__grid">${serviceLinks}</div>
+                      </div>
+                    </li>
                     <li><a class="header__nav-link" href="projects.html">Work</a></li>
                     <li><a class="header__nav-link" href="about.html">About</a></li>
                     <li><a class="header__nav-link" href="contact.html">Contact</a></li>
@@ -42,7 +85,15 @@ class SiteHeader extends HTMLElement {
               <nav class="header__mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" hidden>
                 <ul class="header__mobile-list">
                   <li><a class="header__nav-link" href="index.html">Home</a></li>
-                  <li><a class="header__nav-link" href="services.html">Services</a></li>
+                  <li class="header__mobile-mega">
+                    <div class="header__mobile-mega-trigger">
+                      <a class="header__nav-link" href="services.html">Services</a>
+                      <button class="header__mobile-mega-toggle" type="button" aria-label="Show services" aria-expanded="false" aria-controls="mobile-services-menu">
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div class="header__mobile-services" id="mobile-services-menu" hidden>${mobileServiceLinks}</div>
+                  </li>
                   <li><a class="header__nav-link" href="projects.html">Work</a></li>
                   <li><a class="header__nav-link" href="about.html">About</a></li>
                   <li><a class="header__nav-link" href="contact.html">Contact</a></li>
@@ -90,12 +141,19 @@ class SiteHeader extends HTMLElement {
     this.drawerToggle = this.querySelector(".header__drawer-toggle");
     this.menuToggle = this.querySelector(".header__menu-toggle");
     this.mobileNavigation = this.querySelector(".header__mobile-nav");
+    this.megaItem = this.querySelector(".header__mega-item");
+    this.megaToggle = this.querySelector(".header__mega-toggle");
+    this.megaMenu = this.querySelector(".mega-menu");
+    this.mobileMegaToggle = this.querySelector(".header__mobile-mega-toggle");
+    this.mobileServices = this.querySelector(".header__mobile-services");
     this.setActiveNavigation();
 
     this.drawerToggle.addEventListener("click", () => this.openDrawer());
     this.querySelector(".drawer__close").addEventListener("click", () => this.drawer.close());
     this.querySelector("[data-drawer-close]").addEventListener("click", () => this.drawer.close());
     this.menuToggle.addEventListener("click", () => this.toggleMobileNavigation());
+    this.megaToggle.addEventListener("click", () => this.toggleMegaMenu());
+    this.mobileMegaToggle.addEventListener("click", () => this.toggleMobileServices());
 
     this.drawer.addEventListener("click", (event) => {
       if (event.target === this.drawer) this.drawer.close();
@@ -110,14 +168,29 @@ class SiteHeader extends HTMLElement {
     });
 
     this.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !this.mobileNavigation.hidden) {
+      if (event.key !== "Escape") return;
+
+      if (this.megaItem.classList.contains("is-open")) {
+        this.closeMegaMenu();
+        this.megaToggle.focus();
+      }
+
+      if (!this.mobileNavigation.hidden) {
         this.closeMobileNavigation();
         this.menuToggle.focus();
       }
     });
 
+    document.addEventListener("click", (event) => {
+      if (!this.contains(event.target)) this.closeMegaMenu();
+    });
+
     window.addEventListener("resize", () => {
-      if (window.innerWidth >= 1100) this.closeMobileNavigation();
+      if (window.innerWidth >= 1100) {
+        this.closeMobileNavigation();
+      } else {
+        this.closeMegaMenu();
+      }
     });
 
     let scrollFrame = null;
@@ -133,7 +206,6 @@ class SiteHeader extends HTMLElement {
   }
 
   updateStickyHeader() {
-    // Hysteresis prevents rapid state changes around the scroll threshold.
     const isSticky = this.header.classList.contains("is-sticky")
       ? window.scrollY > 24
       : window.scrollY > 48;
@@ -160,8 +232,39 @@ class SiteHeader extends HTMLElement {
     });
   }
 
+  toggleMegaMenu() {
+    const willOpen = !this.megaItem.classList.contains("is-open");
+    this.megaItem.classList.toggle("is-open", willOpen);
+    this.megaToggle.setAttribute("aria-expanded", String(willOpen));
+    this.megaToggle.setAttribute("aria-label", willOpen ? "Close services menu" : "Open services menu");
+    this.megaMenu.setAttribute("aria-hidden", String(!willOpen));
+    this.megaMenu.inert = !willOpen;
+  }
+
+  closeMegaMenu() {
+    this.megaItem.classList.remove("is-open");
+    this.megaToggle.setAttribute("aria-expanded", "false");
+    this.megaToggle.setAttribute("aria-label", "Open services menu");
+    this.megaMenu.setAttribute("aria-hidden", "true");
+    this.megaMenu.inert = true;
+  }
+
+  toggleMobileServices() {
+    const willOpen = this.mobileServices.hidden;
+    this.mobileServices.hidden = !willOpen;
+    this.mobileMegaToggle.setAttribute("aria-expanded", String(willOpen));
+    this.mobileMegaToggle.setAttribute("aria-label", willOpen ? "Hide services" : "Show services");
+  }
+
+  closeMobileServices() {
+    this.mobileServices.hidden = true;
+    this.mobileMegaToggle.setAttribute("aria-expanded", "false");
+    this.mobileMegaToggle.setAttribute("aria-label", "Show services");
+  }
+
   openDrawer() {
     this.closeMobileNavigation();
+    this.closeMegaMenu();
     this.drawerToggle.setAttribute("aria-expanded", "true");
     this.drawer.showModal();
   }
@@ -172,6 +275,11 @@ class SiteHeader extends HTMLElement {
     this.menuToggle.setAttribute("aria-expanded", String(willOpen));
     this.menuToggle.setAttribute("aria-label", willOpen ? "Close navigation" : "Open navigation");
     this.menuToggle.querySelector("i").className = willOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars";
+    if (willOpen) {
+      this.closeMegaMenu();
+    } else {
+      this.closeMobileServices();
+    }
   }
 
   closeMobileNavigation() {
@@ -179,6 +287,7 @@ class SiteHeader extends HTMLElement {
     this.menuToggle.setAttribute("aria-expanded", "false");
     this.menuToggle.setAttribute("aria-label", "Open navigation");
     this.menuToggle.querySelector("i").className = "fa-solid fa-bars";
+    this.closeMobileServices();
   }
 }
 
