@@ -229,6 +229,21 @@ select {
   outline-offset: 4px;
 }
 
+/* Rotating section eyebrow marker */
+:is(.intro__eyebrow, .section-heading__eyebrow, .page-hero__eyebrow, .footer-cta__eyebrow)::before {
+  display: inline-block;
+  margin-right: 0.6rem;
+  content: "△";
+  transform-origin: 50% 54%;
+  animation: eyebrow-triangle-spin 6s linear infinite;
+}
+
+@keyframes eyebrow-triangle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 575.98px) {
   .home-hero .intro__title {
     font-size: clamp(2.75rem, 14vw, 4.5rem);
@@ -247,6 +262,10 @@ select {
 
   .button {
     transition: none;
+  }
+
+  :is(.intro__eyebrow, .section-heading__eyebrow, .page-hero__eyebrow, .footer-cta__eyebrow)::before {
+    animation: none;
   }
 }
 
