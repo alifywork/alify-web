@@ -1633,9 +1633,9 @@
 
 .page-section:has(.faq-content) .col-12 {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
   align-items: start;
-  gap: clamp(3rem, 8vw, 7rem);
+  gap: clamp(2.5rem, 5vw, 5rem);
 }
 
 .page-section:has(.faq-content) .page-heading {

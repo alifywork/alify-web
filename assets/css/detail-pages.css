@@ -59,16 +59,24 @@
   color: var(--color-amber);
 }
 
-.page-section:has(.faq-content) .page-heading {
+.page-section:has(.faq-content) :is(.page-heading, .detail-heading) {
   position: static;
   top: auto;
+  display: block;
+  margin-bottom: 0;
+}
+
+.page-section:has(.faq-content) .detail-heading .page-eyebrow {
+  margin-bottom: 1.25rem;
 }
 
 .page-section:has(.faq-content) .page-title {
-  font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+  max-width: 13ch;
+  font-size: clamp(2.2rem, 3.4vw, 3.5rem);
 }
 
 .page-section:has(.faq-content) .page-lead {
+  max-width: 28rem;
   margin-top: 1.25rem;
 }
 
