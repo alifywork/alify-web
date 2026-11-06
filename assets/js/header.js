@@ -31,6 +31,19 @@ class SiteHeader extends HTMLElement {
       </a>
     `).join("");
 
+    const resourceLinks = [
+      ["blog.html", "Blog", "Ideas and practical perspectives", "fa-newspaper"],
+      ["case-studies.html", "Case Studies", "Challenges, responses, and measures", "fa-diagram-project"],
+      ["industries.html", "Industries", "Digital thinking for different sectors", "fa-building"],
+      ["pricing.html", "Pricing", "Flexible engagement models", "fa-tags"],
+      ["testimonials.html", "Testimonials", "Partnership perspectives", "fa-comments"],
+      ["faqs.html", "FAQs", "Answers before we begin", "fa-circle-question"]
+    ];
+    const desktopResourceLinks = resourceLinks.map(([url, title, description, icon]) => `
+      <a class="mega-menu__link" href="${url}"><span class="mega-menu__icon" aria-hidden="true"><i class="fa-solid ${icon}"></i></span><span class="mega-menu__copy"><strong>${title}</strong><small>${description}</small></span></a>
+    `).join("");
+    const mobileResourceLinks = resourceLinks.map(([url, title, description, icon]) => `<a href="${url}"><i class="fa-solid ${icon}" aria-hidden="true"></i><span>${title}</span></a>`).join("");
+
     this.innerHTML = `
       <header class="site-header">
         <div class="header__shell container-fluid">
@@ -64,7 +77,17 @@ class SiteHeader extends HTMLElement {
                       </div>
                     </li>
                     <li><a class="header__nav-link" href="projects.html">Work</a></li>
-                    <li><a class="header__nav-link" href="about.html">About</a></li>
+                    <li class="header__mega-item header__resources-item">
+                      <div class="header__mega-trigger">
+                        <a class="header__nav-link" href="blog.html">Explore</a>
+                        <button class="header__mega-toggle header__resources-toggle" type="button" aria-label="Open resources menu" aria-expanded="false" aria-controls="resources-mega-menu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                      </div>
+                      <div class="mega-menu" id="resources-mega-menu" aria-label="Resources menu" aria-hidden="true" inert>
+                        <div class="mega-menu__header"><div><span class="mega-menu__eyebrow">Explore ALIFY</span><h2>More thinking, context, and answers.</h2></div></div>
+                        <div class="mega-menu__grid">${desktopResourceLinks}</div>
+                      </div>
+                    </li>
+              <li><a class="header__nav-link" href="about.html">About</a></li>
                     <li><a class="header__nav-link" href="contact.html">Contact</a></li>
                   </ul>
                 </nav>
@@ -108,6 +131,10 @@ class SiteHeader extends HTMLElement {
                 <div class="header__mobile-services" id="mobile-services-menu" hidden>${mobileServiceLinks}</div>
               </li>
               <li><a class="header__nav-link" href="projects.html">Work</a></li>
+              <li class="header__mobile-mega">
+                <div class="header__mobile-mega-trigger"><a class="header__nav-link" href="blog.html">Explore</a><button class="header__mobile-mega-toggle header__mobile-resources-toggle" type="button" aria-label="Show resources" aria-expanded="false" aria-controls="mobile-resources-menu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button></div>
+                <div class="header__mobile-services" id="mobile-resources-menu" hidden>${mobileResourceLinks}</div>
+              </li>
               <li><a class="header__nav-link" href="about.html">About</a></li>
               <li><a class="header__nav-link" href="contact.html">Contact</a></li>
             </ul>
@@ -158,6 +185,11 @@ class SiteHeader extends HTMLElement {
     this.megaMenu = this.querySelector(".mega-menu");
     this.mobileMegaToggle = this.querySelector(".header__mobile-mega-toggle");
     this.mobileServices = this.querySelector(".header__mobile-services");
+    this.resourcesItem = this.querySelector(".header__resources-item");
+    this.resourcesToggle = this.querySelector(".header__resources-toggle");
+    this.resourcesMenu = this.querySelector("#resources-mega-menu");
+    this.mobileResourcesToggle = this.querySelector(".header__mobile-resources-toggle");
+    this.mobileResources = this.querySelector("#mobile-resources-menu");
     this.setActiveNavigation();
 
     this.drawerToggle.addEventListener("click", () => this.openDrawer());
@@ -167,6 +199,8 @@ class SiteHeader extends HTMLElement {
     this.querySelector(".navigation-drawer__close").addEventListener("click", () => this.closeMobileNavigation());
     this.megaToggle.addEventListener("click", () => this.toggleMegaMenu());
     this.mobileMegaToggle.addEventListener("click", () => this.toggleMobileServices());
+    this.resourcesToggle.addEventListener("click", () => this.toggleResourcesMenu());
+    this.mobileResourcesToggle.addEventListener("click", () => this.toggleMobileResources());
 
     this.drawer.addEventListener("click", (event) => {
       if (event.target === this.drawer) this.drawer.close();
@@ -194,9 +228,10 @@ class SiteHeader extends HTMLElement {
     this.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
 
-      if (this.megaItem.classList.contains("is-open")) {
+      if (this.megaItem.classList.contains("is-open") || this.resourcesItem.classList.contains("is-open")) {
+        const resourcesWereOpen = this.resourcesItem.classList.contains("is-open");
         this.closeMegaMenu();
-        this.megaToggle.focus();
+        (resourcesWereOpen ? this.resourcesToggle : this.megaToggle).focus();
       }
     });
 
@@ -258,6 +293,7 @@ class SiteHeader extends HTMLElement {
   }
 
   toggleMegaMenu() {
+    this.closeResourcesMenu();
     const willOpen = !this.megaItem.classList.contains("is-open");
     this.megaItem.classList.toggle("is-open", willOpen);
     this.megaToggle.setAttribute("aria-expanded", String(willOpen));
@@ -272,9 +308,29 @@ class SiteHeader extends HTMLElement {
     this.megaToggle.setAttribute("aria-label", "Open services menu");
     this.megaMenu.setAttribute("aria-hidden", "true");
     this.megaMenu.inert = true;
+    this.closeResourcesMenu();
+  }
+
+  toggleResourcesMenu() {
+    const willOpen = !this.resourcesItem.classList.contains("is-open");
+    this.closeMegaMenu();
+    this.resourcesItem.classList.toggle("is-open", willOpen);
+    this.resourcesToggle.setAttribute("aria-expanded", String(willOpen));
+    this.resourcesToggle.setAttribute("aria-label", willOpen ? "Close resources menu" : "Open resources menu");
+    this.resourcesMenu.setAttribute("aria-hidden", String(!willOpen));
+    this.resourcesMenu.inert = !willOpen;
+  }
+
+  closeResourcesMenu() {
+    this.resourcesItem.classList.remove("is-open");
+    this.resourcesToggle.setAttribute("aria-expanded", "false");
+    this.resourcesToggle.setAttribute("aria-label", "Open resources menu");
+    this.resourcesMenu.setAttribute("aria-hidden", "true");
+    this.resourcesMenu.inert = true;
   }
 
   toggleMobileServices() {
+    this.closeMobileResources();
     const willOpen = this.mobileServices.hidden;
     this.mobileServices.hidden = !willOpen;
     this.mobileMegaToggle.setAttribute("aria-expanded", String(willOpen));
@@ -285,6 +341,22 @@ class SiteHeader extends HTMLElement {
     this.mobileServices.hidden = true;
     this.mobileMegaToggle.setAttribute("aria-expanded", "false");
     this.mobileMegaToggle.setAttribute("aria-label", "Show services");
+    this.closeMobileResources();
+  }
+
+  toggleMobileResources() {
+    const willOpen = this.mobileResources.hidden;
+    this.mobileServices.hidden = true;
+    this.mobileMegaToggle.setAttribute("aria-expanded", "false");
+    this.mobileResources.hidden = !willOpen;
+    this.mobileResourcesToggle.setAttribute("aria-expanded", String(willOpen));
+    this.mobileResourcesToggle.setAttribute("aria-label", willOpen ? "Hide resources" : "Show resources");
+  }
+
+  closeMobileResources() {
+    this.mobileResources.hidden = true;
+    this.mobileResourcesToggle.setAttribute("aria-expanded", "false");
+    this.mobileResourcesToggle.setAttribute("aria-label", "Show resources");
   }
 
   openDrawer() {

@@ -493,3 +493,192 @@
 .article-point__number {
   color: var(--color-primary);
 }
+
+/* Journal search, visual frameworks, and previous/next navigation */
+.article-search {
+  position: relative;
+  display: block;
+  flex: 0 0 100%;
+  margin-bottom: 0.35rem;
+}
+
+.article-search i {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  color: var(--color-primary);
+  transform: translateY(-50%);
+}
+
+.article-search input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+  border-radius: 0.85rem;
+  color: var(--color-charcoal);
+  background: var(--color-white);
+  outline: none;
+}
+
+.article-search input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.article-empty {
+  margin: 2rem 0 0;
+  padding: 2rem;
+  border: 1px dashed color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-radius: 1rem;
+  color: color-mix(in srgb, var(--color-charcoal) 72%, transparent);
+  text-align: center;
+}
+
+.article-diagram {
+  margin: 0 0 3rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 1rem;
+  color: var(--color-white);
+  background: var(--color-charcoal);
+}
+
+.article-diagram figcaption > span {
+  display: block;
+  color: var(--color-amber-light);
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.article-diagram figcaption > strong {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.article-diagram ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 2rem 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: article-diagram;
+}
+
+.article-diagram li {
+  padding: 1rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-white) 15%, transparent);
+  color: color-mix(in srgb, var(--color-white) 84%, transparent);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  counter-increment: article-diagram;
+}
+
+.article-diagram li::before {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--color-amber-light);
+  font-size: 0.65rem;
+  font-weight: var(--font-weight-bold);
+  content: "0" counter(article-diagram);
+}
+
+.article-diagram > p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-white) 68%, transparent);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.article-pagination {
+  padding-block: 0;
+  background: var(--color-secondary);
+}
+
+.article-pagination nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+}
+
+.article-pagination a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 2rem 2rem 2rem 0;
+  color: var(--color-charcoal);
+  text-decoration: none;
+}
+
+.article-pagination a:last-child {
+  align-items: flex-end;
+  padding-right: 0;
+  padding-left: 2rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  text-align: right;
+}
+
+.article-pagination a > span {
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article-pagination strong {
+  max-width: 24ch;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+}
+
+@media (max-width: 767.98px) {
+  .article-diagram ol,
+  .article-pagination nav {
+    grid-template-columns: 1fr;
+  }
+
+  .article-pagination a,
+  .article-pagination a:last-child {
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-left: 0;
+    text-align: left;
+  }
+
+  .article-pagination a:last-child {
+    border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  }
+}
+
+/* Editorial variation between individual articles */
+.page-article-planning .article-toc,
+.page-article-seo .article-toc,
+.page-article-identity .article-toc {
+  order: 2;
+}
+
+.page-article-automation .article-diagram,
+.page-article-campaign .article-diagram {
+  background: var(--color-primary);
+}
+
+.page-article-planning .article-diagram ol,
+.page-article-identity .article-diagram ol {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 991.98px) {
+  .page-article-planning .article-toc,
+  .page-article-seo .article-toc,
+  .page-article-identity .article-toc {
+    order: 0;
+  }
+}

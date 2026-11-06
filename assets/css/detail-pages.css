@@ -2217,3 +2217,471 @@
     border-left: 0;
   }
 }
+
+/* Practical service and sector artefacts, buying guidance, and related work */
+.practice-section {
+  background: var(--color-secondary);
+}
+
+.practice-layout {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.practice-artifact {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border-radius: 1.25rem;
+  color: var(--color-white);
+  background: var(--color-charcoal);
+}
+
+.practice-artifact .page-eyebrow,
+.practice-artifact .detail-link {
+  color: var(--color-amber-light);
+}
+
+.practice-artifact .page-eyebrow {
+  border-color: color-mix(in srgb, var(--color-white) 14%, transparent);
+  background: color-mix(in srgb, var(--color-white) 6%, transparent);
+}
+
+.practice-artifact h3 {
+  margin: 1.25rem 0 2rem;
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+  letter-spacing: -0.05em;
+  line-height: 1.08;
+}
+
+.practice-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: practice-step;
+}
+
+.practice-flow li {
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-white) 14%, transparent);
+  color: color-mix(in srgb, var(--color-white) 82%, transparent);
+  font-size: 0.85rem;
+  counter-increment: practice-step;
+}
+
+.practice-flow li::before {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--color-amber-light);
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-bold);
+  content: "0" counter(practice-step);
+}
+
+.practice-copy {
+  align-self: center;
+}
+
+.practice-copy > h2 {
+  margin: 1.25rem 0 1.5rem;
+  color: var(--color-charcoal);
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.035em;
+  line-height: 1.35;
+}
+
+.practice-checklist {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+  list-style: none;
+}
+
+.practice-checklist li {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.65rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: color-mix(in srgb, var(--color-charcoal) 76%, transparent);
+  font-size: 0.92rem;
+}
+
+.practice-checklist i {
+  margin-top: 0.3rem;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+}
+
+.practice-facts {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.practice-facts > div {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 1rem;
+}
+
+.practice-facts dt {
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.practice-facts dd {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-charcoal) 68%, transparent);
+  font-size: 0.82rem;
+}
+
+.related-work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.related-work-grid > a {
+  color: var(--color-charcoal);
+  text-decoration: none;
+}
+
+.related-work-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1000 / 560;
+  object-fit: contain;
+  border-radius: 1rem;
+  background: var(--color-charcoal);
+}
+
+.related-work-grid > a > span {
+  display: block;
+  margin-top: 1rem;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.related-work-grid h3 {
+  margin: 0.65rem 0 0;
+  font-size: clamp(1.4rem, 2.3vw, 2.15rem);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.decision-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.7fr) auto;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+}
+
+.decision-guide h2 {
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+  letter-spacing: -0.04em;
+}
+
+.decision-guide > p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-charcoal) 70%, transparent);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 991.98px) {
+  .practice-layout,
+  .decision-guide {
+    grid-template-columns: 1fr;
+  }
+
+  .related-work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .related-work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Project artefacts, delivery sequence, and automation controls */
+.project-artifacts {
+  background: var(--color-secondary);
+}
+
+.project-artifact-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.project-artifact-gallery figure {
+  margin: 0;
+}
+
+.project-artifact-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1000 / 560;
+  object-fit: contain;
+  border-radius: 1rem;
+  background: var(--color-charcoal);
+}
+
+.project-artifact-gallery figcaption {
+  margin-top: 0.75rem;
+  color: color-mix(in srgb, var(--color-charcoal) 68%, transparent);
+  font-size: 0.78rem;
+}
+
+.project-artifacts--reverse .project-artifact-gallery figure:first-child {
+  order: 2;
+}
+
+.project-delivery {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  margin-top: 3.5rem;
+}
+
+.project-deliverables {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  list-style: none;
+}
+
+.project-deliverables li {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  gap: 0.75rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: color-mix(in srgb, var(--color-charcoal) 78%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.project-deliverables li span {
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.project-timeline ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  list-style: none;
+}
+
+.project-timeline li {
+  padding: 1.25rem 1rem 0;
+  border-left: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.project-timeline li:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.project-timeline li > span {
+  color: var(--color-primary);
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-timeline strong {
+  display: block;
+  margin: 0.85rem 0 0.5rem;
+  font-size: 1rem;
+}
+
+.project-timeline p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-charcoal) 66%, transparent);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.workflow-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.workflow-compare article {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  border-radius: 1rem;
+  background: var(--color-white);
+}
+
+.workflow-compare article:last-child {
+  color: var(--color-white);
+  background: var(--color-primary);
+}
+
+.workflow-compare article > span,
+.control-matrix span {
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.workflow-compare article:last-child > span {
+  color: var(--color-amber-light);
+}
+
+.workflow-compare h3 {
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+  letter-spacing: -0.04em;
+}
+
+.workflow-compare ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: workflow;
+}
+
+.workflow-compare li {
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  font-size: 0.78rem;
+  counter-increment: workflow;
+}
+
+.workflow-compare article:last-child li {
+  border-color: color-mix(in srgb, var(--color-white) 16%, transparent);
+}
+
+.workflow-compare li::before {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.65rem;
+  content: "0" counter(workflow);
+}
+
+.workflow-compare article:last-child li::before {
+  color: var(--color-amber-light);
+}
+
+.control-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.control-matrix > div {
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+}
+
+.control-matrix p {
+  margin: 0.65rem 0 0;
+  color: color-mix(in srgb, var(--color-charcoal) 70%, transparent);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 991.98px) {
+  .project-delivery,
+  .project-timeline ol {
+    grid-template-columns: 1fr;
+  }
+
+  .project-timeline li,
+  .project-timeline li:first-child {
+    padding: 1rem 0;
+    border-left: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .project-artifact-gallery,
+  .workflow-compare,
+  .control-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .project-artifacts--reverse .project-artifact-gallery figure:first-child {
+    order: 0;
+  }
+
+  .workflow-compare ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Controlled visual variation within repeated page families */
+.page-seo .practice-artifact,
+.page-logo-design .practice-artifact,
+.page-industry-ecommerce .practice-artifact,
+.page-industry-healthcare .practice-artifact {
+  order: 2;
+}
+
+.page-seo .practice-section,
+.page-logo-design .practice-section,
+.page-industry-ecommerce .practice-section,
+.page-industry-healthcare .practice-section {
+  background: var(--color-white);
+}
+
+.page-industry-ecommerce .industry-intro__copy,
+.page-industry-healthcare .industry-intro__copy,
+.page-industry-startups .industry-intro__copy {
+  order: -1;
+}
+
+.page-project-commerce .case-experience__copy,
+.page-project-property .case-experience__copy,
+.page-project-automation .case-experience__copy {
+  order: -1;
+}
+
+@media (max-width: 767.98px) {
+  .page-seo .practice-artifact,
+  .page-logo-design .practice-artifact,
+  .page-industry-ecommerce .practice-artifact,
+  .page-industry-healthcare .practice-artifact,
+  .page-industry-ecommerce .industry-intro__copy,
+  .page-industry-healthcare .industry-intro__copy,
+  .page-industry-startups .industry-intro__copy,
+  .page-project-commerce .case-experience__copy,
+  .page-project-property .case-experience__copy,
+  .page-project-automation .case-experience__copy {
+    order: 0;
+  }
+}

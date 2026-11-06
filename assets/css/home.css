@@ -1993,3 +1993,7 @@
     transition: none;
   }
 }
+
+.insights-archive-link {
+  margin-top: 2rem;
+}
