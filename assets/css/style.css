@@ -133,7 +133,7 @@ select {
 .home-hero__media {
   position: absolute;
   z-index: -2;
-  inset: 0;
+  inset: -10% 0;
 }
 
 .home-hero__media img {
