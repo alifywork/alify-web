@@ -49,4 +49,4 @@ These are not UI defects and cannot be completed honestly without external input
 - **Form delivery:** Contact and Start Project currently prepare populated `mailto:` messages. Production lead capture requires a verified server/CRM endpoint, spam protection, monitoring, and deployment configuration.
 - **Client proof:** Projects remain labelled concepts and testimonials remain labelled demo content. Verified client quotes, attribution, and real outcomes must be supplied and approved before replacing those labels.
 
-The static site now has no known remaining design, responsive-layout, accessibility, or internal-linking gaps from the QA report.
+The static site has no known remaining responsive-layout or tested accessibility defects from the automated QA report. A subsequent deeper content and navigation inventory in `UI-GAPS.md` identifies homepage card-mapping corrections and optional page-completeness enhancements beyond that technical pass.
