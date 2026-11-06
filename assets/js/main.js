@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".site-header")) {
       introTimeline.from(".site-header", {
         y: -24,
-        autoAlpha: 0,
         duration: 0.65,
         clearProps: "transform"
       });

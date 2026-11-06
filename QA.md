@@ -1,54 +1,52 @@
 # ALIFY UI QA — Home and Inner Pages
 
-Date: 2026-11-06  
-Scope: all 35 HTML pages, including the homepage, service and industry profiles, project and case-study pages, blog articles, forms, and legal pages.
+Date: 2026-11-06
+Status: design, UI, accessibility, and internal information-architecture gaps closed.
+Scope: all 39 HTML pages, including the homepage, service and industry profiles, dedicated project and case-study stories, blog articles, forms, and legal pages.
 
-## Verification completed
+## Final verification
 
-- 175 responsive page loads at 1440, 1024, 768, 390, and 320 pixels.
-- Full-page desktop screenshots and contact-sheet visual review for every page.
-- Automated WCAG A/AA checks with axe-core at desktop width.
+- 195 responsive page loads at 1440, 1024, 768, 390, and 320 pixels.
+- Full-page desktop screenshots and visual review across the site.
+- Automated WCAG A/AA checks with axe-core across all 39 pages; final findings rechecked to zero.
 - 64 interaction assertions covering navigation, tabs, sliders, filters, FAQs, and forms.
 - Static local asset, internal page, anchor, duplicate-ID, heading, and inline-style audits.
+- Exact project/case card-to-destination mapping checks.
+- Legacy `service-single.html` redirect verified to `web-development.html`.
 
-## Passing after fixes
+## Passing
 
 - No horizontal page overflow at any tested width.
 - No failed HTTP assets, browser JavaScript errors, duplicate IDs, missing page H1s, unnamed images, empty buttons, or empty links.
-- All pages retain the global header and footer.
-- Desktop services mega-menu, About drawer, sticky header, and mobile navigation work with keyboard Escape handling.
-- All six homepage service tabs activate correctly; all six mobile service links remain available.
-- Testimonial next and pause controls work.
-- All 18 FAQ implementations pass topic filtering and empty-search-state checks.
-- Project, case-study, and blog category filters return results correctly.
+- Global header, footer, desktop mega-menu, About drawer, sticky header, and mobile navigation work correctly.
+- All six homepage service tabs and mobile service links work.
+- Testimonial controls, all 18 FAQ implementations, and project/case/blog filters work.
 - Contact and Start Project required fields validate correctly.
-- Footer CTA content remains visible during fast scrolling and full-page rendering.
-- Final axe rechecks report no tested WCAG A/AA violations after the contrast corrections.
+- Footer CTA and header content remain visible during fast scrolling and full-page rendering.
+- Project, case-study, industry, service, and blog archive cards have genuine matching destinations.
+- No tested WCAG A/AA violations remain.
 
-## Fixed during this QA pass
+## Gaps closed in the final pass
 
-1. Removed footer CTA opacity animation that could leave important content hidden during fast scroll or full-page capture.
-2. Corrected low-contrast eyebrows, metadata, process numbers, outcome copy, form help, project labels, pricing labels, testimonial captions, and blog metadata.
-3. Added a light amber palette variable for small text on blue backgrounds.
-4. Increased form-helper text size and line height.
+1. Rebuilt `case-studies.html` as an editorial case archive with a featured automation story, challenge/response summaries, filters, and measurement principles.
+2. Rebuilt `case-study-single.html` with dedicated automation artwork, operational context, human-reviewed strategy, experience direction, and proposed validation measures.
+3. Added dedicated project stories:
+   - `commerce-project.html`
+   - `identity-project.html`
+   - `property-project.html`
+   - `wellness-project.html`
+4. Updated every Projects and Case Studies card to its matching dedicated story.
+5. Rebuilt `pricing.html` with custom engagement columns, a readable comparison table, and an editorial always-included section while preserving custom quotes.
+6. Rebuilt `testimonials.html` with a featured editorial quote, open quote rails, partnership principles, and team context while preserving demo-content labelling.
+7. Converted legacy `service-single.html` into a canonical redirect to `web-development.html`.
+8. Removed header/footer opacity animation states that could temporarily hide important content.
+9. Corrected all identified text-contrast issues and increased form-helper readability.
 
-## Remaining gaps and recommendations
+## External production dependencies
 
-These items are intentionally not marked as fixed.
+These are not UI defects and cannot be completed honestly without external inputs:
 
-| Priority | Area | Gap | Recommended action |
-| --- | --- | --- | --- |
-| High | `case-studies.html` | Still uses the older card composition and repeated abstract project imagery, unlike the newer Projects and Blog editorials. | Rebuild as an editorial case-study archive with distinct product visuals and a featured case narrative. |
-| High | `case-study-single.html` | Still follows the older generic detail layout and lacks the stronger project-specific art direction of `project-single.html`. | Rebuild around the automation story with relevant workflow imagery, challenge/response narrative, and proposed validation measures. |
-| High | Project/case detail mapping | Multiple concept cards reuse one detail template, so the selected card title does not always match the destination story. | Create dedicated detail content per concept or clearly present the existing destinations as representative template demos. |
-| Medium | `pricing.html` | Functional and responsive, but visually closer to the earlier card-based system than the newest editorial pages. | Modernise package comparison and continuity sections without changing the custom-quote model. |
-| Medium | `testimonials.html` | Functional and readable, but the archive composition is less distinctive than the homepage center-active slider and newer inner pages. | Refine the editorial testimonial layout while preserving demo-content labelling. |
-| Medium | `service-single.html` | Legacy Web Development page duplicates `web-development.html`. | Retain as a compatibility alias or replace with a permanent redirect when routing support is available. |
-| Production dependency | Contact and Start Project | Forms prepare populated `mailto:` messages; they do not submit to a server or CRM. | Connect a verified form endpoint, spam protection, success/error states, and submission monitoring before production lead capture. |
-| Content dependency | Projects and testimonials | Projects are concepts and testimonials are explicitly demo content. | Replace with approved client evidence and verified outcomes before using them as marketing proof. |
+- **Form delivery:** Contact and Start Project currently prepare populated `mailto:` messages. Production lead capture requires a verified server/CRM endpoint, spam protection, monitoring, and deployment configuration.
+- **Client proof:** Projects remain labelled concepts and testimonials remain labelled demo content. Verified client quotes, attribution, and real outcomes must be supplied and approved before replacing those labels.
 
-## Notes
-
-- The supplied abstract hero family remains in use as required; it is not treated as a failed asset or accidental duplication.
-- Legal pages intentionally use simpler long-form compositions.
-- Blog articles and industry profiles have genuine individual destinations rather than dead-end archive cards.
+The static site now has no known remaining design, responsive-layout, accessibility, or internal-linking gaps from the QA report.
