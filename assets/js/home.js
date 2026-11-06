@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const animatePanel = (panel) => {
     if (reduceMotion || !window.gsap) return;
-    const content = panel.querySelectorAll(".service-panel__content, .service-panel__visual, .industry-panel__content, .industry-panel__visual");
+    const content = panel.querySelectorAll(".service-panel__content, .service-panel__visual");
     window.gsap.fromTo(content, {
       autoAlpha: 0,
       y: 18
@@ -60,15 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initializeTabs("[data-service-tabs]", "[data-service-panel]");
-  initializeTabs("[data-industry-tabs]", "[data-industry-panel]");
 
   const testimonialRegion = document.querySelector("[data-testimonials]");
   if (testimonialRegion) {
     const slides = [...testimonialRegion.querySelectorAll("[data-testimonial-slide]")];
-    const dots = [...testimonialRegion.querySelectorAll("[data-testimonial-dot]")];
     const toggle = testimonialRegion.querySelector("[data-testimonial-toggle]");
     const toggleIcon = toggle.querySelector("i");
-    let activeIndex = 0;
+    let activeIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
     let rotationTimer = null;
     let isPaused = reduceMotion;
     let isInView = false;
@@ -92,12 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const showSlide = (index) => {
       activeIndex = (index + slides.length) % slides.length;
       slides.forEach((slide, slideIndex) => {
-        slide.hidden = slideIndex !== activeIndex;
-      });
-      dots.forEach((dot, dotIndex) => {
-        const isActive = dotIndex === activeIndex;
-        dot.classList.toggle("is-active", isActive);
-        dot.setAttribute("aria-current", String(isActive));
+        const offset = (slideIndex - activeIndex + slides.length) % slides.length;
+        slide.classList.remove("is-prev", "is-active", "is-next");
+        slide.classList.add(offset === 0 ? "is-active" : offset === 1 ? "is-next" : "is-prev");
+        slide.setAttribute("aria-hidden", String(offset !== 0));
+        slide.inert = offset !== 0;
       });
 
       if (!reduceMotion && window.gsap) {
@@ -122,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     testimonialRegion.querySelector("[data-testimonial-prev]").addEventListener("click", () => selectSlide(activeIndex - 1));
     testimonialRegion.querySelector("[data-testimonial-next]").addEventListener("click", () => selectSlide(activeIndex + 1));
-    dots.forEach((dot, index) => dot.addEventListener("click", () => selectSlide(index)));
 
     toggle.addEventListener("click", () => {
       isPaused = !isPaused;
@@ -156,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       startRotation();
     }
 
+    showSlide(activeIndex);
     if (reduceMotion) toggle.hidden = true;
     updateToggle();
   }
@@ -331,30 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: true
     }
   });
-
-  const heroBadges = window.gsap.utils.toArray("[data-hero-badge]");
-  if (heroBadges.length) {
-    window.gsap.from(heroBadges, {
-      autoAlpha: 0,
-      y: 20,
-      scale: 0.9,
-      duration: 0.6,
-      stagger: 0.12,
-      delay: 0.7,
-      ease: "back.out(1.6)",
-      onComplete: () => {
-        heroBadges.forEach((badge, index) => {
-          window.gsap.to(badge, {
-            y: index % 2 ? 10 : -10,
-            duration: 2.4 + index * 0.35,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-          });
-        });
-      }
-    });
-  }
 
   window.gsap.from("[data-process-progress]", {
     scaleX: 0,
