@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }, "-=0.3");
     }
 
-    if (hasScrollTrigger && document.querySelector(".footer__contact")) {
-      gsap.from(".footer__contact > *", {
+    if (hasScrollTrigger && document.querySelector(".footer-cta__inner")) {
+      gsap.from(".footer-cta__inner > *", {
         scrollTrigger: {
           trigger: ".site-footer",
           start: "top 85%",
