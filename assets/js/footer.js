@@ -45,6 +45,7 @@ class SiteFooter extends HTMLElement {
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Work</a></li>
                     <li><a href="case-studies.html">Case Studies</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="industries.html">Industries</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                   </ul>
