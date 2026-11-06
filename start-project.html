@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/icon/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/page-hero.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/utility.css">
@@ -21,6 +22,7 @@
     <script src="assets/js/header.js" defer></script>
     <script src="assets/js/footer.js" defer></script>
     <script src="assets/js/page-hero.js" defer></script>
+    <script src="assets/js/pages.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
@@ -28,6 +30,25 @@
 
     <page-hero eyebrow="Start a project" title="Have an idea? Let’s build something exceptional."
       description="Share your goals, challenges, and ambitions with us. Together, we can turn your next idea into a memorable digital experience." background="neon-lines-04.webp"></page-hero>
+
+    <main class="inner-page" id="main-content">
+<section class="page-section" aria-label="Project inquiry">
+  <div class="container"><div class="row"><div class="col-12">
+    <div class="page-heading" data-page-reveal><p class="page-eyebrow">Project inquiry</p><h2 class="page-title">Give us the useful details.</h2><p class="page-lead">The more context you share, the more useful our first response can be. Indicative ranges are enough at this stage.</p></div>
+    <div data-page-reveal><form class="form-grid" data-inquiry-form><div class="form-field"><label for="project-name">Your name</label><input id="project-name" name="name" type="text" autocomplete="name" required></div><div class="form-field"><label for="project-email">Work email</label><input id="project-email" name="email" type="email" autocomplete="email" required></div><div class="form-field"><label for="project-company">Company or project</label><input id="project-company" name="company" type="text" autocomplete="organization" required></div><div class="form-field"><label for="project-website">Current website or brief link</label><input id="project-website" name="websiteOrBrief" type="url" placeholder="https://"></div><fieldset class="choice-group form-field--full"><legend>Which services are relevant?</legend><label><input type="checkbox" name="web" value="Web Development"><span>Web Development</span></label><label><input type="checkbox" name="seo" value="SEO"><span>SEO</span></label><label><input type="checkbox" name="marketing" value="Digital Marketing"><span>Digital Marketing</span></label><label><input type="checkbox" name="automation" value="AI Automation"><span>AI Automation</span></label><label><input type="checkbox" name="uiux" value="UI UX Design"><span>UI UX Design</span></label><label><input type="checkbox" name="logo" value="Logo Design"><span>Logo Design</span></label></fieldset><div class="form-field"><label for="project-budget">Indicative budget</label><select id="project-budget" name="budget" required><option value="">Select a range</option><option>Under $3,000</option><option>$3,000–$7,500</option><option>$7,500–$15,000</option><option>$15,000+</option><option>Not defined yet</option></select></div><div class="form-field"><label for="project-timeline">Ideal timing</label><select id="project-timeline" name="timeline" required><option value="">Select a timeline</option><option>As soon as practical</option><option>Within 1–3 months</option><option>Within 3–6 months</option><option>Exploring for later</option></select></div><div class="form-field form-field--full"><label for="project-goal">What should this project achieve?</label><textarea id="project-goal" name="goals" required></textarea></div><div class="form-field form-field--full"><label for="project-context">Anything else we should know?</label><textarea id="project-context" name="additionalContext"></textarea></div><div class="form-actions"><button class="button button--primary" type="submit">Prepare project email <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></button><p>This opens your email app with the inquiry pre-filled. Attach any private brief files there.</p></div></form></div>
+  </div></div></div>
+</section><section class="page-section page-section--soft" aria-label="After you submit">
+  <div class="container"><div class="row"><div class="col-12">
+    <div class="page-heading" data-page-reveal><p class="page-eyebrow">After you submit</p><h2 class="page-title">What the first steps look like.</h2></div>
+    <div data-page-reveal><ol class="process-list"><li><div><h3>Context review</h3><p>We read the brief and review any existing links or materials you share.</p></div></li><li><div><h3>Focused conversation</h3><p>We clarify the challenge, priorities, scope, constraints, and decision-makers.</p></div></li><li><div><h3>Recommendation</h3><p>You receive a proposed route with deliverables, responsibilities, timing, and investment.</p></div></li><li><div><h3>Kickoff</h3><p>Once aligned, we confirm the plan, communication rhythm, and first working session.</p></div></li></ol></div>
+  </div></div></div>
+</section><section class="page-section" aria-label="Not ready for a full brief?">
+  <div class="container"><div class="row"><div class="col-12">
+    <div class="page-heading" data-page-reveal><p class="page-eyebrow">Not ready for a full brief?</p><h2 class="page-title">Start with a smaller conversation.</h2></div>
+    <div data-page-reveal><div class="page-split"><div><p class="page-lead">If the scope is still unclear, send a short note instead. We can help frame the challenge before defining a project.</p></div><div><a class="button button--primary" href="contact.html">Go to general contact <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a><a class="page-text-link" href="mailto:hello@alify.com">Or email hello@alify.com <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a></div></div></div>
+  </div></div></div>
+</section>
+    </main>
 
     <site-footer></site-footer>
   </body>

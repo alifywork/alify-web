@@ -230,10 +230,16 @@ select {
 }
 
 /* Rotating section eyebrow marker */
-:is(.intro__eyebrow, .section-heading__eyebrow, .page-hero__eyebrow, .footer-cta__eyebrow)::before {
+:is(.intro__eyebrow, .section-heading__eyebrow, .page-hero__eyebrow, .page-eyebrow, .footer-cta__eyebrow)::before {
   display: inline-block;
+  width: 0.72rem;
+  height: 0.68rem;
   margin-right: 0.6rem;
-  content: "△";
+  background: currentColor;
+  content: "";
+  vertical-align: -0.04rem;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 13'%3E%3Cpath d='M7 1 13 12H1Z' fill='none' stroke='black' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 13'%3E%3Cpath d='M7 1 13 12H1Z' fill='none' stroke='black' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
   transform-origin: 50% 54%;
   animation: eyebrow-triangle-spin 6s linear infinite;
 }
@@ -264,7 +270,7 @@ select {
     transition: none;
   }
 
-  :is(.intro__eyebrow, .section-heading__eyebrow, .page-hero__eyebrow, .footer-cta__eyebrow)::before {
+  :is(.intro__eyebrow, .section-heading__eyebrow, .page-hero__eyebrow, .page-eyebrow, .footer-cta__eyebrow)::before {
     animation: none;
   }
 }
