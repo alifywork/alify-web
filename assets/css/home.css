@@ -16,12 +16,12 @@
   background: var(--color-charcoal);
 }
 
-.home-section--work {
-  background: linear-gradient(90deg, color-mix(in srgb, var(--color-charcoal) 88%, transparent), color-mix(in srgb, var(--color-charcoal) 72%, transparent)), url("../images/wave/wave-08.webp") center / cover no-repeat;
+.home-section--services {
+  background: url("../images/wave/wave-02.png") left -16rem bottom -14rem / 56rem auto no-repeat, var(--color-secondary);
 }
 
-.home-section--testimonials {
-  background: linear-gradient(color-mix(in srgb, var(--color-charcoal) 82%, transparent), color-mix(in srgb, var(--color-charcoal) 88%, transparent)), url("../images/wave/wave-03.webp") center / cover no-repeat;
+.home-section--faq {
+  background: url("../images/wave/wave-05.png") left -16rem bottom -12rem / 52rem auto no-repeat, var(--color-white);
 }
 
 .section-heading {
@@ -818,34 +818,6 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.home-section--testimonials .testimonial-slide__quote,
-.home-section--testimonials .testimonial-slide__author strong {
-  color: var(--color-white);
-}
-
-.home-section--testimonials .testimonial-slide__author {
-  color: color-mix(in srgb, var(--color-white) 62%, transparent);
-}
-
-.home-section--testimonials .testimonials__arrow {
-  border-color: color-mix(in srgb, var(--color-white) 26%, transparent);
-  color: var(--color-white);
-}
-
-.home-section--testimonials .testimonials__arrow:hover,
-.home-section--testimonials .testimonials__arrow:focus-visible {
-  color: var(--color-primary);
-  background: var(--color-white);
-}
-
-.home-section--testimonials .testimonials__dot {
-  background: color-mix(in srgb, var(--color-white) 25%, transparent);
-}
-
-.home-section--testimonials .testimonials__dot.is-active {
-  background: var(--color-white);
-}
-
 .testimonials__controls {
   display: flex;
   align-items: center;
@@ -970,7 +942,7 @@
   padding: clamp(2rem, 6vw, 5rem);
   border-radius: 1.5rem;
   color: var(--color-white);
-  background: linear-gradient(110deg, color-mix(in srgb, var(--color-primary) 94%, transparent), color-mix(in srgb, var(--color-primary) 64%, transparent)), url("../images/wave/wave-10.webp") center / cover no-repeat;
+  background: var(--color-primary);
   isolation: isolate;
 }
 
