@@ -1,33 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" fill="none">
   <defs>
-    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#07121f"/><stop offset="1" stop-color="#102e49"/></linearGradient>
-    <linearGradient id="screen" x2="0" y2="1"><stop stop-color="#132b42"/><stop offset="1" stop-color="#0a1828"/></linearGradient>
-    <linearGradient id="blue" x2="1" y2="1"><stop stop-color="#58b7ff"/><stop offset="1" stop-color="#0f5fa8"/></linearGradient>
-    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#5ab5ff" stroke-opacity=".07"/></pattern>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#12151C"/><stop offset="1" stop-color="#1B202B"/></linearGradient>
+    <linearGradient id="screen" x2="0" y2="1"><stop stop-color="#202631"/><stop offset="1" stop-color="#12151C"/></linearGradient>
+    <linearGradient id="blue" x2="1" y2="1"><stop stop-color="#E05A3A"/><stop offset="1" stop-color="#0F3473"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#0F3473" stroke-opacity=".07"/></pattern>
     <filter id="glow"><feGaussianBlur stdDeviation="12"/></filter>
   </defs>
   <style>
-    .code{transform-origin:left;animation:type 5s ease-in-out infinite}.c2{animation-delay:.5s}.c3{animation-delay:1s}.cursor{animation:blink 1s steps(1) infinite}.browser{animation:float 6s ease-in-out infinite}.preview{animation:fade 4s ease-in-out infinite}.orbit{transform-origin:850px 105px;animation:spin 14s linear infinite}@keyframes type{0%,10%{transform:scaleX(0);opacity:0}35%,85%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}@keyframes blink{50%{opacity:0}}@keyframes float{50%{transform:translateY(-8px)}}@keyframes fade{50%{opacity:.55}}@keyframes spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+    .code{transform-origin:left;animation:type 5s ease-in-out infinite}.c2{animation-delay:.5s}.c3{animation-delay:1s}.cursor{animation:blink 1s steps(1) infinite}.browser{animation:float 6s ease-in-out infinite}.preview{animation:fade 4s ease-in-out infinite}@keyframes type{0%,10%{transform:scaleX(0);opacity:0}35%,85%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}@keyframes blink{50%{opacity:0}}@keyframes float{50%{transform:translateY(-8px)}}@keyframes fade{50%{opacity:.55}}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
   </style>
   <rect width="1000" height="560" rx="28" fill="url(#bg)"/><rect width="1000" height="560" rx="28" fill="url(#grid)"/>
-  <circle cx="790" cy="100" r="100" fill="#0f5fa8" opacity=".2" filter="url(#glow)"/><circle cx="130" cy="470" r="90" fill="#d4932a" opacity=".12" filter="url(#glow)"/>
-  <g class="orbit" opacity=".65"><circle cx="850" cy="105" r="46" stroke="#58b7ff" stroke-dasharray="3 8"/><rect x="844" y="53" width="12" height="12" rx="3" fill="#d4932a" transform="rotate(45 850 59)"/></g>
+  <circle cx="790" cy="100" r="100" fill="#0F3473" opacity=".2" filter="url(#glow)"/><circle cx="130" cy="470" r="90" fill="#D98A2B" opacity=".12" filter="url(#glow)"/>
+
   <g class="browser">
-    <rect x="90" y="65" width="820" height="430" rx="22" fill="#020913" opacity=".35" transform="translate(0 12)"/>
-    <rect x="90" y="65" width="820" height="430" rx="22" fill="url(#screen)" stroke="#36516c"/>
-    <path d="M90 113H910" stroke="#36516c"/><circle cx="121" cy="89" r="6" fill="#ef766c"/><circle cx="144" cy="89" r="6" fill="#d4932a"/><circle cx="167" cy="89" r="6" fill="#5cc994"/>
-    <rect x="370" y="78" width="260" height="23" rx="11.5" fill="#07121f"/><circle cx="390" cy="89.5" r="4" fill="#5cc994"/><text x="405" y="94" fill="#829bb2" font-family="Arial,sans-serif" font-size="11">alify.dev / build</text>
-    <path d="M560 113V495" stroke="#36516c"/>
-    <rect x="118" y="141" width="150" height="26" rx="6" fill="#58b7ff" opacity=".12"/><text x="132" y="159" fill="#58b7ff" font-family="monospace" font-size="12">index.html</text>
-    <g font-family="monospace" font-size="13"><text x="118" y="204" fill="#58748d">01</text><text x="154" y="204" fill="#d58ba7">&lt;section</text><text x="250" y="204" fill="#7dc9ff"> class=</text><text x="309" y="204" fill="#d8bd78">"hero"</text><text x="359" y="204" fill="#d58ba7">&gt;</text>
-    <text x="118" y="239" fill="#58748d">02</text><text x="174" y="239" fill="#d58ba7">&lt;h1&gt;</text><text x="228" y="239" fill="#d8e7f3">Build better.</text><text x="342" y="239" fill="#d58ba7">&lt;/h1&gt;</text>
-    <text x="118" y="274" fill="#58748d">03</text><text x="174" y="274" fill="#d58ba7">&lt;p&gt;</text><text x="213" y="274" fill="#d8e7f3">Fast. Scalable.</text><text x="354" y="274" fill="#d58ba7">&lt;/p&gt;</text>
-    <text x="118" y="309" fill="#58748d">04</text><text x="154" y="309" fill="#d58ba7">&lt;/section&gt;</text></g>
-    <g fill="#58b7ff"><rect class="code" x="154" y="347" width="270" height="7" rx="3.5" opacity=".65"/><rect class="code c2" x="174" y="373" width="220" height="7" rx="3.5" opacity=".4"/><rect class="code c3" x="174" y="399" width="290" height="7" rx="3.5" opacity=".25"/></g><rect class="cursor" x="464" y="340" width="3" height="18" fill="#d4932a"/>
-    <rect x="590" y="140" width="290" height="326" rx="14" fill="#f5f8fb"/>
-    <rect x="590" y="140" width="290" height="62" rx="14" fill="#fff"/><path d="M590 188V202H880V188" fill="#fff"/><path d="M613 169l9-15 9 15h-6l-3-6-3 6z" fill="#0f5fa8"/><rect x="770" y="159" width="26" height="4" rx="2" fill="#b6c4d0"/><rect x="805" y="159" width="26" height="4" rx="2" fill="#b6c4d0"/><rect x="840" y="159" width="18" height="4" rx="2" fill="#b6c4d0"/>
-    <text x="617" y="247" fill="#102e49" font-family="Arial,sans-serif" font-size="28" font-weight="700">Digital, built</text><text x="617" y="278" fill="#0f5fa8" font-family="Arial,sans-serif" font-size="28" font-weight="700">to perform.</text><rect x="617" y="298" width="180" height="6" rx="3" fill="#c7d4df"/><rect x="617" y="315" width="140" height="6" rx="3" fill="#dce5ec"/><rect x="617" y="341" width="84" height="28" rx="14" fill="#0f5fa8"/>
-    <g class="preview"><rect x="617" y="395" width="76" height="45" rx="8" fill="url(#blue)"/><path d="M635 429l15-18 11 11 12-15 10 22z" fill="#fff" opacity=".75"/><circle cx="670" cy="407" r="5" fill="#d4932a"/></g><rect x="704" y="395" width="154" height="45" rx="8" fill="#e3edf4"/><rect x="718" y="409" width="80" height="5" rx="2.5" fill="#93aabd"/><rect x="718" y="423" width="112" height="5" rx="2.5" fill="#bdcbd6"/>
+    <rect x="90" y="65" width="820" height="430" rx="22" fill="#0B0D12" opacity=".35" transform="translate(0 12)"/>
+    <rect x="90" y="65" width="820" height="430" rx="22" fill="url(#screen)" stroke="#343A46"/>
+    <path d="M90 113H910" stroke="#343A46"/><circle cx="121" cy="89" r="6" fill="#E05A3A"/><circle cx="144" cy="89" r="6" fill="#D98A2B"/><circle cx="167" cy="89" r="6" fill="#0F8A73"/>
+    <rect x="370" y="78" width="260" height="23" rx="11.5" fill="#12151C"/><circle cx="390" cy="89.5" r="4" fill="#0F8A73"/><text x="405" y="94" fill="#9A9FA8" font-family="Arial,sans-serif" font-size="11">alify.dev / build</text>
+    <path d="M560 113V495" stroke="#343A46"/>
+    <rect x="118" y="141" width="150" height="26" rx="6" fill="#E05A3A" opacity=".12"/><text x="132" y="159" fill="#E05A3A" font-family="monospace" font-size="12">index.html</text>
+    <g font-family="monospace" font-size="13"><text x="118" y="204" fill="#777E89">01</text><text x="154" y="204" fill="#E05A3A">&lt;section</text><text x="250" y="204" fill="#F09A84"> class=</text><text x="309" y="204" fill="#D98A2B">"hero"</text><text x="359" y="204" fill="#E05A3A">&gt;</text>
+    <text x="118" y="239" fill="#777E89">02</text><text x="174" y="239" fill="#E05A3A">&lt;h1&gt;</text><text x="228" y="239" fill="#F6F4F1">Build better.</text><text x="342" y="239" fill="#E05A3A">&lt;/h1&gt;</text>
+    <text x="118" y="274" fill="#777E89">03</text><text x="174" y="274" fill="#E05A3A">&lt;p&gt;</text><text x="213" y="274" fill="#F6F4F1">Fast. Scalable.</text><text x="354" y="274" fill="#E05A3A">&lt;/p&gt;</text>
+    <text x="118" y="309" fill="#777E89">04</text><text x="154" y="309" fill="#E05A3A">&lt;/section&gt;</text></g>
+    <g fill="#E05A3A"><rect class="code" x="154" y="347" width="270" height="7" rx="3.5" opacity=".65"/><rect class="code c2" x="174" y="373" width="220" height="7" rx="3.5" opacity=".4"/><rect class="code c3" x="174" y="399" width="290" height="7" rx="3.5" opacity=".25"/></g><rect class="cursor" x="464" y="340" width="3" height="18" fill="#D98A2B"/>
+    <rect x="590" y="140" width="290" height="326" rx="14" fill="#F6F4F1"/>
+    <rect x="590" y="140" width="290" height="62" rx="14" fill="#fff"/><path d="M590 188V202H880V188" fill="#fff"/><path d="M613 169l9-15 9 15h-6l-3-6-3 6z" fill="#0F3473"/><rect x="770" y="159" width="26" height="4" rx="2" fill="#B8B2AB"/><rect x="805" y="159" width="26" height="4" rx="2" fill="#B8B2AB"/><rect x="840" y="159" width="18" height="4" rx="2" fill="#B8B2AB"/>
+    <text x="617" y="247" fill="#1B202B" font-family="Arial,sans-serif" font-size="28" font-weight="700">Digital, built</text><text x="617" y="278" fill="#0F3473" font-family="Arial,sans-serif" font-size="28" font-weight="700">to perform.</text><rect x="617" y="298" width="180" height="6" rx="3" fill="#C9C3BB"/><rect x="617" y="315" width="140" height="6" rx="3" fill="#DDD7CF"/><rect x="617" y="341" width="84" height="28" rx="14" fill="#0F3473"/>
+    <g class="preview"><rect x="617" y="395" width="76" height="45" rx="8" fill="url(#blue)"/><path d="M635 429l15-18 11 11 12-15 10 22z" fill="#fff" opacity=".75"/><circle cx="670" cy="407" r="5" fill="#D98A2B"/></g><rect x="704" y="395" width="154" height="45" rx="8" fill="#E8E3DC"/><rect x="718" y="409" width="80" height="5" rx="2.5" fill="#8E8983"/><rect x="718" y="423" width="112" height="5" rx="2.5" fill="#B8B2AB"/>
   </g>
-  <g transform="translate(57 172)"><rect width="66" height="66" rx="18" fill="#102e49" stroke="#58b7ff" stroke-opacity=".4"/><path d="M26 20L12 33l14 13M40 20l14 13-14 13" stroke="#58b7ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="translate(57 172)"><rect width="66" height="66" rx="18" fill="#1B202B" stroke="#E05A3A" stroke-opacity=".4"/><path d="M26 20L12 33l14 13M40 20l14 13-14 13" stroke="#E05A3A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
 </svg>
