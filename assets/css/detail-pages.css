@@ -864,3 +864,467 @@
     transition: none;
   }
 }
+
+/* Individual project concept: editorial case narrative and product-specific artwork */
+.page-project-single .page-section {
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+.page-project-single .page-title {
+  max-width: 780px;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+}
+
+.case-overview__heading,
+.case-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.65fr);
+  align-items: end;
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.case-overview__heading .page-title,
+.case-section-heading .page-title {
+  margin: 0;
+}
+
+.case-overview__heading .page-lead,
+.case-section-heading .page-lead {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.case-concept-note {
+  margin: 1rem 0 0;
+  color: color-mix(in srgb, var(--color-charcoal) 56%, transparent);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+}
+
+.case-meta > div {
+  padding-inline: 1.5rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.case-meta > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.case-meta dt,
+.case-label {
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.case-meta dd {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-charcoal) 74%, transparent);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.case-hero-art {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: var(--color-charcoal);
+}
+
+.case-hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 560;
+  object-fit: contain;
+}
+
+.case-challenge {
+  background: var(--color-secondary);
+}
+
+.case-challenge__grid {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 1.05fr) minmax(18rem, 0.8fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.case-challenge__label > span {
+  display: block;
+  margin-bottom: 2rem;
+  color: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.case-challenge__story h2,
+.case-experience__copy > h2 {
+  margin: 0 0 1.75rem;
+  color: var(--color-charcoal);
+  font-size: clamp(2.25rem, 3.8vw, 3.8rem);
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+}
+
+.case-challenge__story > p {
+  color: color-mix(in srgb, var(--color-charcoal) 70%, transparent);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.case-challenge__story > p:first-of-type {
+  color: var(--color-charcoal);
+  font-size: 1.15rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.case-challenge__objectives {
+  padding: 1.75rem;
+  border-radius: 1rem;
+  color: var(--color-white);
+  background: var(--color-primary);
+}
+
+.case-challenge__objectives .case-label {
+  color: var(--color-amber);
+}
+
+.case-challenge__objectives ul {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-challenge__objectives li {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  gap: 0.75rem;
+  padding-block: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-white) 15%, transparent);
+  color: color-mix(in srgb, var(--color-white) 88%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.case-challenge__objectives li span {
+  color: var(--color-amber);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.case-response.page-section--dark {
+  background: var(--color-charcoal);
+}
+
+.case-response .page-lead {
+  color: color-mix(in srgb, var(--color-white) 68%, transparent);
+}
+
+.case-strategy {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid color-mix(in srgb, var(--color-white) 18%, transparent);
+}
+
+.case-strategy article {
+  padding: 2rem clamp(1.25rem, 3vw, 2.5rem) 0;
+  border-left: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
+}
+
+.case-strategy article:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.case-strategy article > span,
+.case-experience__copy article > span {
+  color: var(--color-accent);
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.13em;
+}
+
+.case-strategy h3 {
+  margin: 1.25rem 0 0.85rem;
+  color: var(--color-white);
+  font-size: 1.35rem;
+}
+
+.case-strategy p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-white) 65%, transparent);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.case-experience__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.case-experience__visual {
+  margin: 0;
+}
+
+.case-experience__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 560;
+  object-fit: contain;
+  border-radius: 1.25rem;
+  background: var(--color-charcoal);
+}
+
+.case-experience__visual figcaption {
+  margin-top: 0.85rem;
+  color: color-mix(in srgb, var(--color-charcoal) 52%, transparent);
+  font-size: 0.75rem;
+}
+
+.case-experience__intro {
+  margin-bottom: 2rem;
+  color: color-mix(in srgb, var(--color-charcoal) 68%, transparent);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.case-experience__copy article {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 1rem;
+  padding-block: 1.35rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+
+.case-experience__copy article h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.case-experience__copy article p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-charcoal) 65%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.case-validation .case-section-heading .page-lead {
+  color: color-mix(in srgb, var(--color-charcoal) 64%, transparent);
+}
+
+.case-measures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 16%, transparent);
+}
+
+.case-measures article {
+  position: relative;
+  padding: 2rem clamp(1.25rem, 3vw, 2.5rem) 0;
+  border-left: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.case-measures article:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.case-measures i {
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  font-size: 1.4rem;
+}
+
+.case-measures article > span {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  font-size: 0.72rem;
+}
+
+.case-measures h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.case-measures p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-charcoal) 66%, transparent);
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+.case-next {
+  padding-top: 0;
+  background: var(--color-white);
+}
+
+.case-next__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  color: var(--color-white);
+  background: var(--color-primary);
+  text-decoration: none;
+}
+
+.case-next__media {
+  min-height: 100%;
+  background: var(--color-charcoal);
+}
+
+.case-next__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.case-next__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.case-next__copy .page-eyebrow {
+  align-self: flex-start;
+  color: var(--color-amber);
+  border-color: color-mix(in srgb, var(--color-white) 15%, transparent);
+  background: color-mix(in srgb, var(--color-white) 6%, transparent);
+}
+
+.case-next__copy h2 {
+  margin: 1rem 0 1.25rem;
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.case-next__copy > p:not(.page-eyebrow) {
+  color: color-mix(in srgb, var(--color-white) 72%, transparent);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.case-next__action {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  color: var(--color-amber);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+.case-next__action i {
+  transition: transform 220ms ease;
+}
+
+.case-next__link:hover .case-next__action i {
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 991.98px) {
+  .case-challenge__grid {
+    grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 1fr);
+  }
+
+  .case-challenge__objectives {
+    grid-column: 2;
+  }
+
+  .case-experience__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-next__link {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .case-overview__heading,
+  .case-section-heading,
+  .case-challenge__grid,
+  .case-meta,
+  .case-strategy,
+  .case-measures {
+    grid-template-columns: 1fr;
+  }
+
+  .case-overview__heading,
+  .case-section-heading {
+    align-items: start;
+    gap: 1.25rem;
+  }
+
+  .case-meta {
+    gap: 1.25rem;
+  }
+
+  .case-meta > div,
+  .case-meta > div:first-child,
+  .case-strategy article,
+  .case-strategy article:first-child,
+  .case-measures article,
+  .case-measures article:first-child {
+    padding: 0 0 1.25rem;
+    border-left: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+
+  .case-strategy article,
+  .case-strategy article:first-child,
+  .case-measures article,
+  .case-measures article:first-child {
+    padding: 1.5rem 0;
+  }
+
+  .case-challenge__label {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .case-challenge__label > span {
+    margin: 0;
+    font-size: 3.5rem;
+  }
+
+  .case-challenge__objectives {
+    grid-column: auto;
+  }
+
+  .case-measures article > span {
+    top: 1.5rem;
+    right: 0;
+  }
+}
