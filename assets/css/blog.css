@@ -484,3 +484,12 @@
     padding: 1.5rem;
   }
 }
+
+/* Readability and WCAG contrast refinements from the full-site UI audit */
+.featured-article__copy .article-meta {
+  color: var(--color-amber-light);
+}
+
+.article-point__number {
+  color: var(--color-primary);
+}

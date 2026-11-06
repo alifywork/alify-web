@@ -1804,3 +1804,26 @@
     transition: none;
   }
 }
+
+/* Readability and WCAG contrast refinements from the full-site UI audit */
+.form-actions p,
+.quote-card figcaption {
+  color: color-mix(in srgb, var(--color-charcoal) 74%, transparent);
+}
+
+.form-actions p {
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.price-card__label {
+  color: var(--color-primary);
+}
+
+.page-card--accent .price-card__label {
+  color: var(--color-amber-light);
+}
+
+.quote-card--featured figcaption {
+  color: color-mix(in srgb, var(--color-white) 84%, transparent);
+}

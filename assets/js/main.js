@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
           once: true
         },
         y: 40,
-        autoAlpha: 0,
         duration: 0.8,
         stagger: 0.12,
         ease: "power3.out"

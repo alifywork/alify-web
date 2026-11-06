@@ -1677,3 +1677,39 @@
     border-left: 0;
   }
 }
+
+/* Readability and WCAG contrast refinements from the full-site UI audit */
+:is(.story-editorial__copy, .culture-panel__copy, .work-feature__copy, .tool-panel, .compact-cta) .page-eyebrow,
+.work-feature__copy .detail-link,
+.industry-intro__copy .page-eyebrow,
+.case-challenge__objectives .case-label,
+.case-challenge__objectives li span,
+.case-next__copy .page-eyebrow,
+.case-next__action {
+  color: var(--color-amber-light);
+}
+
+.capability-row__number,
+.value-rail > span,
+.process-step > span,
+.deliverable-card > span {
+  color: var(--color-primary);
+}
+
+.detail-section--ink .process-step > span,
+.deliverable-card:nth-child(2) > span {
+  color: var(--color-amber-light);
+}
+
+.outcome-item span,
+.work-tile__body p {
+  color: color-mix(in srgb, var(--color-charcoal) 74%, transparent);
+}
+
+.case-challenge__label > span {
+  color: color-mix(in srgb, var(--color-primary) 58%, transparent);
+}
+
+.industry-principles__grid article > span {
+  color: color-mix(in srgb, var(--color-white) 72%, transparent);
+}
