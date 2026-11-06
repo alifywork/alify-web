@@ -15,7 +15,7 @@ class SiteHeader extends HTMLElement {
     this.dataset.initialized = "true";
 
     const serviceLinks = alifyServices.map((service) => `
-      <a class="mega-menu__link" href="service-single.html#${service.slug}">
+      <a class="mega-menu__link" href="${service.slug}.html">
         <span class="mega-menu__icon" aria-hidden="true"><i class="fa-solid ${service.icon}"></i></span>
         <span class="mega-menu__copy">
           <strong>${service.title}</strong>
@@ -25,7 +25,7 @@ class SiteHeader extends HTMLElement {
     `).join("");
 
     const mobileServiceLinks = alifyServices.map((service) => `
-      <a href="service-single.html#${service.slug}">
+      <a href="${service.slug}.html">
         <i class="fa-solid ${service.icon}" aria-hidden="true"></i>
         <span>${service.title}</span>
       </a>
@@ -236,6 +236,12 @@ class SiteHeader extends HTMLElement {
   setActiveNavigation() {
     const pageGroups = {
       "service-single.html": "services.html",
+      "web-development.html": "services.html",
+      "seo.html": "services.html",
+      "digital-marketing.html": "services.html",
+      "ai-automation.html": "services.html",
+      "ui-ux-design.html": "services.html",
+      "logo-design.html": "services.html",
       "project-single.html": "projects.html"
     };
     const currentFile = window.location.pathname.split("/").pop() || "index.html";

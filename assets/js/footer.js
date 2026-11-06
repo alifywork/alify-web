@@ -55,12 +55,12 @@ class SiteFooter extends HTMLElement {
                 <nav class="footer__column" aria-label="Footer services">
                   <h3>Services</h3>
                   <ul>
-                    <li><a href="service-single.html#web-development">Web Development</a></li>
-                    <li><a href="service-single.html#seo">SEO</a></li>
-                    <li><a href="service-single.html#digital-marketing">Digital Marketing</a></li>
-                    <li><a href="service-single.html#ai-automation">AI Automation</a></li>
-                    <li><a href="service-single.html#ui-ux-design">UI UX Design</a></li>
-                    <li><a href="service-single.html#logo-design">Logo Design</a></li>
+                    <li><a href="web-development.html">Web Development</a></li>
+                    <li><a href="seo.html">SEO</a></li>
+                    <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                    <li><a href="ai-automation.html">AI Automation</a></li>
+                    <li><a href="ui-ux-design.html">UI UX Design</a></li>
+                    <li><a href="logo-design.html">Logo Design</a></li>
                   </ul>
                 </nav>
               </div>

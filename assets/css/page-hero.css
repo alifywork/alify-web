@@ -5,7 +5,7 @@ page-hero {
 .page-hero {
   position: relative;
   display: grid;
-  min-height: 100svh;
+  min-height: 85svh;
   align-items: center;
   overflow: hidden;
   padding-block: clamp(6rem, 12vw, 10rem);
@@ -84,7 +84,7 @@ page-hero {
   max-width: 1080px;
   margin-bottom: 1.5rem;
   color: var(--color-white);
-  font-size: clamp(3rem, 7.5vw, 7rem);
+  font-size: clamp(3rem, 6.5vw, 6rem);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.06em;
 }
@@ -99,7 +99,7 @@ page-hero {
 
 @media (max-width: 767.98px) {
   .page-hero {
-    min-height: 100svh;
+    min-height: 85svh;
     padding-block: 5rem;
   }
 
