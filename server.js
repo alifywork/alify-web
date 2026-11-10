@@ -6,6 +6,7 @@ const fsp = require("node:fs/promises");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const Busboy = require("busboy");
+const nodemailer = require("nodemailer");
 
 const root = __dirname;
 const storageRoot = path.join(root, "storage", "inquiries");
@@ -72,6 +73,45 @@ async function parseInquiry(request) {
   });
 }
 
+async function sendInquiryNotification(record) {
+  const { SMTP_HOST, SMTP_USER, SMTP_PASS, INQUIRY_NOTIFICATION_EMAIL } = process.env;
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !INQUIRY_NOTIFICATION_EMAIL) return "not_configured";
+  const port = Number(process.env.SMTP_PORT || 587);
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port,
+    secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : port === 465,
+    auth: { user: SMTP_USER, pass: SMTP_PASS },
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
+    socketTimeout: 8000
+  });
+  const fields = record.fields || {};
+  const brief = fields.message || fields.goals || fields.brief || "Not supplied";
+  const attachments = (record.attachments || []).map((file) => file.originalName).join(", ") || "None";
+  await transporter.sendMail({
+    from: process.env.SMTP_FROM_EMAIL || SMTP_USER,
+    to: INQUIRY_NOTIFICATION_EMAIL,
+    replyTo: record.email,
+    subject: `New ALIFY inquiry · ${record.reference}`,
+    text: [
+      `Reference: ${record.reference}`,
+      `Received: ${record.receivedAt}`,
+      `Name: ${record.name}`,
+      `Email: ${record.email}`,
+      `Company: ${fields.company || "Not supplied"}`,
+      `Service: ${fields.service || "Not supplied"}`,
+      `Budget: ${fields.budget || "Not supplied"}`,
+      `Timeline: ${fields.timeline || "Not supplied"}`,
+      `Attachments: ${attachments}`,
+      "",
+      "Project details:",
+      brief
+    ].join("\n")
+  });
+  return "sent";
+}
+
 async function handleInquiry(request, response) {
   const contentLength = Number(request.headers["content-length"] || 0);
   if (contentLength > maxRequestBytes) return json(response, 413, { ok: false, message: "The inquiry is too large. Attachments must total less than 16 MB." });
@@ -98,6 +138,13 @@ async function handleInquiry(request, response) {
     const reference = `ALF-${new Date().toISOString().slice(0, 10).replace(/-/g, "")}-${crypto.randomBytes(3).toString("hex").toUpperCase()}`;
     const record = { reference, receivedAt: new Date().toISOString(), status: "new", name, email, fields, attachments: files };
     await fsp.writeFile(path.join(storageRoot, `${reference}.json`), JSON.stringify(record, null, 2), { flag: "wx" });
+    try {
+      const notification = await sendInquiryNotification(record);
+      if (notification === "sent") console.log(`Inquiry notification sent: ${reference}`);
+    } catch (error) {
+      // The persisted inquiry remains authoritative when email is unavailable.
+      console.error(`Inquiry notification failed for ${reference}: ${error.message}`);
+    }
     return json(response, 201, { ok: true, reference, message: "Your inquiry is saved. Our team will respond using your supplied email." });
   } catch (error) {
     console.error("Inquiry error:", error.message);

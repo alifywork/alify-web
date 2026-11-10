@@ -150,6 +150,13 @@ Measured 390 px document heights after implementation:
 - Mobile WCAG 2.2 target-size checks pass on Home, Projects, Industries, Blog, Testimonials, FAQs, Contact, and Start Project.
 - Re-ran 44 HTML files across five widths (220 loads): zero overflow, JavaScript errors, or failed responses; targeted Axe checks remain clean.
 
+## Optional inquiry email notifications
+
+- Added Nodemailer-based team notifications after successful persistent inquiry writes, configured exclusively through SMTP environment variables documented in `.env.example`.
+- Notification emails include the inquiry reference, contact/service context, brief, and attachment names; user email is used only as Reply-To.
+- Missing SMTP configuration skips notification; SMTP errors are logged without discarding the saved inquiry or changing its successful reference response.
+- Local fake-SMTP integration test verified both successful delivery and SMTP-outage persistence; synthetic records were removed after testing. Dependency audit reports zero vulnerabilities.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.
