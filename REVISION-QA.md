@@ -102,6 +102,12 @@ Measured 390 px document heights after implementation:
 - Re-ran 215 responsive loads at five widths with zero horizontal overflow.
 - Full-site Axe rerun found only two inline-policy-link affordance issues; persistent inline link underlines were restored and both affected pages retested with zero violations.
 
+## Selected Work visual redesign
+
+- Replaced mismatched bright card backgrounds and clipped oversized titles with a cohesive warm-ivory editorial system.
+- Balanced media/text proportions, reduced decorative numbering, refined controls, and replaced the generic Fintech neon artwork with relevant product artwork.
+- Verified 1440, 1024, 768, 390, and 320px layouts with no page overflow; Home Axe and browser error checks pass.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.
