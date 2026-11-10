@@ -88,47 +88,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("form[data-inquiry-form]").forEach((form) => {
     const dialog = document.querySelector("[data-inquiry-review]");
+    const status = form.querySelector("[data-submit-status]");
+    const draftStatus = form.querySelector("[data-draft-status]");
+    const submitButton = form.querySelector('[type="submit"]');
+    const draftKey = `alify-inquiry-draft:${window.location.pathname}`;
+    let saveTimer;
+    const saveDraft = () => {
+      const draft = {};
+      new FormData(form).forEach((value, key) => {
+        if (value instanceof File || key === "privacyConsent" || key === "website") return;
+        if (draft[key] !== undefined) draft[key] = Array.isArray(draft[key]) ? [...draft[key], value] : [draft[key], value];
+        else draft[key] = value;
+      });
+      try {
+        localStorage.setItem(draftKey, JSON.stringify(draft));
+        if (draftStatus) draftStatus.textContent = "Draft saved in this browser. You can return on this device to resume.";
+      } catch { if (draftStatus) draftStatus.textContent = "Browser draft storage is unavailable; you can still submit the form."; }
+    };
+    try {
+      const saved = JSON.parse(localStorage.getItem(draftKey) || "null");
+      if (saved) {
+        Object.entries(saved).forEach(([key, value]) => {
+          const fields = [...form.elements].filter((field) => field.name === key);
+          fields.forEach((field) => {
+            if (field.type === "checkbox") field.checked = Array.isArray(value) ? value.includes(field.value) : value === field.value;
+            else field.value = Array.isArray(value) ? value[0] : value;
+          });
+        });
+        if (draftStatus) draftStatus.textContent = "Your saved draft has been restored. Attachments need to be selected again.";
+      }
+    } catch { /* Invalid browser drafts are ignored. */ }
+    form.addEventListener("input", () => { window.clearTimeout(saveTimer); saveTimer = window.setTimeout(saveDraft, 350); });
+
     if (dialog) {
       dialog.querySelectorAll("[data-review-edit]").forEach((button) => button.addEventListener("click", () => dialog.close()));
-      dialog.addEventListener("click", (event) => {
-        if (event.target === dialog) dialog.close();
-      });
-      dialog.querySelector("[data-review-confirm]").addEventListener("click", () => {
-        const reviewUrl = form.dataset.reviewUrl;
-        dialog.close();
-        if (reviewUrl) window.location.href = reviewUrl;
+      dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+      dialog.querySelector("[data-review-confirm]").addEventListener("click", async () => {
+        const confirm = dialog.querySelector("[data-review-confirm]");
+        confirm.disabled = true;
+        submitButton.disabled = true;
+        status.hidden = false;
+        status.className = "form-submit-status";
+        status.textContent = "Securely saving your inquiry…";
+        try {
+          const response = await fetch("/api/inquiries", { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+          const result = await response.json();
+          if (!response.ok || !result.ok) throw new Error(result.message || "Submission failed");
+          dialog.close();
+          form.reset();
+          try { localStorage.removeItem(draftKey); } catch { /* Storage is optional. */ }
+          if (draftStatus) draftStatus.textContent = "";
+          status.className = "form-submit-status is-success";
+          status.innerHTML = `Inquiry received. Your reference is <span class="inquiry-review__reference"></span>. Keep it for your records; our team will respond by email.`;
+          status.querySelector("span").textContent = result.reference;
+          status.focus({ preventScroll: true });
+          status.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+        } catch (error) {
+          status.className = "form-submit-status is-error";
+          status.textContent = `${error.message}. Your draft remains saved; please try again or email hello@alify.com.`;
+        } finally {
+          confirm.disabled = false;
+          submitButton.disabled = false;
+        }
       });
     }
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
-
-      const data = new FormData(form);
-      const lines = [];
-      for (const [key, value] of data.entries()) {
-        if (key === "privacyConsent") continue;
-        const label = key.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
-        lines.push(`${label}: ${value}`);
-      }
-
-      const subject = `Project inquiry — ${data.get("name") || "Website"}`;
-      const body = `Hello Alify,\n\n${lines.join("\n")}\n\nI would like to discuss this project with you.`;
-      const reviewUrl = `mailto:hello@alify.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (!dialog) {
-        window.location.href = reviewUrl;
-        return;
-      }
-
-      form.dataset.reviewUrl = reviewUrl;
+      if (!dialog) return;
       const content = dialog.querySelector("[data-review-content]");
       content.replaceChildren();
       const grouped = new Map();
-      for (const [key, value] of data.entries()) {
-        if (key === "privacyConsent") continue;
-        const label = key.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
+      for (const [key, value] of new FormData(form).entries()) {
+        if (["privacyConsent", "website"].includes(key)) continue;
+        const label = key.replace(/\[\]/g, "").replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
         if (!grouped.has(label)) grouped.set(label, []);
-        grouped.get(label).push(value);
+        grouped.get(label).push(value instanceof File ? value.name : value);
       }
       grouped.forEach((values, label) => {
         const row = document.createElement("div");
@@ -142,7 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
       dialog.showModal();
     });
   });
-
   if (reducedMotion || !window.gsap || !window.ScrollTrigger) return;
   window.gsap.registerPlugin(window.ScrollTrigger);
   window.gsap.utils.toArray("[data-page-reveal]").forEach((element) => {

@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/utility.css">
+    <link rel="stylesheet" href="assets/css/revision.css">
 
     <script src="assets/gsap/gsap.min.js" defer></script>
     <script src="assets/gsap/ScrollTrigger.min.js" defer></script>
     <script src="assets/js/header.js" defer></script>
     <script src="assets/js/footer.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/revision.js" defer></script>
     <script src="assets/js/home.js" defer></script>
   </head>
   <body>
@@ -37,7 +39,7 @@
               <div class="intro home-hero__content">
                 <p class="intro__eyebrow">Independent digital studio</p>
                 <h1 class="intro__title" id="intro-title">Digital experiences that move brands forward.</h1>
-                <p class="intro__text">We unite strategy, thoughtful design, and creative technology to build meaningful digital experiences for ambitious brands.</p>
+                <p class="intro__text">A worldwide agency uniting development, design, content, growth, and AI automation to build meaningful digital experiences for ambitious brands.</p>
                 <div class="intro__actions">
                   <a class="button button--primary" href="start-project.html">
                     Start a project <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i>
@@ -81,7 +83,9 @@
             </div>
           </div>
         </div>
-      </div>
+
+      <a class="section-link home-section-cta" href="start-project.html">Start a worldwide collaboration <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+    </div>
     </section>
 
     <section class="home-section home-section--secondary home-section--services" aria-labelledby="services-showcase-title">
@@ -255,7 +259,7 @@
             </div>
           </div>
         </div>
-      </div>
+          </div>
     </section>
 
     <section class="home-section home-section--secondary" aria-labelledby="process-title">
@@ -299,7 +303,9 @@
             </div>
           </div>
         </div>
-      </div>
+
+            <a class="section-link home-section-cta" href="start-project.html">Plan your first milestone <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
     </section>
 
     <section class="home-section home-section--white" aria-labelledby="why-alify-title">
@@ -353,7 +359,9 @@
             </div>
           </div>
         </div>
-      </div>
+
+            <a class="section-link home-section-cta" href="about.html">Why teams choose ALIFY <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
     </section>
 
     <section class="home-section home-section--secondary" aria-labelledby="industries-title">
@@ -367,8 +375,8 @@
               </div>
               <p class="section-heading__copy">Explore the different challenges we can help solve through focused strategy, design, technology, and growth.</p>
             </div>
-            <div class="industries-grid" data-home-reveal>
-              <article class="industry-card industry-card--lead">
+            <div class="industries-grid" data-industry-slider data-home-reveal aria-roledescription="carousel" aria-label="Industries">
+              <article data-industry-slide class="industry-card industry-card--lead">
                 <a class="industry-card__link" href="industry-single.html">
                   <img src="assets/images/industries/technology-saas.jpg" alt="Software product team collaborating in a bright modern office" width="1312" height="816" loading="lazy">
                   <span class="industry-card__icon" aria-hidden="true"><i class="fa-solid fa-cloud"></i></span>
@@ -376,32 +384,32 @@
                   <div class="industry-card__content"><span>SaaS &amp; Technology</span><h3>Make complex products feel simple.</h3><p>Positioning, product storytelling, UI UX, and scalable web experiences.</p></div>
                 </a>
               </article>
-              <article class="industry-card industry-card--lead">
-                <a class="industry-card__link" href="industry-single.html">
+              <article data-industry-slide class="industry-card industry-card--lead">
+                <a class="industry-card__link" href="ecommerce.html">
                   <img src="assets/images/industries/retail-ecommerce.jpg" alt="Retail associate assisting a customer inside an independent lifestyle store" width="1312" height="816" loading="lazy">
                   <span class="industry-card__icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
                   <span class="industry-card__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right icon-arrow-up-right"></i></span>
                   <div class="industry-card__content"><span>E-commerce</span><h3>Turn discovery into confident action.</h3><p>Distinctive storefronts, frictionless journeys, and growth-focused optimization.</p></div>
                 </a>
               </article>
-              <article class="industry-card">
-                <a class="industry-card__link" href="industry-single.html">
+              <article data-industry-slide class="industry-card">
+                <a class="industry-card__link" href="real-estate.html">
                   <img src="assets/images/industries/real-estate.jpg" alt="Real estate consultant showing a contemporary home to prospective buyers" width="1312" height="816" loading="lazy">
                   <span class="industry-card__icon" aria-hidden="true"><i class="fa-solid fa-building"></i></span>
                   <span class="industry-card__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right icon-arrow-up-right"></i></span>
                   <div class="industry-card__content"><span>Real Estate</span><h3>Help people picture what’s next.</h3><p>Immersive property stories, useful discovery, and clearer inquiries.</p></div>
                 </a>
               </article>
-              <article class="industry-card">
-                <a class="industry-card__link" href="industry-single.html">
+              <article data-industry-slide class="industry-card">
+                <a class="industry-card__link" href="healthcare.html">
                   <img src="assets/images/industries/healthcare.jpg" alt="Healthcare professional listening to a patient during a calm consultation" width="1312" height="816" loading="lazy">
                   <span class="industry-card__icon" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
                   <span class="industry-card__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right icon-arrow-up-right"></i></span>
                   <div class="industry-card__content"><span>Healthcare</span><h3>Make important information approachable.</h3><p>Calm, accessible journeys built around clarity and trust.</p></div>
                 </a>
               </article>
-              <article class="industry-card">
-                <a class="industry-card__link" href="industry-single.html">
+              <article data-industry-slide class="industry-card">
+                <a class="industry-card__link" href="startups.html">
                   <img src="assets/images/industries/startups-ventures.jpg" alt="Startup founders collaborating around a table in their creative studio" width="1312" height="816" loading="lazy">
                   <span class="industry-card__icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></span>
                   <span class="industry-card__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right icon-arrow-up-right"></i></span>
@@ -409,6 +417,12 @@
                 </a>
               </article>
             </div>
+            <div class="industry-slider__controls">
+              <button class="carousel-button" type="button" data-industry-prev aria-label="Previous industry"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+              <p aria-live="polite"><span data-industry-current>1</span> / <span data-industry-total>5</span></p>
+              <button class="carousel-button" type="button" data-industry-next aria-label="Next industry"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+            <a class="section-link home-section-cta" href="industries.html">Find your industry <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -428,7 +442,7 @@
                 <a class="section-link" href="projects.html">View all projects <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
               </div>
             </div>
-            <div class="work-grid" data-home-reveal>
+            <div class="work-grid work-scroll-stack" data-work-stack data-home-reveal>
               <article class="work-card">
                 <a class="work-card__link" href="project-single.html">
                   <div class="work-card__image">
@@ -562,7 +576,9 @@
             </div>
           </div>
         </div>
-      </div>
+
+            <a class="section-link home-section-cta" href="services.html">Match tools to your project <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
     </section>
 
     <section class="home-section home-section--white" aria-labelledby="insights-title">
@@ -630,7 +646,9 @@
             </div>
           </div>
         </div>
-      </div>
+
+            <a class="section-link home-section-cta" href="testimonials.html">Explore client perspectives <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
     </section>
 
     <section class="home-section home-section--white home-section--faq" aria-labelledby="faq-title">
@@ -697,7 +715,7 @@
             </div>
           </div>
         </div>
-      </div>
+          </div>
     </section>
 
     <section class="home-section home-section--white home-inquiry" aria-labelledby="inquiry-title">
@@ -708,10 +726,10 @@
               <div class="inquiry-card__intro">
                 <p class="section-heading__eyebrow">Start a conversation</p>
                 <h2 id="inquiry-title">Tell us what you’re planning.</h2>
-                <p>A few details are enough to begin. Prepare your brief below, then send it directly through your email app.</p>
+                <p>A few details are enough to begin. Share your brief securely and receive a saved inquiry reference for your records.</p>
                 <a class="inquiry-card__email" href="mailto:hello@alify.com"><i class="fa-regular fa-envelope" aria-hidden="true"></i> hello@alify.com</a>
               </div>
-              <form class="inquiry-form" action="mailto:hello@alify.com" method="get" data-inquiry-form>
+              <form class="inquiry-form" action="/api/inquiries" method="post" data-inquiry-form>
                 <div class="inquiry-form__row">
                   <label><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Jane Smith" required></label>
                   <label><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="jane@company.com" required></label>
@@ -719,17 +737,19 @@
                 <label><span>What can we help with?</span>
                   <select name="service" required>
                     <option value="" selected disabled>Choose a service</option>
-                    <option>Web Development</option><option>SEO</option><option>Digital Marketing</option><option>AI Automation</option><option>UI UX Design</option><option>Logo Design</option><option>Not sure yet</option>
+                    <option>Web Development</option><option>WordPress Development</option><option>Shopify Development</option><option>SEO</option><option>Digital Marketing</option><option>AI Automation</option><option>UI UX Design</option><option>Logo Design</option><option>Graphic Design</option><option>Content Writing</option><option>Not sure yet</option>
                   </select>
                 </label>
                 <label><span>A little about the project</span><textarea name="brief" rows="4" minlength="10" placeholder="Your goal, challenge, or idea…" required></textarea></label>
+                <label class="form-consent"><span><input type="checkbox" name="privacyConsent" value="Accepted" required> I agree that ALIFY may use these details to respond to my inquiry, as described in the <a href="privacy-policy.html">privacy policy</a>.</span></label>
+                <div aria-hidden="true" hidden><label>Leave empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
                 <div class="inquiry-form__footer">
-                  <p>No data is sent or stored until you continue in your email app.</p>
-                  <button class="button button--primary" type="submit">Prepare my inquiry <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></button>
+                  <p>Your inquiry and consent are stored securely so our team can respond.</p>
+                  <button class="button button--primary" type="submit">Submit my inquiry <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></button>
                 </div>
                 <div class="inquiry-form__result" role="status" tabindex="-1" data-inquiry-result hidden>
                   <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                  <p>Your brief is ready. <a href="mailto:hello@alify.com" data-inquiry-email>Continue in your email app</a> to send it to ALIFY.</p>
+                  <p>Your inquiry has been received. Your reference is <strong data-inquiry-reference></strong>.</p>
                 </div>
               </form>
             </div>

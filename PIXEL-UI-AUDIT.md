@@ -2,7 +2,9 @@
 
 Audit date: 2026-11-06  
 Branch: `arena/08a66435-alify-web`  
-Base reviewed: current PR #1 implementation
+Base reviewed: PR #1 implementation before the 10 November 2026 revision
+
+> **Revision update:** the subsequent client brief has been implemented. See `REVISION-QA.md` for delivered archive/single differentiation, mobile reductions, researched pricing, backend forms, sliders, lightboxes, Blog utilities, and legal updates. The intentional neon hero system remains unchanged by client direction. Findings below are retained as the historical audit baseline.
 
 ## Scope and method
 

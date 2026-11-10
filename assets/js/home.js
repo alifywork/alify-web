@@ -211,28 +211,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const inquiryForm = document.querySelector("[data-inquiry-form]");
   if (inquiryForm) {
     const result = inquiryForm.querySelector("[data-inquiry-result]");
-    const emailLink = inquiryForm.querySelector("[data-inquiry-email]");
-
-    inquiryForm.addEventListener("submit", (event) => {
+    inquiryForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (!inquiryForm.checkValidity()) {
-        inquiryForm.reportValidity();
-        return;
+      if (!inquiryForm.reportValidity()) return;
+      const button = inquiryForm.querySelector('[type="submit"]');
+      button.disabled = true;
+      try {
+        const response = await fetch("/api/inquiries", { method: "POST", body: new FormData(inquiryForm), headers: { Accept: "application/json" } });
+        const submission = await response.json();
+        if (!response.ok || !submission.ok) throw new Error(submission.message || "Submission failed");
+        result.querySelector("p").innerHTML = 'Your inquiry has been received. Your reference is <strong data-inquiry-reference></strong>.';
+        result.querySelector("[data-inquiry-reference]").textContent = submission.reference;
+        result.classList.remove("is-error");
+        result.hidden = false;
+        inquiryForm.reset();
+      } catch (error) {
+        result.classList.add("is-error");
+        result.querySelector("p").textContent = `${error.message}. Please try again or email hello@alify.com.`;
+        result.hidden = false;
+      } finally {
+        button.disabled = false;
+        result.focus({ preventScroll: true });
+        result.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
       }
-
-      const data = new FormData(inquiryForm);
-      const name = String(data.get("name")).trim();
-      const email = String(data.get("email")).trim();
-      const service = String(data.get("service")).trim();
-      const brief = String(data.get("brief")).trim();
-      const subject = encodeURIComponent(`Project inquiry: ${service} — ${name}`);
-      const body = encodeURIComponent(`Hello ALIFY,\n\n${brief}\n\nService: ${service}\nName: ${name}\nEmail: ${email}`);
-
-      emailLink.href = `mailto:hello@alify.com?subject=${subject}&body=${body}`;
-      result.hidden = false;
-      inquiryForm.reset();
-      result.focus({ preventScroll: true });
-      result.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
     });
   }
 
@@ -340,3 +341,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// One-at-a-time responsive industry carousel.
+const industrySlider = document.querySelector("[data-industry-slider]");
+if (industrySlider) {
+  const slides = [...industrySlider.querySelectorAll("[data-industry-slide]")];
+  const previous = document.querySelector("[data-industry-prev]");
+  const next = document.querySelector("[data-industry-next]");
+  const current = document.querySelector("[data-industry-current]");
+  const total = document.querySelector("[data-industry-total]");
+  let activeIndustry = 0;
+  total.textContent = String(slides.length);
+  const showIndustry = (index) => {
+    activeIndustry = Math.max(0, Math.min(index, slides.length - 1));
+    industrySlider.scrollTo({ left: slides[activeIndustry].offsetLeft - industrySlider.offsetLeft, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    current.textContent = String(activeIndustry + 1);
+    previous.disabled = activeIndustry === 0;
+    next.disabled = activeIndustry === slides.length - 1;
+    slides.forEach((slide, slideIndex) => slide.setAttribute("aria-current", String(slideIndex === activeIndustry)));
+  };
+  previous.addEventListener("click", () => showIndustry(activeIndustry - 1));
+  next.addEventListener("click", () => showIndustry(activeIndustry + 1));
+  industrySlider.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") { event.preventDefault(); showIndustry(activeIndustry + 1); }
+    if (event.key === "ArrowLeft") { event.preventDefault(); showIndustry(activeIndustry - 1); }
+  });
+  showIndustry(0);
+}

@@ -1,0 +1,17 @@
+{
+  "name": "alify-worldwide-agency",
+  "version": "2.0.0",
+  "private": true,
+  "description": "ALIFY website with persistent AJAX inquiry backend",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check": "node --check server.js && node --check assets/js/revision.js && node --check assets/js/pages.js && node --check assets/js/home.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0"
+  }
+}

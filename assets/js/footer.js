@@ -32,8 +32,9 @@ class SiteFooter extends HTMLElement {
                   <a class="footer__logo" href="index.html" aria-label="Alify home">
                     <img src="assets/images/logo/light-logo.png" alt="Alify" width="469" height="125" loading="lazy" decoding="async">
                   </a>
-                  <p>Independent digital studio bringing strategy, thoughtful design, and creative technology together for ambitious brands.</p>
+                  <p>Worldwide digital agency bringing development, design, content, marketing, and AI automation together for ambitious brands.</p>
                   <a class="footer__brand-email" href="mailto:hello@alify.com">hello@alify.com <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i></a>
+                  <div class="social-links" aria-label="ALIFY social media"><a href="#" aria-label="ALIFY on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a><a href="#" aria-label="ALIFY on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="#" aria-label="ALIFY on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="#" aria-label="ALIFY on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a><a href="#" aria-label="ALIFY on Behance"><i class="fa-brands fa-behance" aria-hidden="true"></i></a></div>
                 </div>
               </div>
 
@@ -56,12 +57,12 @@ class SiteFooter extends HTMLElement {
                 <nav class="footer__column" aria-label="Footer services">
                   <h3>Services</h3>
                   <ul>
-                    <li><a href="web-development.html">Web Development</a></li>
+                    <li><a href="web-development.html">Web Development</a></li><li><a href="wordpress-development.html">WordPress</a></li><li><a href="shopify-development.html">Shopify</a></li>
                     <li><a href="seo.html">SEO</a></li>
                     <li><a href="digital-marketing.html">Digital Marketing</a></li>
                     <li><a href="ai-automation.html">AI Automation</a></li>
                     <li><a href="ui-ux-design.html">UI UX Design</a></li>
-                    <li><a href="logo-design.html">Logo Design</a></li>
+                    <li><a href="logo-design.html">Logo Design</a></li><li><a href="content-writing.html">Content Writing</a></li><li><a href="graphic-design.html">Graphic Design</a></li>
                   </ul>
                 </nav>
               </div>
@@ -84,7 +85,7 @@ class SiteFooter extends HTMLElement {
                     <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
                     <a href="cookie-policy.html">Cookie Policy</a>
                   </nav>
-                  <a class="footer__back-top" href="#home">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+                  <a class="footer__back-top" data-footer-back-top href="#main-content">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
@@ -94,6 +95,7 @@ class SiteFooter extends HTMLElement {
     `;
 
     this.querySelector("[data-current-year]").textContent = new Date().getFullYear();
+    if (document.querySelector("#home")) this.querySelector("[data-footer-back-top]").href = "#home";
   }
 }
 

@@ -1,48 +1,52 @@
-# alify-web
+# ALIFY — Worldwide Digital Agency
 
-A static front-end starter with all vendor assets stored locally. No CDN is required.
+A responsive agency website with 43 HTML routes, ten dedicated service pages, distinct archive/single presentation systems, interactive portfolio galleries, and a persistent Node.js inquiry backend. Vendor assets are local; no CDN is required.
 
-## Structure
+## Run
+
+```bash
+npm install
+npm start
+```
+
+The website and API listen on `0.0.0.0:8000`. Set `PORT` or `HOST` to override. `npm run check` validates the primary JavaScript files.
+
+## Inquiry backend
+
+- `POST /api/inquiries` accepts multipart AJAX submissions from the Homepage, Contact, and Start Project forms.
+- `GET /api/health` provides a service health check.
+- Each valid inquiry receives a unique `ALF-YYYYMMDD-XXXXXX` reference.
+- Inquiry JSON and attachments are stored under `storage/inquiries/`, which is Git-ignored and blocked from public static serving.
+- Up to three PDF, DOC, DOCX, TXT, PNG, or JPG files are accepted, 5 MB each; total requests are capped at 16 MB.
+- Includes same-origin checks, required field/consent validation, honeypot handling, and basic per-IP rate limiting.
+- Contact and Start Project save non-sensitive draft fields in browser local storage and restore them on return. Files and consent are not drafted.
+- Production deployment needs a persistent disk and regular protected backup. SMTP/CRM notification is not configured; saved submissions are the source of truth.
+
+## Front-end structure
 
 ```text
 index.html
+server.js
 assets/
-├── bootstrap/   # Bootstrap 5.3.8 distribution files
-├── css/
-│   ├── fonts.css
-│   ├── footer.css
-│   ├── header.css
-│   ├── page-hero.css
-│   ├── style.css
-│   ├── utility.css
-│   └── variables.css
-├── fonts/geist/ # Geist variable font, weights 100–900
-├── gsap/        # GSAP 3.15.1 distribution files
-├── icon/        # Font Awesome Free 7.3.1 files
-├── images/
-│   ├── background/ # Neon hero backgrounds
-│   └── logo/       # Light and dark Alify logos
-└── js/
-    ├── footer.js
-    ├── header.js
-    ├── main.js
-    └── page-hero.js
+├── bootstrap/   # Grid only: containers, rows, columns
+├── css/         # Custom design systems and revision.css
+├── fonts/geist/ # Local variable font
+├── gsap/        # Local GSAP + ScrollTrigger
+├── icon/        # Local Font Awesome Free
+├── images/      # Local heroes, service scenes, industries, logos
+└── js/          # Header, footer, home, pages and revision interactions
 ```
 
-## Pages
+The header exposes all ten services: Web Development, WordPress Development, Shopify Development, SEO, Digital Marketing, Content Writing, UI/UX Design, Graphic Design, Logo Design, and AI Automation.
 
-The site includes hero-only templates for Home, About, Contact, Start a Project, Services (archive/single), Projects (archive/single), Industries (archive/single), Case Studies (archive/single), FAQs, Testimonials, Pricing, Privacy Policy, Terms & Conditions, and Cookie Policy. All pages use the global header and footer components.
+Home includes a one-at-a-time industry carousel, responsive project scroll-stack, contextual section CTAs, and AJAX inquiry. All six project stories include a native-dialog lightbox. Blog filters persist in the URL and long articles include reading progress. Testimonials remain explicitly labelled demo content.
 
-Inner pages use the reusable `<page-hero>` component with `eyebrow`, `title`, `description`, and `background` attributes. Its styles, rendering, GSAP entrance animation, and scroll parallax live in `assets/css/page-hero.css` and `assets/js/page-hero.js`. All 14 local neon images are assigned across the 18 heroes; the optional `variant` attribute (`mirror-right`, `close-up`, or `soft-focus`) gives the remaining four pages distinct art direction without adding external assets.
+Inner pages retain the intentional reusable neon `<page-hero>` art direction. Services, Projects, Industries, and Case Studies have dedicated archive and single routes with different information-design systems.
 
-## Development
+Bootstrap is used **only** for `container`, `container-fluid`, `row`, and column classes. Semantic sections follow `section > container/container-fluid > row > column > content`. Brand colours and typography come from `assets/css/variables.css`; no inline styles are authored.
 
-Open `index.html` directly or serve the repository with any static HTTP server.
+## Content references
 
-Add the global components to any page with `<site-header></site-header>` and `<site-footer></site-footer>`, then include their respective CSS and JavaScript files. The header includes responsive navigation, a six-service mega menu with local icons, and an accessible right-side About dialog. On mobile, the hamburger opens a sliding right-side navigation drawer and services use a compact accordion. It overlays the hero with the light logo, then smoothly transitions to a compact centered glass container with the sticky logo after 48px of scrolling. The normal state restores below 24px to prevent threshold jitter.
-
-Bootstrap is used **only** for its grid classes: `container`, `container-fluid`, `row`, and columns. Components, utilities, and other styling are custom. Project utility classes use the `u-` prefix.
-
-Authored HTML must not contain inline `style` attributes. Semantic sections wrap the grid: `section > container/container-fluid > row > column > content`; never place a `section` inside a Bootstrap column.
-
-Use the shared color and typography variables from `assets/css/variables.css`; do not introduce one-off brand colors in page styles.
+- `PRICING-RESEARCH.md` documents comparable published pricing sources.
+- `REVISION-QA.md` records implementation and final validation.
+- Earlier audit reports remain for historical context; the revision brief supersedes their open recommendations where explicitly addressed.

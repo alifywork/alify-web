@@ -2,11 +2,15 @@
 
 const alifyServices = [
   { title: "Web Development", slug: "web-development", icon: "fa-code", description: "Fast, scalable digital experiences." },
+  { title: "WordPress Development", slug: "wordpress-development", icon: "fa-brands fa-wordpress", description: "Flexible, manageable publishing platforms." },
+  { title: "Shopify Development", slug: "shopify-development", icon: "fa-brands fa-shopify", description: "Commerce built to convert and grow." },
   { title: "SEO", slug: "seo", icon: "fa-magnifying-glass", description: "Grow visibility and organic reach." },
   { title: "Digital Marketing", slug: "digital-marketing", icon: "fa-bullhorn", description: "Campaigns that create momentum." },
   { title: "AI Automation", slug: "ai-automation", icon: "fa-robot", description: "Smarter systems and workflows." },
   { title: "UI UX Design", slug: "ui-ux-design", icon: "fa-pen-ruler", description: "Intuitive, human-centered products." },
-  { title: "Logo Design", slug: "logo-design", icon: "fa-pen-nib", description: "Distinctive marks for ambitious brands." }
+  { title: "Logo Design", slug: "logo-design", icon: "fa-pen-nib", description: "Distinctive marks for ambitious brands." },
+  { title: "Content Writing", slug: "content-writing", icon: "fa-file-pen", description: "Clear stories for people and search." },
+  { title: "Graphic Design", slug: "graphic-design", icon: "fa-shapes", description: "Campaign and communication design." }
 ];
 
 class SiteHeader extends HTMLElement {
@@ -16,7 +20,7 @@ class SiteHeader extends HTMLElement {
 
     const serviceLinks = alifyServices.map((service) => `
       <a class="mega-menu__link" href="${service.slug}.html">
-        <span class="mega-menu__icon" aria-hidden="true"><i class="fa-solid ${service.icon}"></i></span>
+        <span class="mega-menu__icon" aria-hidden="true"><i class="${service.icon.startsWith("fa-brands") ? service.icon : `fa-solid ${service.icon}`}"></i></span>
         <span class="mega-menu__copy">
           <strong>${service.title}</strong>
           <small>${service.description}</small>
@@ -26,7 +30,7 @@ class SiteHeader extends HTMLElement {
 
     const mobileServiceLinks = alifyServices.map((service) => `
       <a href="${service.slug}.html">
-        <i class="fa-solid ${service.icon}" aria-hidden="true"></i>
+        <i class="${service.icon.startsWith("fa-brands") ? service.icon : `fa-solid ${service.icon}`}" aria-hidden="true"></i>
         <span>${service.title}</span>
       </a>
     `).join("");
@@ -154,7 +158,7 @@ class SiteHeader extends HTMLElement {
           </div>
 
           <div class="drawer__content" id="about">
-            <p class="drawer__eyebrow">Independent digital studio</p>
+            <p class="drawer__eyebrow">Worldwide digital agency</p>
             <h2 class="drawer__title" id="about-drawer-title">Ideas, designed to move people.</h2>
             <p class="drawer__copy">
               We blend strategy, thoughtful design, and creative technology to build distinctive digital experiences for ambitious brands.
@@ -167,6 +171,13 @@ class SiteHeader extends HTMLElement {
             </ul>
           </div>
 
+          <div class="social-links" aria-label="ALIFY social media">
+            <a href="#" aria-label="ALIFY on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="ALIFY on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="ALIFY on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="ALIFY on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="#" aria-label="ALIFY on Behance"><i class="fa-brands fa-behance" aria-hidden="true"></i></a>
+          </div>
           <a class="drawer__cta" href="start-project.html" data-drawer-close>
             Start a project <i class="fa-solid fa-arrow-right icon-arrow-up-right" aria-hidden="true"></i>
           </a>
