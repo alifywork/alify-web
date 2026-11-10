@@ -143,6 +143,13 @@ Measured 390 px document heights after implementation:
 - Verified health API, 200/304 asset responses, nested 404 behaviour, and empty HEAD bodies.
 - Re-ran 44 HTML files across five widths (220 loads): zero overflow, JavaScript errors, or failed responses.
 
+## Final UX and raster-optimisation pass
+
+- Converted all eight wave-line PNGs and five Industry JPGs to sized WebP assets, reducing their combined transfer payload from approximately 12.03 MB to 1.75 MB (85.5% reduction).
+- Preserved transparency, aspect ratios, and visual quality; reviewed the four-up Home Industry carousel after conversion.
+- Mobile WCAG 2.2 target-size checks pass on Home, Projects, Industries, Blog, Testimonials, FAQs, Contact, and Start Project.
+- Re-ran 44 HTML files across five widths (220 loads): zero overflow, JavaScript errors, or failed responses; targeted Axe checks remain clean.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.
