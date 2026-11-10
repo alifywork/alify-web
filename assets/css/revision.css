@@ -340,6 +340,9 @@ body[class*="page-"][class*="development"] .practice-section,
 /* Inline policy links retain affordance; button/navigation underlines stay removed. */
 .form-consent a { text-decoration: underline; text-underline-offset: .15em; }
 
+/* Keep project vectors fully visible inside the original Home Work grid. */
+.work-grid .work-card__image img { object-fit: contain; }
+
 /* Selected Work: cohesive editorial gallery, replacing the loud coloured panels. */
 .home-section:has([data-work-stack]) { background: #101214; }
 .work-scroll-stack { gap: 12vh; }

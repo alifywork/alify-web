@@ -102,11 +102,11 @@ Measured 390 px document heights after implementation:
 - Re-ran 215 responsive loads at five widths with zero horizontal overflow.
 - Full-site Axe rerun found only two inline-policy-link affordance issues; persistent inline link underlines were restored and both affected pages retested with zero violations.
 
-## Selected Work visual redesign
+## Selected Work original grid restoration
 
-- Replaced mismatched bright card backgrounds and clipped oversized titles with a cohesive warm-ivory editorial system.
-- Balanced media/text proportions, reduced decorative numbering, refined controls, and replaced the generic Fintech neon artwork with relevant product artwork.
-- Verified 1440, 1024, 768, 390, and 320px layouts with no page overflow; Home Axe and browser error checks pass.
+- Removed the sticky scroll stack, scene animations, oversized numbering, and scroll progress from Home Selected Work.
+- Restored the original asymmetric project grid: two cards in the first row and one full-width card below.
+- Project artwork remains fully visible; desktop/tablet/mobile overflow and browser error checks pass.
 
 ## Deployment boundary
 
