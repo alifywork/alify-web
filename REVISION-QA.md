@@ -113,7 +113,7 @@ Measured 390 px document heights after implementation:
 - Added subtle local wave-folder artwork to white sections sitewide while preserving white backgrounds and excluding soft/dark sections.
 - Synchronised the first three Home testimonials with the Testimonials archive content.
 - Replaced the Testimonials archive carousel with six fully visible responsive cards and no inactive/inert slides.
-- Added complementary navy surfaces to Home Work cards, readable light surfaces to Work and Industry archive cards, and Home-matching soft surfaces to Blog cards.
+- Added theme-variable surfaces to Home Work (`--color-primary`), Work/Industry archives (`--color-secondary`), and Home-matching soft surfaces to Blog cards; increased white-section wave visibility while preserving readability.
 - Visually reviewed all five affected desktop views and the wave treatment.
 - Passed 43 pages across five widths (215 loads) with zero horizontal overflow or JavaScript errors.
 - Home, Projects, Industries, Blog, Testimonials, and FAQs Axe checks report zero tested violations; shared testimonial content comparison passes.

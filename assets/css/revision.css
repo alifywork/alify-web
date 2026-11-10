@@ -486,7 +486,7 @@ body[class*="page-"][class*="development"] .practice-section,
   height: 78%;
   background: url("../images/wave/wave-01.png") right bottom / contain no-repeat;
   content: "";
-  opacity: .14;
+  opacity: .24;
   pointer-events: none;
 }
 .home-section--white:nth-of-type(3n+2)::before,
@@ -495,40 +495,40 @@ body[class*="page-"][class*="development"] .practice-section,
   left: -8%;
   background-image: url("../images/wave/wave-04.png");
   background-position: left bottom;
-  opacity: .1;
+  opacity: .18;
 }
 .home-section--white:nth-of-type(3n)::before,
 .page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink):nth-of-type(3n)::before {
   background-image: url("../images/wave/wave-07.png");
-  opacity: .11;
+  opacity: .2;
 }
 
 /* Home Work: slightly lifted navy surfaces against the charcoal section. */
 .work-grid .work-card {
   min-width: 0;
   padding: 1rem;
-  border: 1px solid rgb(255 255 255 / 9%);
+  border: 1px solid color-mix(in srgb, var(--color-amber-light) 18%, transparent);
   border-radius: 1.25rem;
-  background: #171d28;
+  background: var(--color-primary);
 }
 .work-grid .work-card__image { margin-bottom: 0; border-radius: .85rem; }
 .work-grid .work-card__meta { display: block; padding: 1.25rem .25rem .25rem; }
-.work-grid .work-card__meta h3 { color: #f7f8fb; }
-.work-grid .work-card__meta p { margin-top: .55rem; color: rgb(255 255 255 / 60%); }
+.work-grid .work-card__meta h3 { color: var(--color-white); }
+.work-grid .work-card__meta p { margin-top: .55rem; color: color-mix(in srgb, var(--color-white) 72%, transparent); }
 
 /* Work and Industry archives: warm, quiet surfaces with readable dark type. */
 .project-mosaic__card,
 .industry-archive-card {
-  border: 1px solid #dfe3e9;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
   color: var(--color-charcoal);
-  background: #eef1f5;
+  background: var(--color-secondary);
 }
 .project-mosaic__body p,
-.industry-archive-card p { color: #53606f; }
+.industry-archive-card p { color: color-mix(in srgb, var(--color-charcoal) 70%, transparent); }
 .project-mosaic__card .page-eyebrow,
 .project-mosaic__card .detail-link,
 .industry-archive-card .page-eyebrow,
-.industry-archive-card .detail-link { color: #934817; }
+.industry-archive-card .detail-link { color: var(--color-primary); }
 .project-mosaic__card:hover,
 .industry-archive-card:hover { border-color: #b9c5d3; box-shadow: 0 16px 40px rgb(15 52 115 / 10%); }
 .industry-archive-card { background: #f2efe9; border-color: #e5dfd5; }
@@ -574,7 +574,7 @@ body[class*="page-"][class*="development"] .practice-section,
 }
 @media (max-width: 767.98px) {
   .home-section--white::before,
-  .page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink)::before { width: 100%; height: 55%; opacity: .09; }
+  .page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink)::before { width: 100%; height: 55%; opacity: .16; }
   .review-grid .review-slider__track { grid-template-columns: 1fr; }
   .review-grid .review-slider__card,
   .review-grid .review-slider__card.is-active { min-height: 0; }
