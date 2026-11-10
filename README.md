@@ -1,6 +1,6 @@
 # ALIFY — Worldwide Digital Agency
 
-A responsive agency website with 43 public HTML routes plus a branded 404 page, ten dedicated service pages, distinct archive/single presentation systems, interactive portfolio galleries, and a persistent Node.js inquiry backend. Vendor assets are local; no CDN is required.
+A responsive agency website with 43 indexable HTML routes plus branded Thank You and 404 pages, ten dedicated service pages, distinct archive/single presentation systems, interactive portfolio galleries, and a persistent Node.js inquiry backend. Vendor assets are local; no CDN is required.
 
 ## Run
 
@@ -16,6 +16,7 @@ The website and API listen on `0.0.0.0:8000`. Set `PORT` or `HOST` to override. 
 - `POST /api/inquiries` accepts multipart AJAX submissions from the Homepage, Contact, and Start Project forms.
 - `GET /api/health` provides a service health check.
 - Each valid inquiry receives a unique `ALF-YYYYMMDD-XXXXXX` reference.
+- Successful Home, Contact, and Start Project submissions redirect to `/thank-you.html?reference=…`; the noindex Thank You page validates and displays the reference without injecting markup. Failed submissions remain on the form with their existing error/draft handling.
 - Inquiry JSON and attachments are stored under `storage/inquiries/`, which is Git-ignored and blocked from public static serving.
 - Up to three PDF, DOC, DOCX, TXT, PNG, or JPG files are accepted, 5 MB each; total requests are capped at 16 MB.
 - Includes same-origin checks, required field/consent validation, honeypot handling, and basic per-IP rate limiting.

@@ -271,7 +271,7 @@ class SiteHeader extends HTMLElement {
   }
 
   updateStickyHeader() {
-    const requiresLightHeader = document.body.classList.contains("page-not-found");
+    const requiresLightHeader = document.body.matches(".page-not-found, .page-thank-you");
     const isSticky = requiresLightHeader || (this.header.classList.contains("is-sticky")
       ? window.scrollY > 24
       : window.scrollY > 48);
