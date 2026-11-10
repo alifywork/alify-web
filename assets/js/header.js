@@ -271,9 +271,10 @@ class SiteHeader extends HTMLElement {
   }
 
   updateStickyHeader() {
-    const isSticky = this.header.classList.contains("is-sticky")
+    const requiresLightHeader = document.body.classList.contains("page-not-found");
+    const isSticky = requiresLightHeader || (this.header.classList.contains("is-sticky")
       ? window.scrollY > 24
-      : window.scrollY > 48;
+      : window.scrollY > 48);
     this.header.classList.toggle("is-sticky", isSticky);
     this.headerShell.classList.toggle("container", isSticky);
     this.headerShell.classList.toggle("container-fluid", !isSticky);

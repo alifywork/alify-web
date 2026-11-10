@@ -117,11 +117,35 @@ async function serveStatic(request, response, pathname) {
     if (stat.isDirectory()) { file = path.join(file, "index.html"); }
     const finalStat = await fsp.stat(file);
     if (!finalStat.isFile()) throw new Error("Not a file");
-    response.writeHead(200, { "Content-Type": mimeTypes[path.extname(file).toLowerCase()] || "application/octet-stream", "Content-Length": finalStat.size, "X-Content-Type-Options": "nosniff", "Referrer-Policy": "strict-origin-when-cross-origin" });
+    const extension = path.extname(file).toLowerCase();
+    const etag = `"${finalStat.size.toString(16)}-${Math.floor(finalStat.mtimeMs).toString(16)}"`;
+    const headers = {
+      "Content-Type": mimeTypes[extension] || "application/octet-stream",
+      "Content-Length": finalStat.size,
+      "Cache-Control": extension === ".html" ? "no-cache" : "public, max-age=3600, must-revalidate",
+      "ETag": etag,
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+    };
+    if (request.headers["if-none-match"] === etag) {
+      response.writeHead(304, headers);
+      return response.end();
+    }
+    response.writeHead(200, headers);
+    if (request.method === "HEAD") return response.end();
     fs.createReadStream(file).pipe(response);
   } catch {
-    response.writeHead(404, { "Content-Type": "text/html; charset=utf-8" });
-    response.end("<!doctype html><title>Page not found — ALIFY</title><h1>Page not found</h1><p><a href=\"/\">Return to ALIFY</a></p>");
+    const notFound = path.join(root, "404.html");
+    try {
+      const stat = await fsp.stat(notFound);
+      response.writeHead(404, { "Content-Type": "text/html; charset=utf-8", "Content-Length": stat.size, "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" });
+      if (request.method === "HEAD") return response.end();
+      fs.createReadStream(notFound).pipe(response);
+    } catch {
+      response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" });
+      response.end("Page not found — ALIFY");
+    }
   }
 }
 

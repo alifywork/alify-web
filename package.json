@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "check": "node --check server.js && node --check assets/js/revision.js && node --check assets/js/pages.js && node --check assets/js/home.js"
+    "check": "node --check server.js && node --check scripts/export-inquiries.js && node --check assets/js/header.js && node --check assets/js/revision.js && node --check assets/js/pages.js && node --check assets/js/home.js",
+    "inquiries:export": "node scripts/export-inquiries.js"
   },
   "engines": {
     "node": ">=20"

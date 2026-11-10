@@ -2,3 +2,4 @@ node_modules/
 storage/inquiries/
 *.log
 .DS_Store
+storage/exports/

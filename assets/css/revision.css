@@ -418,3 +418,12 @@ body[class*="page-"][class*="development"] .practice-section,
   filter: none;
   transform: none;
 }
+
+/* Production 404 page */
+.not-found { display: grid; min-height: 72vh; align-items: center; padding-block: clamp(6rem, 12vw, 10rem); background: var(--color-secondary); }
+.not-found__panel { max-width: 56rem; margin-inline: auto; text-align: center; }
+.not-found__panel .page-eyebrow { display: inline-flex; }
+.not-found__panel h1 { margin: 1.5rem 0; color: var(--color-primary); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 500; letter-spacing: -.065em; line-height: .98; }
+.not-found__panel > p:not(.page-eyebrow) { max-width: 38rem; margin-inline: auto; color: color-mix(in srgb, var(--color-charcoal) 68%, transparent); }
+.not-found__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 2rem; }
+@media (max-width: 575.98px) { .not-found__actions .button { width: 100%; } }

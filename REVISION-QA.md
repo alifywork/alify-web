@@ -135,6 +135,14 @@ Measured 390 px document heights after implementation:
 - Metadata uniqueness, JSON parsing, sitemap targets, and internal asset/link audit found zero errors.
 - Re-ran 215 responsive loads with zero overflow, JavaScript errors, or failed network responses; targeted Axe checks remain clean.
 
+## Production-readiness pass
+
+- Added static asset caching with one-hour revalidation, ETag/304 handling, proper HEAD responses, and restrictive unused-permission headers.
+- Added a responsive branded 404 page with correct 404 status, root-safe assets/links, light-header handling, and zero tested Axe violations.
+- Added `npm run inquiries:export` for local CSV exports into private Git-ignored `storage/exports/`; verified four existing records export without creating a public data route.
+- Verified health API, 200/304 asset responses, nested 404 behaviour, and empty HEAD bodies.
+- Re-ran 44 HTML files across five widths (220 loads): zero overflow, JavaScript errors, or failed responses.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.

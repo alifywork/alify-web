@@ -1,6 +1,6 @@
 # ALIFY — Worldwide Digital Agency
 
-A responsive agency website with 43 HTML routes, ten dedicated service pages, distinct archive/single presentation systems, interactive portfolio galleries, and a persistent Node.js inquiry backend. Vendor assets are local; no CDN is required.
+A responsive agency website with 43 public HTML routes plus a branded 404 page, ten dedicated service pages, distinct archive/single presentation systems, interactive portfolio galleries, and a persistent Node.js inquiry backend. Vendor assets are local; no CDN is required.
 
 ## Run
 
@@ -21,6 +21,7 @@ The website and API listen on `0.0.0.0:8000`. Set `PORT` or `HOST` to override. 
 - Includes same-origin checks, required field/consent validation, honeypot handling, and basic per-IP rate limiting.
 - Contact and Start Project save non-sensitive draft fields in browser local storage and restore them on return. Files and consent are not drafted.
 - Production deployment needs a persistent disk and regular protected backup. SMTP/CRM notification is not configured; saved submissions are the source of truth.
+- Run `npm run inquiries:export` on the server to create a UTF-8 CSV in the Git-ignored private `storage/exports/` directory. Exports contain personal inquiry data and must be handled securely.
 
 ## Front-end structure
 
@@ -39,7 +40,7 @@ assets/
 
 The header exposes all ten services: Web Development, WordPress Development, Shopify Development, SEO, Digital Marketing, Content Writing, UI/UX Design, Graphic Design, Logo Design, and AI Automation.
 
-Home includes a one-at-a-time industry carousel, responsive project scroll-stack, contextual section CTAs, and AJAX inquiry. All six project stories include a native-dialog lightbox. Blog filters persist in the URL and long articles include reading progress. Testimonials remain explicitly labelled demo content.
+Home includes a one-at-a-time industry carousel, responsive project grid, contextual section CTAs, and AJAX inquiry. All six project stories include a native-dialog lightbox. Blog filters persist in the URL and long articles include reading progress. Testimonials remain explicitly labelled demo content.
 
 Inner pages retain the intentional reusable neon `<page-hero>` art direction. Services, Projects, Industries, and Case Studies have dedicated archive and single routes with different information-design systems.
 
