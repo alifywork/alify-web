@@ -258,3 +258,89 @@ body[class*="page-"][class*="development"] .practice-section,
   .work-scroll-stack .work-card__meta::before { margin-bottom: 1rem; }
   .work-scroll-stack .work-card__image { aspect-ratio: 4 / 3; }
 }
+
+/* Global control alignment and screenshot-driven UI corrections */
+:is(.button, .header__cta, .footer-cta__link, .section-link, .detail-link, .drawer__cta, .footer__contact-page, .footer__brand-email, .footer__back-top, .inquiry-card__email, .mega-menu__header a, .carousel-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+:is(.section-link, .detail-link, .footer__contact-page, .footer__brand-email, .footer__back-top, .inquiry-card__email) { justify-content: flex-start; }
+:is(.button, .header__cta, .footer-cta__link, .section-link, .detail-link, .drawer__cta, .footer__contact-page, .footer__brand-email, .footer__back-top, .inquiry-card__email, .mega-menu__header a, .carousel-button) i {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Compact Home consent instead of full-width input styling. */
+.inquiry-form .form-consent { display: block; margin: .25rem 0 0; }
+.inquiry-form .form-consent > span {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--color-white) 72%, transparent);
+  font-size: .72rem;
+  line-height: 1.55;
+}
+.inquiry-form .form-consent input[type="checkbox"] {
+  flex: 0 0 1.15rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  min-height: 0;
+  margin: .1rem 0 0;
+  padding: 0;
+  accent-color: var(--color-amber);
+}
+.inquiry-form .form-consent a { color: var(--color-amber-light); }
+.inquiry-form__footer { margin-top: .5rem; padding-top: 1.25rem; border-top: 1px solid color-mix(in srgb,var(--color-white) 12%,transparent); }
+.inquiry-form__footer p { max-width: 20rem; line-height: 1.5; }
+
+/* Relocated FAQ categories sit naturally beneath the intro CTA. */
+.faq-filters--relocated { margin-top: 1.25rem; }
+.faq-filters--relocated button { min-height: 2rem; }
+.faq-content > .faq-list { margin-top: 0; }
+
+/* Readable archive headings and a consistent portfolio grid. */
+.archive-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(20rem, .7fr);
+  align-items: end;
+  gap: clamp(2rem,5vw,5rem);
+}
+.archive-intro .page-title { max-width: 14ch; }
+.archive-intro .page-lead { max-width: 34rem; margin: 0; }
+.project-mosaic { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: stretch; }
+.project-mosaic__card,
+.project-mosaic__card:nth-child(3n),
+.project-mosaic__card:nth-child(3n+1) {
+  display: flex;
+  grid-column: auto;
+  flex-direction: column;
+  min-width: 0;
+}
+.project-mosaic__card img { aspect-ratio: 16 / 10; object-fit: contain; background: var(--color-black); }
+.project-mosaic__body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; min-height: 13rem; }
+.project-mosaic__body .detail-link { margin-top: auto; padding-top: 1rem; }
+
+@media (max-width: 991.98px) {
+  .archive-intro { grid-template-columns: 1fr; align-items: start; gap: 1.25rem; }
+  .archive-intro .page-title { max-width: 16ch; }
+}
+@media (max-width: 767.98px) {
+  .archive-intro { display: flex; }
+  .project-mosaic { grid-template-columns: 1fr; }
+  .project-mosaic__body { min-height: 11rem; }
+  .inquiry-form__footer { align-items: flex-start; flex-direction: column; }
+  .inquiry-form__footer .button { width: 100%; }
+  .faq-filters--relocated { margin-top: 1rem; }
+}
+.faq-tools:has(.faq-search[hidden]) { display: none; }
+/* Inline policy links retain affordance; button/navigation underlines stay removed. */
+.form-consent a { text-decoration: underline; text-underline-offset: .15em; }

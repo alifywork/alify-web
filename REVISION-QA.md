@@ -91,6 +91,17 @@ Measured 390 px document heights after implementation:
 - Verified four fully visible 1440 px cards with identical 446 px heights, automatic `1 → 2` advancement, pause/resume, two tablet cards, and one mobile card.
 - Final Home checks at 1440, 1024, 768, 390, and 320 px found no horizontal overflow; Home axe scan reported zero tested violations.
 
+## Screenshot-driven UI correction pass
+
+- Standardised text/icon vertical alignment and gaps across buttons, arrows, text CTAs, footer links, and carousel controls.
+- Retired FAQ search fields and relocated category filters beneath the left introduction/CTA on every FAQ instance while preserving filter behaviour.
+- Rebuilt Home privacy consent as a compact checkbox row with a separated submission footer; AJAX behaviour remains unchanged.
+- Replaced uneven Projects mosaic placement with a consistent two-column portfolio grid and uncropped artwork.
+- Corrected archive heading grids to prevent narrow, skewed line breaks.
+- All 43 pages and FAQ filter interactions completed without JavaScript errors.
+- Re-ran 215 responsive loads at five widths with zero horizontal overflow.
+- Full-site Axe rerun found only two inline-policy-link affordance issues; persistent inline link underlines were restored and both affected pages retested with zero violations.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.

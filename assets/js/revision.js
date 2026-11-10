@@ -7,6 +7,22 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (event) => event.preventDefault());
   });
 
+  // FAQ categories belong with the page introduction/CTA; search is retired.
+  // Existing filter listeners remain attached when the controls move.
+  document.querySelectorAll(".faq-content").forEach((content) => {
+    const section = content.closest("section");
+    const heading = section?.querySelector(".section-heading, .detail-heading, .page-heading");
+    const filters = content.querySelector(".faq-filters");
+    if (heading && filters) {
+      filters.classList.add("faq-filters--relocated");
+      heading.append(filters);
+    }
+    const search = content.querySelector(".faq-search");
+    if (search) search.hidden = true;
+    const tools = content.querySelector(".faq-tools");
+    if (tools && !tools.children.length) tools.remove();
+  });
+
   // Centre-active, one-at-a-time review slider.
   document.querySelectorAll("[data-review-slider]").forEach((slider) => {
     const track = slider.querySelector(".review-slider__track");
