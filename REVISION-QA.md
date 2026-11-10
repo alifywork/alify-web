@@ -108,6 +108,16 @@ Measured 390 px document heights after implementation:
 - Restored the original asymmetric project grid: two cards in the first row and one full-width card below.
 - Project artwork remains fully visible; desktop/tablet/mobile overflow and browser error checks pass.
 
+## Sitewide surfaces, waves, and testimonial consistency
+
+- Added subtle local wave-folder artwork to white sections sitewide while preserving white backgrounds and excluding soft/dark sections.
+- Synchronised the first three Home testimonials with the Testimonials archive content.
+- Replaced the Testimonials archive carousel with six fully visible responsive cards and no inactive/inert slides.
+- Added complementary navy surfaces to Home Work cards, readable light surfaces to Work and Industry archive cards, and Home-matching soft surfaces to Blog cards.
+- Visually reviewed all five affected desktop views and the wave treatment.
+- Passed 43 pages across five widths (215 loads) with zero horizontal overflow or JavaScript errors.
+- Home, Projects, Industries, Blog, Testimonials, and FAQs Axe checks report zero tested violations; shared testimonial content comparison passes.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.

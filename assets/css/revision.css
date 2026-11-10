@@ -467,3 +467,116 @@ body[class*="page-"][class*="development"] .practice-section,
   .work-scroll-stack .work-card__meta h3 { font-size: 2.35rem; }
   .work-card__number { position: static; padding: 1rem 1rem 0; }
 }
+
+/* Sitewide white-section wave artwork and coordinated card surfaces. */
+.home-section--white,
+.page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-white);
+}
+.home-section--white::before,
+.page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink)::before {
+  position: absolute;
+  z-index: -1;
+  right: -5%;
+  bottom: -8%;
+  width: min(68rem, 72%);
+  height: 78%;
+  background: url("../images/wave/wave-01.png") right bottom / contain no-repeat;
+  content: "";
+  opacity: .14;
+  pointer-events: none;
+}
+.home-section--white:nth-of-type(3n+2)::before,
+.page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink):nth-of-type(3n+2)::before {
+  right: auto;
+  left: -8%;
+  background-image: url("../images/wave/wave-04.png");
+  background-position: left bottom;
+  opacity: .1;
+}
+.home-section--white:nth-of-type(3n)::before,
+.page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink):nth-of-type(3n)::before {
+  background-image: url("../images/wave/wave-07.png");
+  opacity: .11;
+}
+
+/* Home Work: slightly lifted navy surfaces against the charcoal section. */
+.work-grid .work-card {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 1.25rem;
+  background: #171d28;
+}
+.work-grid .work-card__image { margin-bottom: 0; border-radius: .85rem; }
+.work-grid .work-card__meta { display: block; padding: 1.25rem .25rem .25rem; }
+.work-grid .work-card__meta h3 { color: #f7f8fb; }
+.work-grid .work-card__meta p { margin-top: .55rem; color: rgb(255 255 255 / 60%); }
+
+/* Work and Industry archives: warm, quiet surfaces with readable dark type. */
+.project-mosaic__card,
+.industry-archive-card {
+  border: 1px solid #dfe3e9;
+  color: var(--color-charcoal);
+  background: #eef1f5;
+}
+.project-mosaic__body p,
+.industry-archive-card p { color: #53606f; }
+.project-mosaic__card .page-eyebrow,
+.project-mosaic__card .detail-link,
+.industry-archive-card .page-eyebrow,
+.industry-archive-card .detail-link { color: #934817; }
+.project-mosaic__card:hover,
+.industry-archive-card:hover { border-color: #b9c5d3; box-shadow: 0 16px 40px rgb(15 52 115 / 10%); }
+.industry-archive-card { background: #f2efe9; border-color: #e5dfd5; }
+
+/* Blog archive uses the same soft surface as the Home insight cards. */
+.article-card {
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 9%, transparent);
+  border-radius: 1.25rem;
+  background: var(--color-secondary);
+}
+.article-card__media { border-radius: .85rem; }
+.article-card__copy { padding: 1.5rem .65rem .65rem; }
+
+/* Testimonials archive: all reviews visible, with no slider state or controls. */
+.review-grid { overflow: visible; padding-top: 1rem; }
+.review-grid .review-slider__track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+.review-grid .review-slider__track::before,
+.review-grid .review-slider__track::after { display: none; content: none; }
+.review-grid .review-slider__card,
+.review-grid .review-slider__card.is-active {
+  display: flex;
+  min-width: 0;
+  min-height: 21rem;
+  flex-direction: column;
+  padding: 1.75rem;
+  border-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  opacity: 1;
+  filter: none;
+  box-shadow: none;
+}
+.review-grid .review-slider__card blockquote { font-size: clamp(1.15rem, 1.7vw, 1.5rem); }
+.review-grid .review-slider__card figcaption { margin-top: auto; color: #586574; }
+
+@media (max-width: 991.98px) {
+  .review-grid .review-slider__track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767.98px) {
+  .home-section--white::before,
+  .page-section:not(.page-section--soft):not(.page-section--dark):not(.detail-section--ink)::before { width: 100%; height: 55%; opacity: .09; }
+  .review-grid .review-slider__track { grid-template-columns: 1fr; }
+  .review-grid .review-slider__card,
+  .review-grid .review-slider__card.is-active { min-height: 0; }
+  .work-grid .work-card { padding: .65rem; }
+}
