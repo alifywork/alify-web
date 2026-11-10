@@ -580,3 +580,26 @@ body[class*="page-"][class*="development"] .practice-section,
   .review-grid .review-slider__card.is-active { min-height: 0; }
   .work-grid .work-card { padding: .65rem; }
 }
+
+/* Home slider uses the same Google review card design as the archive. */
+.testimonial-track .testimonial-card {
+  min-height: 21rem;
+  padding: 1.75rem;
+  border-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  box-shadow: none;
+}
+.testimonial-track .testimonial-card blockquote {
+  margin: 1.5rem 0;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  line-height: 1.35;
+}
+.testimonial-track .testimonial-card figcaption {
+  margin-top: auto;
+  color: #586574;
+}
+.testimonial-track .testimonial-card__source { flex: 0 0 auto; }
+.testimonial-track .testimonial-card:is(.is-prev, .is-next) {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}

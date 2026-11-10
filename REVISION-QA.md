@@ -111,7 +111,7 @@ Measured 390 px document heights after implementation:
 ## Sitewide surfaces, waves, and testimonial consistency
 
 - Added subtle local wave-folder artwork to white sections sitewide while preserving white backgrounds and excluding soft/dark sections.
-- Synchronised the first three Home testimonials with the Testimonials archive content.
+- Synchronised the first three Home testimonials with the Testimonials archive and reused its exact Google Reviews card structure/design inside the Home slider; removed legacy avatar cards and side-card blur/fade.
 - Replaced the Testimonials archive carousel with six fully visible responsive cards and no inactive/inert slides.
 - Added theme-variable surfaces to Home Work (`--color-primary`), Work/Industry archives (`--color-secondary`), and Home-matching soft surfaces to Blog cards; increased white-section wave visibility while preserving readability.
 - Visually reviewed all five affected desktop views and the wave treatment.
