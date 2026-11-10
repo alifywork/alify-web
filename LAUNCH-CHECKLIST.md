@@ -19,7 +19,7 @@
 
 ## Production verification
 
-- [ ] Submit Home, Contact, and Start Project inquiries and save their references; confirm records persist after an application restart.
+- [ ] Submit Home, Contact, and Start Project inquiries and confirm each redirects to the Thank You page with its reference; confirm records persist after an application restart.
 - [ ] Test one real attachment and then securely remove test inquiries/files.
 - [ ] If SMTP is enabled, verify notification delivery and configure SPF, DKIM, and DMARC with the mail provider. Saved inquiries remain authoritative if email fails.
 - [ ] Run `npm run inquiries:export` on the server and confirm the CSV is private and access-controlled.

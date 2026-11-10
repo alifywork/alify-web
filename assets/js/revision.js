@@ -146,6 +146,16 @@ document.addEventListener("DOMContentLoaded", () => {
     updateUrl();
   }
 
+  // Thank-you references are read from a strict format and rendered as text only.
+  const referenceDisplay = document.querySelector("[data-thank-you-reference]");
+  if (referenceDisplay) {
+    const reference = new URLSearchParams(window.location.search).get("reference") || "";
+    if (/^ALF-\d{8}-[A-F0-9]{6}$/.test(reference)) {
+      referenceDisplay.textContent = reference;
+      referenceDisplay.hidden = false;
+    }
+  }
+
   // Native progress element avoids inline styling and works with reduced motion.
   if (document.querySelector(".article-body-section")) {
     const progress = document.createElement("progress");

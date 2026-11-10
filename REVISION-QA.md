@@ -164,6 +164,13 @@ Measured 390 px document heights after implementation:
 - Industry autoplay independently advanced from 1 to 2 and its pause control updated correctly; hover pausing remains intentional.
 - Added `LAUNCH-CHECKLIST.md` for deployment, DNS, SMTP, persistent storage, backups, real-content replacements, and post-launch verification.
 
+## Thank You confirmation flow
+
+- Added a responsive, noindex Thank You page with confirmation messaging, next steps, navigation actions, and secure inquiry-reference display.
+- Home, Contact, and Start Project now redirect only after successful API persistence; existing validation, review, error, and draft behaviour remains intact.
+- Strictly validates `ALF-YYYYMMDD-XXXXXX` references and uses `textContent`; invalid/missing references stay hidden.
+- Actual submissions from all three forms redirected with matching displayed references and were cleaned afterward. Thank You Axe, invalid-reference, and mobile overflow checks pass.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.

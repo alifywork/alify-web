@@ -220,11 +220,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch("/api/inquiries", { method: "POST", body: new FormData(inquiryForm), headers: { Accept: "application/json" } });
         const submission = await response.json();
         if (!response.ok || !submission.ok) throw new Error(submission.message || "Submission failed");
-        result.querySelector("p").innerHTML = 'Your inquiry has been received. Your reference is <strong data-inquiry-reference></strong>.';
-        result.querySelector("[data-inquiry-reference]").textContent = submission.reference;
-        result.classList.remove("is-error");
-        result.hidden = false;
         inquiryForm.reset();
+        window.location.assign(`/thank-you.html?reference=${encodeURIComponent(submission.reference)}`);
       } catch (error) {
         result.classList.add("is-error");
         result.querySelector("p").textContent = `${error.message}. Please try again or email hello@alify.com.`;

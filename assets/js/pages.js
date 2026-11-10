@@ -138,11 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
           form.reset();
           try { localStorage.removeItem(draftKey); } catch { /* Storage is optional. */ }
           if (draftStatus) draftStatus.textContent = "";
-          status.className = "form-submit-status is-success";
-          status.innerHTML = `Inquiry received. Your reference is <span class="inquiry-review__reference"></span>. Keep it for your records; our team will respond by email.`;
-          status.querySelector("span").textContent = result.reference;
-          status.focus({ preventScroll: true });
-          status.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+          window.location.assign(`/thank-you.html?reference=${encodeURIComponent(result.reference)}`);
         } catch (error) {
           status.className = "form-submit-status is-error";
           status.textContent = `${error.message}. Your draft remains saved; please try again or email hello@alify.com.`;
