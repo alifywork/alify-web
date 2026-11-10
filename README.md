@@ -51,4 +51,5 @@ Bootstrap is used **only** for `container`, `container-fluid`, `row`, and column
 
 - `PRICING-RESEARCH.md` documents comparable published pricing sources.
 - `REVISION-QA.md` records implementation and final validation.
+- `LAUNCH-CHECKLIST.md` lists deployment, content, privacy, SMTP, backup, and post-launch requirements.
 - Earlier audit reports remain for historical context; the revision brief supersedes their open recommendations where explicitly addressed.

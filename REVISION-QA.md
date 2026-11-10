@@ -157,6 +157,13 @@ Measured 390 px document heights after implementation:
 - Missing SMTP configuration skips notification; SMTP errors are logged without discarding the saved inquiry or changing its successful reference response.
 - Local fake-SMTP integration test verified both successful delivery and SMTP-outage persistence; synthetic records were removed after testing. Dependency audit reports zero vulnerabilities.
 
+## Final functional and launch audit
+
+- Home AJAX inquiry, Contact review/attachment submission, and Start Project review submission all returned valid references and persisted; synthetic records/files were cleaned.
+- Blog search/reset and URL state, Home FAQ filters, testimonial controls, project lightbox next/close, and mobile navigation were exercised successfully with no browser errors.
+- Industry autoplay independently advanced from 1 to 2 and its pause control updated correctly; hover pausing remains intentional.
+- Added `LAUNCH-CHECKLIST.md` for deployment, DNS, SMTP, persistent storage, backups, real-content replacements, and post-launch verification.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.
