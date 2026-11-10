@@ -118,6 +118,13 @@ Measured 390 px document heights after implementation:
 - Passed 43 pages across five widths (215 loads) with zero horizontal overflow or JavaScript errors.
 - Home, Projects, Industries, Blog, Testimonials, and FAQs Axe checks report zero tested violations; shared testimonial content comparison passes.
 
+## Performance and maintenance pass
+
+- Converted the five referenced wave PNGs to resized 1440×960 WebP assets; active wave payload reduced from approximately 4.3 MB to 2.4 MB while preserving transparency.
+- Updated Home and sitewide white-section wave references to WebP; visual and network checks pass without failed requests.
+- Removed all retired scroll-stack CSS, responsive overrides, progress styles, and decorative-number rules (approximately 185 lines) without changing the restored original Work grid.
+- Re-ran 43 pages at five widths (215 loads): zero overflow or JavaScript errors; targeted Axe checks remain clean.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.

@@ -17,11 +17,11 @@
 }
 
 .home-section--services {
-  background: url("../images/wave/wave-02.png") left -16rem bottom -14rem / 56rem auto no-repeat, var(--color-secondary);
+  background: url("../images/wave/wave-02.webp") left -16rem bottom -14rem / 56rem auto no-repeat, var(--color-secondary);
 }
 
 .home-section--faq {
-  background: url("../images/wave/wave-05.png") left -16rem bottom -12rem / 52rem auto no-repeat, var(--color-white);
+  background: url("../images/wave/wave-05.webp") left -16rem bottom -12rem / 52rem auto no-repeat, var(--color-white);
 }
 
 .section-heading {
