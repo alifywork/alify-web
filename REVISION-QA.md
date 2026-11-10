@@ -82,6 +82,15 @@ Measured 390 px document heights after implementation:
 - Start Project browser submission with attachment verified; direct server attachment and JSON record also verified.
 - `npm run check`, JavaScript syntax, and Git whitespace checks pass.
 
+## Award-level Home refinement
+
+- Rebuilt Selected Work into cinematic, near-viewport editorial scenes with large alternating imagery, oversized indices, accent compositions, clip-path entrances, GSAP parallax, and live `01 / 03` scroll progress.
+- Reduced-motion and mobile layouts use static, readable stacked scenes.
+- Industries now shows four equal-height cards on wide desktop, two on tablet, and one on mobile.
+- Autoplay advances exactly one card every 3.8 seconds, includes duplicated continuation slides to avoid empty slots, pauses on card hover/focus/hidden tab, and exposes an accessible pause/resume control.
+- Verified four fully visible 1440 px cards with identical 446 px heights, automatic `1 → 2` advancement, pause/resume, two tablet cards, and one mobile card.
+- Final Home checks at 1440, 1024, 768, 390, and 320 px found no horizontal overflow; Home axe scan reported zero tested violations.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.

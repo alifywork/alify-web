@@ -342,29 +342,109 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// One-at-a-time responsive industry carousel.
+// Four-up, one-at-a-time responsive industry carousel with accessible autoplay.
 const industrySlider = document.querySelector("[data-industry-slider]");
 if (industrySlider) {
+  const originalSlides = [...industrySlider.querySelectorAll("[data-industry-slide]")];
+  originalSlides.slice(0, 3).forEach((slide) => {
+    const clone = slide.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.inert = true;
+    clone.dataset.industryClone = "true";
+    industrySlider.append(clone);
+  });
   const slides = [...industrySlider.querySelectorAll("[data-industry-slide]")];
   const previous = document.querySelector("[data-industry-prev]");
   const next = document.querySelector("[data-industry-next]");
   const current = document.querySelector("[data-industry-current]");
   const total = document.querySelector("[data-industry-total]");
+  const toggle = document.querySelector("[data-industry-toggle]");
+  const reduceIndustryMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let activeIndustry = 0;
-  total.textContent = String(slides.length);
-  const showIndustry = (index) => {
-    activeIndustry = Math.max(0, Math.min(index, slides.length - 1));
-    industrySlider.scrollTo({ left: slides[activeIndustry].offsetLeft - industrySlider.offsetLeft, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  let industryTimer = null;
+  let industryPaused = reduceIndustryMotion;
+  let industryInView = false;
+  total.textContent = String(originalSlides.length);
+
+  const stopIndustryRotation = () => { window.clearInterval(industryTimer); industryTimer = null; };
+  const showIndustry = (index, userInitiated = false) => {
+    activeIndustry = (index + originalSlides.length) % originalSlides.length;
+    industrySlider.scrollTo({ left: slides[activeIndustry].offsetLeft - industrySlider.offsetLeft, behavior: reduceIndustryMotion ? "auto" : "smooth" });
     current.textContent = String(activeIndustry + 1);
-    previous.disabled = activeIndustry === 0;
-    next.disabled = activeIndustry === slides.length - 1;
-    slides.forEach((slide, slideIndex) => slide.setAttribute("aria-current", String(slideIndex === activeIndustry)));
+    originalSlides.forEach((slide, slideIndex) => slide.setAttribute("aria-current", String(slideIndex === activeIndustry)));
+    if (userInitiated) { stopIndustryRotation(); startIndustryRotation(); }
   };
-  previous.addEventListener("click", () => showIndustry(activeIndustry - 1));
-  next.addEventListener("click", () => showIndustry(activeIndustry + 1));
-  industrySlider.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight") { event.preventDefault(); showIndustry(activeIndustry + 1); }
-    if (event.key === "ArrowLeft") { event.preventDefault(); showIndustry(activeIndustry - 1); }
+  const startIndustryRotation = () => {
+    if (industryPaused || !industryInView || document.hidden || industryTimer) return;
+    industryTimer = window.setInterval(() => showIndustry(activeIndustry + 1), 3800);
+  };
+  const updateIndustryToggle = () => {
+    toggle.setAttribute("aria-pressed", String(industryPaused));
+    toggle.setAttribute("aria-label", industryPaused ? "Resume automatic industries" : "Pause automatic industries");
+    toggle.querySelector("i").className = industryPaused ? "fa-solid fa-play" : "fa-solid fa-pause";
+  };
+  previous.addEventListener("click", () => showIndustry(activeIndustry - 1, true));
+  next.addEventListener("click", () => showIndustry(activeIndustry + 1, true));
+  toggle.addEventListener("click", () => {
+    industryPaused = !industryPaused;
+    updateIndustryToggle();
+    if (industryPaused) stopIndustryRotation(); else startIndustryRotation();
   });
+  industrySlider.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") { event.preventDefault(); showIndustry(activeIndustry + 1, true); }
+    if (event.key === "ArrowLeft") { event.preventDefault(); showIndustry(activeIndustry - 1, true); }
+  });
+  const industryRegion = industrySlider.closest("section");
+  industrySlider.addEventListener("mouseenter", stopIndustryRotation);
+  industrySlider.addEventListener("mouseleave", startIndustryRotation);
+  industryRegion.addEventListener("focusin", () => stopIndustryRotation("focusin"));
+  industryRegion.addEventListener("focusout", () => window.setTimeout(() => { if (!industryRegion.contains(document.activeElement)) startIndustryRotation(); }, 0));
+  document.addEventListener("visibilitychange", () => document.hidden ? stopIndustryRotation() : startIndustryRotation());
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver((entries) => {
+      industryInView = entries[0].isIntersecting;
+      if (industryInView) startIndustryRotation(); else stopIndustryRotation();
+    }, { threshold: 0.35 }).observe(industrySlider);
+  } else { industryInView = true; startIndustryRotation(); }
+  if (reduceIndustryMotion) toggle.hidden = true;
+  updateIndustryToggle();
   showIndustry(0);
 }
+
+// Cinematic, editorial project stack. Motion is scroll-led, never hover-scaled.
+document.addEventListener("DOMContentLoaded", () => {
+  const stack = document.querySelector("[data-work-stack]");
+  if (!stack) return;
+  const cards = [...stack.querySelectorAll(".work-card")];
+  const section = stack.closest("section");
+  const progress = document.createElement("span");
+  progress.className = "work-stack-progress";
+  progress.textContent = "01 / 03";
+  section.querySelector(".section-heading__copy")?.append(progress);
+  cards.forEach((card, index) => {
+    const number = document.createElement("span");
+    number.className = "work-card__number";
+    number.textContent = String(index + 1).padStart(2, "0");
+    card.append(number);
+    card.dataset.workIndex = String(index);
+  });
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !window.gsap || !window.ScrollTrigger || window.innerWidth < 992) return;
+  window.gsap.registerPlugin(window.ScrollTrigger);
+  cards.forEach((card, index) => {
+    const image = card.querySelector("img");
+    const meta = card.querySelector(".work-card__meta");
+    window.gsap.fromTo(card,
+      { clipPath: "inset(10% 0% 0% 0% round 2rem)", y: 70 },
+      { clipPath: "inset(0% 0% 0% 0% round 2rem)", y: 0, ease: "none", scrollTrigger: { trigger: card, start: "top 92%", end: "top 18%", scrub: 0.7 } }
+    );
+    window.gsap.fromTo(image, { yPercent: -5 }, { yPercent: 5, ease: "none", scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true } });
+    window.gsap.from(meta, { x: index % 2 ? -50 : 50, opacity: 0, scrollTrigger: { trigger: card, start: "top 72%", end: "top 38%", scrub: 0.5 } });
+    window.ScrollTrigger.create({
+      trigger: card,
+      start: "top 45%",
+      end: "bottom 45%",
+      onEnter: () => { progress.textContent = `${String(index + 1).padStart(2, "0")} / 03`; },
+      onEnterBack: () => { progress.textContent = `${String(index + 1).padStart(2, "0")} / 03`; }
+    });
+  });
+});
