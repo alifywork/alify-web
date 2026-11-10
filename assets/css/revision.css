@@ -12,12 +12,8 @@ a:hover img, a:focus-visible img { transform: none !important; }
 :where(a:hover, a:focus-visible) { text-decoration: none; }
 :where(.button, .header__cta, .footer-cta__link, .section-link, .detail-link, .footer__contact-page, .drawer__cta):hover {
   text-decoration: none;
-  box-shadow: var(--shadow-refined);
 }
-:where(.section-link, .detail-link, .footer__contact-page) { border-radius: .45rem; }
-:where(.section-link, .detail-link):hover { color: var(--color-accent); background: color-mix(in srgb, var(--color-amber) 9%, transparent); }
-:where(a, button):hover .icon-arrow-up-right { transform: translate(3px,-3px); }
-.icon-arrow-up-right { transition: transform var(--motion-refined); }
+:where(.section-link, .detail-link):hover { color: var(--color-accent); }
 :where(button, .button, .carousel-button):disabled { cursor: not-allowed; opacity: .42; box-shadow: none; }
 
 .social-links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.25rem; }
