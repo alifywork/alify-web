@@ -125,6 +125,16 @@ Measured 390 px document heights after implementation:
 - Removed all retired scroll-stack CSS, responsive overrides, progress styles, and decorative-number rules (approximately 185 lines) without changing the restored original Work grid.
 - Re-ran 43 pages at five widths (215 loads): zero overflow or JavaScript errors; targeted Axe checks remain clean.
 
+## SEO and launch-readiness pass
+
+- Added unique canonical URLs, robots/theme metadata, Open Graph, and Twitter Card tags to all 43 HTML pages using `https://alify.com` as the production origin.
+- Created a branded 1200×630 social-sharing image and a local SVG favicon.
+- Added Organization/WebSite schema to Home, valid BlogPosting schema to six articles, and all 12 visible FAQs to FAQPage schema.
+- Added `robots.txt` and a 42-URL `sitemap.xml`; the duplicate `service-single.html` is canonicalised to Web Development, marked noindex/follow, and excluded from the sitemap.
+- Added correct plain-text/XML MIME types to the Node server.
+- Metadata uniqueness, JSON parsing, sitemap targets, and internal asset/link audit found zero errors.
+- Re-ran 215 responsive loads with zero overflow, JavaScript errors, or failed network responses; targeted Axe checks remain clean.
+
 ## Deployment boundary
 
 The backend is functional and persistent on the running Node server. Production requires persistent server storage, protected backups, HTTPS, process management, and operational monitoring. SMTP/CRM delivery is not configured; the UI does not claim that an email notification was sent. Testimonials remain dummy and social URLs intentionally remain `#` as requested.
